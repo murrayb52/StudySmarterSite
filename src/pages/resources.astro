@@ -99,9 +99,9 @@ import DownloadCard from '../components/DownloadCard.astro';
   }
   .download-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr;
     gap: 2rem;
-    align-items: start;
+    max-width: 700px;
   }
 
   :global(.resource-lead) {
@@ -118,10 +118,4 @@ import DownloadCard from '../components/DownloadCard.astro';
     line-height: 1.65;
   }
 
-  @media (max-width: 900px) {
-    .download-grid { grid-template-columns: 1fr 1fr; }
-  }
-  @media (max-width: 600px) {
-    .download-grid { grid-template-columns: 1fr; }
-  }
 </style>
