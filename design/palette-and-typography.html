@@ -6,7 +6,7 @@
   <title>Study Smarter Hub — Design Reference</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,300;1,8..60,400;1,8..60,600&family=Spectral:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,300;1,8..60,400;1,8..60,600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -158,6 +158,36 @@
     .mini-body { font-size: 0.67rem; color: #666; line-height: 1.65; margin-bottom: 13px; }
     .mini-btn-p { display: inline-block; padding: 6px 14px; border-radius: 5px; font-size: 0.67rem; font-weight: 600; background: #C8601A; color: #fff; margin-right: 6px; }
     .mini-btn-s { display: inline-block; padding: 6px 14px; border-radius: 5px; font-size: 0.67rem; font-weight: 600; border: 1.5px solid #ddd; color: #444; }
+
+    /* Visible font label banner */
+    .font-label-bar {
+      background: #1A1A1A;
+      padding: 9px 22px;
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .font-label-heading {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+    .font-label-name {
+      font-size: 1rem;
+      color: #F0A070;
+      line-height: 1.2;
+    }
+    .font-label-sep {
+      color: rgba(255,255,255,0.2);
+      font-size: 0.8rem;
+    }
+    .font-label-body {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.55);
+    }
 
     /* ── Typography cards ── */
     .type-grid {
@@ -458,28 +488,20 @@
       <strong>Previous round feedback:</strong> Playfair Display feels too "magazine grabby" — wants humble confidence, not showing off. Cormorant Garamond is alright but too skimpy. Fraunces not refined enough. Direction: <strong>refined, scholarly, warm</strong> — text serifs used at display sizes, not theatrical display faces.
     </div>
 
-    <p class="tap-hint">Tap a card to reveal font names</p>
-
     <div class="type-grid">
 
       <!-- 1: Libre Baskerville + DM Sans -->
-      <div class="type-card" onclick="this.classList.toggle('tapped')">
-        <div class="font-overlay">
-          <div>
-            <div class="overlay-role">Headings</div>
-            <div class="overlay-font-name" style="font-family:'Libre Baskerville',serif;">Libre Baskerville</div>
-          </div>
-          <div class="overlay-divider"></div>
-          <div>
-            <div class="overlay-role">Body text</div>
-            <div class="overlay-font-name" style="font-family:'DM Sans',sans-serif; font-size:1.2rem;">DM Sans</div>
-          </div>
-          <div class="overlay-note">A sturdy Baskerville revival — substantial stroke weight, no theatrics. Scholarly and confident at any size.</div>
-          <div class="overlay-hint">Click or tap again to close</div>
+      <div class="type-card">
+        <div class="font-label-bar">
+          <span class="font-label-heading">Heading</span>
+          <span class="font-label-name" style="font-family:'Libre Baskerville',serif;">Libre Baskerville</span>
+          <span class="font-label-sep">/</span>
+          <span class="font-label-heading">Body</span>
+          <span class="font-label-body" style="font-family:'DM Sans',sans-serif;">DM Sans</span>
         </div>
         <div class="type-card-meta">
           <h2>1 — Sturdy Classical</h2>
-          <p>Baskerville has centuries of scholarly credibility. This revival has good weight — not skimpy, not showy.</p>
+          <p>Baskerville has centuries of scholarly credibility. Substantial stroke weight — not skimpy, not showy. The boldest of the four.</p>
         </div>
         <div class="preview-nav" style="background:#4A6478; color:#FAFAF8; font-family:'DM Sans',sans-serif;">
           <span style="color:#F0A070; font-family:'Libre Baskerville',serif; font-size:0.9rem; text-transform:none; letter-spacing:0.01em; font-weight:700;">Study Smarter Hub</span>
@@ -499,7 +521,7 @@
           </div>
           <div class="specimen-row">
             <span class="specimen-label">Italic</span>
-            <span style="font-family:'Libre Baskerville',serif; font-size:1.05rem; font-style:italic; color:#C8601A;">Stone-Age Roots, Modern Wisdoms</span>
+            <span style="font-family:'Libre Baskerville',serif; font-size:1.1rem; font-style:italic; color:#C8601A;">Stone-Age Roots, Modern Wisdoms</span>
           </div>
           <div class="specimen-row">
             <span class="specimen-label">Body</span>
@@ -513,23 +535,17 @@
       </div>
 
       <!-- 2: Source Serif 4 + Plus Jakarta Sans -->
-      <div class="type-card" onclick="this.classList.toggle('tapped')">
-        <div class="font-overlay">
-          <div>
-            <div class="overlay-role">Headings</div>
-            <div class="overlay-font-name" style="font-family:'Source Serif 4',serif;">Source Serif 4</div>
-          </div>
-          <div class="overlay-divider"></div>
-          <div>
-            <div class="overlay-role">Body text</div>
-            <div class="overlay-font-name" style="font-family:'Plus Jakarta Sans',sans-serif; font-size:1.2rem;">Plus Jakarta Sans</div>
-          </div>
-          <div class="overlay-note">Adobe's screen-optimised serif — variable optical sizes mean it's equally refined at large display sizes and tiny captions. Warm and professional.</div>
-          <div class="overlay-hint">Click or tap again to close</div>
+      <div class="type-card">
+        <div class="font-label-bar">
+          <span class="font-label-heading">Heading</span>
+          <span class="font-label-name" style="font-family:'Source Serif 4',serif;">Source Serif 4</span>
+          <span class="font-label-sep">/</span>
+          <span class="font-label-heading">Body</span>
+          <span class="font-label-body" style="font-family:'Plus Jakarta Sans',sans-serif;">Plus Jakarta Sans</span>
         </div>
         <div class="type-card-meta">
           <h2>2 — Screen-Refined</h2>
-          <p>Source Serif 4 is a variable font — letterforms are optically tuned for each size. Warm, professional, excellent on screens.</p>
+          <p>Adobe variable serif — letterforms optically tuned per size. Lighter than Baskerville, warmer than a neutral text face.</p>
         </div>
         <div class="preview-nav" style="background:#4A6478; color:#FAFAF8; font-family:'Plus Jakarta Sans',sans-serif;">
           <span style="color:#F0A070; font-family:'Source Serif 4',serif; font-size:1rem; text-transform:none; letter-spacing:0.01em; font-weight:600;">Study Smarter Hub</span>
@@ -549,7 +565,7 @@
           </div>
           <div class="specimen-row">
             <span class="specimen-label">Italic</span>
-            <span style="font-family:'Source Serif 4',serif; font-size:1.05rem; font-style:italic; font-weight:300; color:#C8601A;">Stone-Age Roots, Modern Wisdoms</span>
+            <span style="font-family:'Source Serif 4',serif; font-size:1.1rem; font-style:italic; font-weight:300; color:#C8601A;">Stone-Age Roots, Modern Wisdoms</span>
           </div>
           <div class="specimen-row">
             <span class="specimen-label">Body</span>
@@ -562,32 +578,26 @@
         </div>
       </div>
 
-      <!-- 3: Spectral + DM Sans -->
-      <div class="type-card" onclick="this.classList.toggle('tapped')">
-        <div class="font-overlay">
-          <div>
-            <div class="overlay-role">Headings</div>
-            <div class="overlay-font-name" style="font-family:'Spectral',serif;">Spectral</div>
-          </div>
-          <div class="overlay-divider"></div>
-          <div>
-            <div class="overlay-role">Body text</div>
-            <div class="overlay-font-name" style="font-family:'DM Sans',sans-serif; font-size:1.2rem;">DM Sans</div>
-          </div>
-          <div class="overlay-note">Designed by Production Type specifically for digital reading. Literary without trying. More characterful than Baskerville, more substantial than Cormorant.</div>
-          <div class="overlay-hint">Click or tap again to close</div>
+      <!-- 3: EB Garamond + DM Sans -->
+      <div class="type-card">
+        <div class="font-label-bar">
+          <span class="font-label-heading">Heading</span>
+          <span class="font-label-name" style="font-family:'EB Garamond',serif;">EB Garamond</span>
+          <span class="font-label-sep">/</span>
+          <span class="font-label-heading">Body</span>
+          <span class="font-label-body" style="font-family:'DM Sans',sans-serif;">DM Sans</span>
         </div>
         <div class="type-card-meta">
-          <h2>3 — Literary & Warm</h2>
-          <p>Spectral was designed specifically for digital text — literary character, good weight, doesn't shout. Sits between Baskerville and Garamond in feel.</p>
+          <h2>3 — Old-Style Humanist</h2>
+          <p>A faithful Garamond revival — old-style, humanist, visibly different from Baskerville. Rounder, warmer letterforms. Needs a larger size than Baskerville to hold its own.</p>
         </div>
         <div class="preview-nav" style="background:#4A6478; color:#FAFAF8; font-family:'DM Sans',sans-serif;">
-          <span style="color:#F0A070; font-family:'Spectral',serif; font-size:1rem; text-transform:none; letter-spacing:0.01em; font-weight:600;">Study Smarter Hub</span>
+          <span style="color:#F0A070; font-family:'EB Garamond',serif; font-size:1.05rem; text-transform:none; letter-spacing:0.01em; font-weight:600;">Study Smarter Hub</span>
           <div class="preview-nav-links"><span>Home</span><span>Shop</span><span>Resources</span><span>About</span></div>
         </div>
         <div class="preview-hero">
           <div class="preview-eyebrow" style="font-family:'DM Sans',sans-serif;">For students, parents & educators</div>
-          <div style="font-family:'Spectral',serif; font-size:2.2rem; font-weight:600; color:#1A1A1A; line-height:1.2; margin-bottom:16px;">Study smarter,<br/><em style="font-weight:300;">not harder.</em></div>
+          <div style="font-family:'EB Garamond',serif; font-size:2.5rem; font-weight:700; color:#1A1A1A; line-height:1.15; margin-bottom:16px;">Study smarter,<br/><em style="font-weight:400;">not harder.</em></div>
           <div class="preview-body-text" style="font-family:'DM Sans',sans-serif;">Practical tools and proven methods to help high school students take control of their learning — by James Buchanan.</div>
           <span class="btn-p" style="font-family:'DM Sans',sans-serif;">Shop Now</span>
           <span class="btn-s" style="font-family:'DM Sans',sans-serif;">Free Resources</span>
@@ -595,11 +605,11 @@
         <div class="specimen">
           <div class="specimen-row">
             <span class="specimen-label">Display</span>
-            <span style="font-family:'Spectral',serif; font-size:1.55rem; font-weight:600; color:#1A1A1A;">Study Smarter</span>
+            <span style="font-family:'EB Garamond',serif; font-size:1.75rem; font-weight:700; color:#1A1A1A;">Study Smarter</span>
           </div>
           <div class="specimen-row">
             <span class="specimen-label">Italic</span>
-            <span style="font-family:'Spectral',serif; font-size:1.05rem; font-style:italic; font-weight:300; color:#C8601A;">Stone-Age Roots, Modern Wisdoms</span>
+            <span style="font-family:'EB Garamond',serif; font-size:1.2rem; font-style:italic; font-weight:500; color:#C8601A;">Stone-Age Roots, Modern Wisdoms</span>
           </div>
           <div class="specimen-row">
             <span class="specimen-label">Body</span>
@@ -612,32 +622,26 @@
         </div>
       </div>
 
-      <!-- 4: Source Serif 4 on White Nav (A3) -->
-      <div class="type-card" onclick="this.classList.toggle('tapped')">
-        <div class="font-overlay">
-          <div>
-            <div class="overlay-role">Headings</div>
-            <div class="overlay-font-name" style="font-family:'Source Serif 4',serif;">Source Serif 4</div>
-          </div>
-          <div class="overlay-divider"></div>
-          <div>
-            <div class="overlay-role">Body text</div>
-            <div class="overlay-font-name" style="font-family:'DM Sans',sans-serif; font-size:1.2rem;">DM Sans</div>
-          </div>
-          <div class="overlay-note">Pairing 2's heading font with Pairing 1's body font — shown here on the A3 white nav. A comparison view.</div>
-          <div class="overlay-hint">Click or tap again to close</div>
+      <!-- 4: Lora + DM Sans -->
+      <div class="type-card">
+        <div class="font-label-bar">
+          <span class="font-label-heading">Heading</span>
+          <span class="font-label-name" style="font-family:'Lora',serif;">Lora</span>
+          <span class="font-label-sep">/</span>
+          <span class="font-label-heading">Body</span>
+          <span class="font-label-body" style="font-family:'DM Sans',sans-serif;">DM Sans</span>
         </div>
         <div class="type-card-meta">
-          <h2>4 — Screen-Refined on White Nav (A3)</h2>
-          <p>Source Serif 4 + DM Sans on the A3 white nav — for a direct comparison with Pairings 1–3 above.</p>
+          <h2>4 — Contemporary Warm</h2>
+          <p>Lora was designed specifically for the screen — calligraphic roots, contemporary finish. Distinct character between Baskerville and Garamond. More personality than Source Serif.</p>
         </div>
-        <div class="preview-nav" style="background:#FFFFFF; color:#333; font-family:'DM Sans',sans-serif; border-bottom:1px solid #eee;">
-          <span style="color:#C8601A; font-family:'Source Serif 4',serif; font-size:1rem; text-transform:none; letter-spacing:0.01em; font-weight:600;">Study Smarter Hub</span>
-          <div class="preview-nav-links" style="color:#444;"><span>Home</span><span>Shop</span><span>Resources</span><span>About</span></div>
+        <div class="preview-nav" style="background:#4A6478; color:#FAFAF8; font-family:'DM Sans',sans-serif;">
+          <span style="color:#F0A070; font-family:'Lora',serif; font-size:0.95rem; text-transform:none; letter-spacing:0.01em; font-weight:600;">Study Smarter Hub</span>
+          <div class="preview-nav-links"><span>Home</span><span>Shop</span><span>Resources</span><span>About</span></div>
         </div>
         <div class="preview-hero">
           <div class="preview-eyebrow" style="font-family:'DM Sans',sans-serif;">For students, parents & educators</div>
-          <div style="font-family:'Source Serif 4',serif; font-size:2.2rem; font-weight:600; color:#1A1A1A; line-height:1.2; margin-bottom:16px;">Study smarter,<br/><em style="font-weight:300;">not harder.</em></div>
+          <div style="font-family:'Lora',serif; font-size:2.2rem; font-weight:700; color:#1A1A1A; line-height:1.2; margin-bottom:16px;">Study smarter,<br/><em style="font-weight:400;">not harder.</em></div>
           <div class="preview-body-text" style="font-family:'DM Sans',sans-serif;">Practical tools and proven methods to help high school students take control of their learning — by James Buchanan.</div>
           <span class="btn-p" style="font-family:'DM Sans',sans-serif;">Shop Now</span>
           <span class="btn-s" style="font-family:'DM Sans',sans-serif;">Free Resources</span>
@@ -645,11 +649,11 @@
         <div class="specimen">
           <div class="specimen-row">
             <span class="specimen-label">Display</span>
-            <span style="font-family:'Source Serif 4',serif; font-size:1.55rem; font-weight:600; color:#1A1A1A;">Study Smarter</span>
+            <span style="font-family:'Lora',serif; font-size:1.55rem; font-weight:700; color:#1A1A1A;">Study Smarter</span>
           </div>
           <div class="specimen-row">
             <span class="specimen-label">Italic</span>
-            <span style="font-family:'Source Serif 4',serif; font-size:1.05rem; font-style:italic; font-weight:300; color:#C8601A;">Stone-Age Roots, Modern Wisdoms</span>
+            <span style="font-family:'Lora',serif; font-size:1.1rem; font-style:italic; font-weight:400; color:#C8601A;">Stone-Age Roots, Modern Wisdoms</span>
           </div>
           <div class="specimen-row">
             <span class="specimen-label">Body</span>
