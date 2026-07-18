@@ -12,14 +12,19 @@ import DownloadCard from '../components/DownloadCard.astro';
   <Nav slot="nav" />
   <Footer slot="footer" />
 
-  <section class="section">
-    <div class="container">
+  <section class="resources-header">
+    <div class="resources-header-bg" aria-hidden="true"></div>
+    <div class="container resources-header-inner">
       <span class="eyebrow">For students, parents &amp; teachers</span>
       <h1 style="font-weight:600">Free study tools</h1>
       <p class="resources-intro">
         A set of resources to support students and educators — free to download, ready to use.
       </p>
+    </div>
+  </section>
 
+  <section class="section resources-cards">
+    <div class="container">
       <div class="download-grid">
 
         <DownloadCard
@@ -57,14 +62,39 @@ import DownloadCard from '../components/DownloadCard.astro';
 
       </div>
     </div>
-  </section>
+  </section>  <!-- /resources-cards -->
 </Base>
 
 <style>
+  /* Header section with notebook background */
+  .resources-header {
+    position: relative;
+    overflow: hidden;
+    padding: 4.5rem 0 3.5rem;
+  }
+  .resources-header-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('/images/bg-notebook-flatlay.png');
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+  }
+  .resources-header-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(250,250,248,0.82);
+  }
+  .resources-header-inner {
+    position: relative;
+    z-index: 1;
+  }
+
   .resources-intro {
     max-width: 52ch;
     color: var(--c-text-muted);
-    margin-bottom: 3rem;
+    margin-bottom: 0;
     font-size: 1.0625rem;
   }
   .download-grid {
