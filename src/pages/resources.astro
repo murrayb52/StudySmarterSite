@@ -1,0 +1,64 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import DownloadCard from '../components/DownloadCard.astro';
+---
+
+<Base
+  title="Free Resources"
+  description="Free study tools from The Study Smarter Hub — download the exam planner, workbook guide, and teacher reflection guide."
+>
+  <Nav slot="nav" />
+  <Footer slot="footer" />
+
+  <section class="section">
+    <div class="container">
+      <span class="eyebrow">For students, parents & teachers</span>
+      <h1 style="font-weight:600">Free study tools</h1>
+      <p class="resources-intro">
+        A set of resources to support students and educators — free to download, ready to use.
+      </p>
+
+      <div class="download-grid">
+        <DownloadCard
+          title="Study Planner Exam Template"
+          description="A structured weekly planner to map out exam preparation. Works for any subject combination."
+          fileType="XLS"
+          downloadHref="/downloads/Study Planner Exam Template.xlsx"
+        />
+        <DownloadCard
+          title="Student Workbook Guide"
+          description="Answers and worked examples for the Study Smarter Student Workbook."
+          fileType="PDF"
+          downloadHref="/downloads/Workbook answers and guide.pdf"
+        />
+        <DownloadCard
+          title="Teacher Reflection Guide"
+          description="How to support your students' independent study practices in the classroom."
+          fileType="PDF"
+          comingSoon={true}
+        />
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .resources-intro {
+    max-width: 52ch;
+    color: var(--c-text-muted);
+    margin-bottom: 2.5rem;
+  }
+  .download-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  @media (max-width: 900px) {
+    .download-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    .download-grid { grid-template-columns: 1fr; }
+  }
+</style>
