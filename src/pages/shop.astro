@@ -280,7 +280,7 @@ import BookCard from '../components/BookCard.astro';
         merchant_key: MERCHANT_KEY,
         return_url: returnUrl,
         cancel_url: `${window.location.origin}/shop`,
-        amount: totalAmount.toFixed(2),
+        amount: price.toFixed(2),
         item_name: product,
         name_first: String(data.get('first_name') ?? ''),
         name_last: String(data.get('last_name') ?? ''),

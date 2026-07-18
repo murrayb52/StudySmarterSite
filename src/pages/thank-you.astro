@@ -17,8 +17,8 @@ import Footer from '../components/Footer.astro';
       <div class="thankyou-icon" aria-hidden="true">✓</div>
       <h1 style="font-weight:600">Thank you for your order</h1>
 
-      <!-- Delivery message (shown by default, hidden if collection=true) -->
-      <div id="msg-delivery">
+      <!-- Delivery message (hidden by default; JS reveals when collection param is absent) -->
+      <div id="msg-delivery" class="hidden">
         <p>
           Your book will be dispatched to your delivery address.
           PayFast will send you a payment receipt by email.
@@ -54,8 +54,9 @@ import Footer from '../components/Footer.astro';
 <script>
   const params = new URLSearchParams(window.location.search);
   if (params.get('collection') === 'true') {
-    document.getElementById('msg-delivery')?.classList.add('hidden');
     document.getElementById('msg-collection')?.classList.remove('hidden');
+  } else {
+    document.getElementById('msg-delivery')?.classList.remove('hidden');
   }
 </script>
 
