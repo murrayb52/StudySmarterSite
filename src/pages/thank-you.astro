@@ -1,0 +1,95 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base
+  title="Thank you for your order"
+  description="Your order has been received. Thank you for supporting The Study Smarter Hub."
+>
+  <Nav slot="nav" />
+  <Footer slot="footer" />
+
+  <section class="section">
+    <div class="container thankyou-inner">
+
+      <div class="thankyou-icon" aria-hidden="true">✓</div>
+      <h1 style="font-weight:600">Thank you for your order</h1>
+
+      <!-- Delivery message (shown by default, hidden if collection=true) -->
+      <div id="msg-delivery">
+        <p>
+          Your book will be dispatched to your delivery address.
+          PayFast will send you a payment receipt by email.
+        </p>
+        <p>
+          If you have any questions, email us at
+          <a href="mailto:info@thestudysmarterhub.com">info@thestudysmarterhub.com</a>.
+        </p>
+      </div>
+
+      <!-- Collection message (hidden by default, shown if collection=true) -->
+      <div id="msg-collection" class="hidden">
+        <p>
+          Thank you for choosing collection.
+          The exact collection address in Diep River, Cape Town will be emailed to you shortly
+          once payment is confirmed.
+        </p>
+        <p>
+          If you have any questions, email us at
+          <a href="mailto:info@thestudysmarterhub.com">info@thestudysmarterhub.com</a>.
+        </p>
+      </div>
+
+      <div class="thankyou-links">
+        <a href="/" class="btn btn-primary">Back to Home</a>
+        <a href="/resources" class="btn btn-outline">Free Resources</a>
+      </div>
+
+    </div>
+  </section>
+</Base>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('collection') === 'true') {
+    document.getElementById('msg-delivery')?.classList.add('hidden');
+    document.getElementById('msg-collection')?.classList.remove('hidden');
+  }
+</script>
+
+<style>
+  .thankyou-inner {
+    max-width: 560px;
+    text-align: center;
+    padding-top: 2rem;
+  }
+  .thankyou-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--c-accent);
+    color: #fff;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+  }
+  .thankyou-inner h1 {
+    font-size: 2rem;
+    margin-bottom: 1.25rem;
+  }
+  .thankyou-inner p {
+    color: var(--c-text-muted);
+    font-size: 1.0625rem;
+  }
+  .thankyou-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+  }
+</style>
