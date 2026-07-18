@@ -141,9 +141,9 @@ import BookCard from '../components/BookCard.astro';
   .hero-bg {
     position: absolute;
     inset: 0;
-    background-image: url('/images/hero-sky-goldfish-wide.png');
+    background-image: url('/images/fishbowl-leap.png');
     background-size: cover;
-    background-position: right center;
+    background-position: left center;
     z-index: 0;
   }
   .hero-bg::after {
@@ -152,11 +152,11 @@ import BookCard from '../components/BookCard.astro';
     inset: 0;
     background: linear-gradient(
       to right,
-      var(--c-bg) 0%,
-      var(--c-bg) 38%,
-      rgba(250,250,248,0.82) 55%,
-      rgba(250,250,248,0.2) 75%,
-      transparent 100%
+      transparent 0%,
+      transparent 28%,
+      rgba(250,250,248,0.72) 42%,
+      var(--c-bg) 58%,
+      var(--c-bg) 100%
     );
   }
   .hero-inner {
@@ -164,10 +164,14 @@ import BookCard from '../components/BookCard.astro';
     z-index: 1;
     max-width: none;
     margin: 0;
-    padding-left: clamp(1.5rem, 4vw, 5rem);
+    padding: 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
   }
   .hero-text {
-    max-width: 540px;
+    max-width: 520px;
+    padding-right: clamp(2rem, 5vw, 6rem);
   }
   .hero-text h1 {
     font-size: clamp(2.5rem, 5vw, 3.75rem);
@@ -201,22 +205,11 @@ import BookCard from '../components/BookCard.astro';
     display: block;
   }
   .audience-text {
-    background: #1c2a35 url('/images/fishbowl-leap.png') center/cover no-repeat;
+    background: #1c2a35;
     padding: 4rem 3.5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    position: relative;
-  }
-  .audience-text::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(14, 20, 26, 0.80);
-  }
-  .audience-text > * {
-    position: relative;
-    z-index: 1;
   }
   .audience-eyebrow {
     color: rgba(255, 255, 255, 0.5) !important;
@@ -333,11 +326,14 @@ import BookCard from '../components/BookCard.astro';
     .hero-bg::after {
       background: linear-gradient(
         to bottom,
-        var(--c-bg) 0%,
-        rgba(250,250,248,0.92) 60%,
-        rgba(250,250,248,0.5) 100%
+        transparent 0%,
+        rgba(250,250,248,0.75) 38%,
+        var(--c-bg) 58%,
+        var(--c-bg) 100%
       );
     }
+    .hero-inner { justify-content: flex-start; }
+    .hero-text { padding-right: 0; padding-left: 1.5rem; }
     .audience {
       grid-template-columns: 1fr;
     }
