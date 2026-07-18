@@ -210,10 +210,31 @@ import BookCard from '../components/BookCard.astro';
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      if (status) status.textContent = 'Processing…';
 
       const data = new FormData(form);
+
+      // Fix 2: Validate required personal-detail fields before proceeding
+      const requiredFields = ['first_name', 'last_name', 'email', 'phone'];
+      for (const field of requiredFields) {
+        if (!String(data.get(field) ?? '').trim()) {
+          if (status) status.textContent = 'Please fill in all required fields.';
+          return;
+        }
+      }
+
+      // Fix 3: Validate delivery address fields when delivery is selected
       const isCollection = data.get('fulfilment') === 'collection';
+      if (!isCollection) {
+        const addressFields = ['address', 'city', 'postal_code'];
+        for (const field of addressFields) {
+          if (!String(data.get(field) ?? '').trim()) {
+            if (status) status.textContent = 'Please enter your delivery address.';
+            return;
+          }
+        }
+      }
+
+      if (status) status.textContent = 'Processing…';
       const price = Number(formWrap?.dataset.price ?? 0);
       const product = formWrap?.dataset.product ?? '';
       const shippingAmount = isCollection ? 0 : 80;
@@ -230,11 +251,15 @@ import BookCard from '../components/BookCard.astro';
         orderData.append('shipping', isCollection ? 'Collection' : `R${shippingAmount}`);
         orderData.append('total', `R${totalAmount}`);
         try {
-          await fetch(ORDER_ENDPOINT, {
+          const res = await fetch(ORDER_ENDPOINT, {
             method: 'POST',
             body: orderData,
             headers: { Accept: 'application/json' },
           });
+          // Fix 1: Log non-2xx responses (non-fatal — PayFast redirect continues regardless)
+          if (!res.ok) {
+            console.warn('Formspree order capture failed:', res.status, res.statusText);
+          }
         } catch {
           // Non-fatal — continue to PayFast regardless
         }
