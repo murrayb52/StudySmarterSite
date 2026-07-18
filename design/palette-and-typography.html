@@ -6,7 +6,7 @@
   <title>Study Smarter Hub — Design Reference</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,300;1,8..60,400;1,8..60,600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,600;8..60,700&family=Source+Sans+3:wght@300;400;500;600&family=Nunito:wght@300;400;500;600;700&family=Work+Sans:wght@300;400;500;600&family=Karla:ital,wght@0,300;0,400;0,500;0,600;1,300&family=DM+Sans:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -482,50 +482,54 @@
 
   <!-- ══════════════ TYPOGRAPHY ══════════════ -->
   <section>
-    <div class="section-heading">Typography Pairings — Revised</div>
+    <div class="section-heading">Typography — Heading fixed, body options vary</div>
 
     <div class="prev-note">
-      <strong>Previous round feedback:</strong> Playfair Display feels too "magazine grabby" — wants humble confidence, not showing off. Cormorant Garamond is alright but too skimpy. Fraunces not refined enough. Direction: <strong>refined, scholarly, warm</strong> — text serifs used at display sizes, not theatrical display faces.
+      <strong>Heading:</strong> Source Serif 4 throughout — weight 600 for the main line, weight 300 for the softer second line. No italic — weight contrast instead of angle. &nbsp;<strong>Varying:</strong> body font only. Pick whichever feels most readable and warm.
     </div>
 
     <div class="type-grid">
 
-      <!-- 1: Libre Baskerville + DM Sans -->
+      <!-- SHARED HEADING MACRO — Source Serif 4 throughout, body varies -->
+
+      <!-- 1: Source Serif 4 + DM Sans -->
       <div class="type-card">
+        <!-- Shared heading treatment macro -->
+
         <div class="font-label-bar">
           <span class="font-label-heading">Heading</span>
-          <span class="font-label-name" style="font-family:'Libre Baskerville',serif;">Libre Baskerville</span>
+          <span class="font-label-name" style="font-family:'Source Serif 4',serif;">Source Serif 4</span>
           <span class="font-label-sep">/</span>
           <span class="font-label-heading">Body</span>
           <span class="font-label-body" style="font-family:'DM Sans',sans-serif;">DM Sans</span>
         </div>
         <div class="type-card-meta">
-          <h2>1 — Sturdy Classical</h2>
-          <p>Baskerville has centuries of scholarly credibility. Substantial stroke weight — not skimpy, not showy. The boldest of the four.</p>
+          <h2>1 — DM Sans body</h2>
+          <p>The baseline. Clean, neutral, very legible. Slightly cool — the most common pairing for this heading style.</p>
         </div>
         <div class="preview-nav" style="background:#4A6478; color:#FAFAF8; font-family:'DM Sans',sans-serif;">
-          <span style="color:#F0A070; font-family:'Libre Baskerville',serif; font-size:0.9rem; text-transform:none; letter-spacing:0.01em; font-weight:700;">Study Smarter Hub</span>
+          <span style="color:#F0A070; font-family:'Source Serif 4',serif; font-size:0.95rem; text-transform:none; letter-spacing:0.01em; font-weight:600;">Study Smarter Hub</span>
           <div class="preview-nav-links"><span>Home</span><span>Shop</span><span>Resources</span><span>About</span></div>
         </div>
         <div class="preview-hero">
           <div class="preview-eyebrow" style="font-family:'DM Sans',sans-serif;">For students, parents & educators</div>
-          <div style="font-family:'Libre Baskerville',serif; font-size:2.2rem; font-weight:700; color:#1A1A1A; line-height:1.2; margin-bottom:16px;">Study smarter,<br/><em style="font-weight:400;">not harder.</em></div>
+          <div style="font-family:'Source Serif 4',serif; font-size:2.2rem; font-weight:600; color:#1A1A1A; line-height:1.22; margin-bottom:16px;">Study smarter,<br/><span style="font-weight:300;">not harder.</span></div>
           <div class="preview-body-text" style="font-family:'DM Sans',sans-serif;">Practical tools and proven methods to help high school students take control of their learning — by James Buchanan.</div>
           <span class="btn-p" style="font-family:'DM Sans',sans-serif;">Shop Now</span>
           <span class="btn-s" style="font-family:'DM Sans',sans-serif;">Free Resources</span>
         </div>
         <div class="specimen">
           <div class="specimen-row">
-            <span class="specimen-label">Display</span>
-            <span style="font-family:'Libre Baskerville',serif; font-size:1.55rem; font-weight:700; color:#1A1A1A;">Study Smarter</span>
+            <span class="specimen-label">Heading</span>
+            <span style="font-family:'Source Serif 4',serif; font-size:1.5rem; font-weight:600; color:#1A1A1A;">Study Smarter</span>
           </div>
           <div class="specimen-row">
-            <span class="specimen-label">Italic</span>
-            <span style="font-family:'Libre Baskerville',serif; font-size:1.1rem; font-style:italic; color:#C8601A;">Stone-Age Roots, Modern Wisdoms</span>
+            <span class="specimen-label">Thin</span>
+            <span style="font-family:'Source Serif 4',serif; font-size:1.5rem; font-weight:300; color:#555;">not harder.</span>
           </div>
           <div class="specimen-row">
             <span class="specimen-label">Body</span>
-            <span style="font-family:'DM Sans',sans-serif; font-size:0.84rem; color:#555; line-height:1.6;">The quick brown fox jumps over the lazy dog. Practical study methods for real students.</span>
+            <span style="font-family:'DM Sans',sans-serif; font-size:0.9rem; color:#555; line-height:1.7;">Practical tools and methods to help students take control of their learning and exam preparation.</span>
           </div>
           <div class="specimen-row">
             <span class="specimen-label">Caption</span>
@@ -534,134 +538,134 @@
         </div>
       </div>
 
-      <!-- 2: Source Serif 4 + Plus Jakarta Sans -->
+      <!-- 2: Source Serif 4 + Source Sans 3 (same family) -->
       <div class="type-card">
         <div class="font-label-bar">
           <span class="font-label-heading">Heading</span>
           <span class="font-label-name" style="font-family:'Source Serif 4',serif;">Source Serif 4</span>
           <span class="font-label-sep">/</span>
           <span class="font-label-heading">Body</span>
-          <span class="font-label-body" style="font-family:'Plus Jakarta Sans',sans-serif;">Plus Jakarta Sans</span>
+          <span class="font-label-body" style="font-family:'Source Sans 3',sans-serif;">Source Sans 3</span>
         </div>
         <div class="type-card-meta">
-          <h2>2 — Screen-Refined</h2>
-          <p>Adobe variable serif — letterforms optically tuned per size. Lighter than Baskerville, warmer than a neutral text face.</p>
+          <h2>2 — Source Sans 3 body</h2>
+          <p>Same family as the heading. Adobe designed these to pair — they share proportions and rhythm. Harmonious and professional.</p>
         </div>
-        <div class="preview-nav" style="background:#4A6478; color:#FAFAF8; font-family:'Plus Jakarta Sans',sans-serif;">
-          <span style="color:#F0A070; font-family:'Source Serif 4',serif; font-size:1rem; text-transform:none; letter-spacing:0.01em; font-weight:600;">Study Smarter Hub</span>
+        <div class="preview-nav" style="background:#4A6478; color:#FAFAF8; font-family:'Source Sans 3',sans-serif;">
+          <span style="color:#F0A070; font-family:'Source Serif 4',serif; font-size:0.95rem; text-transform:none; letter-spacing:0.01em; font-weight:600;">Study Smarter Hub</span>
           <div class="preview-nav-links"><span>Home</span><span>Shop</span><span>Resources</span><span>About</span></div>
         </div>
         <div class="preview-hero">
-          <div class="preview-eyebrow" style="font-family:'Plus Jakarta Sans',sans-serif;">For students, parents & educators</div>
-          <div style="font-family:'Source Serif 4',serif; font-size:2.2rem; font-weight:600; color:#1A1A1A; line-height:1.2; margin-bottom:16px;">Study smarter,<br/><em style="font-weight:300;">not harder.</em></div>
-          <div class="preview-body-text" style="font-family:'Plus Jakarta Sans',sans-serif;">Practical tools and proven methods to help high school students take control of their learning — by James Buchanan.</div>
-          <span class="btn-p" style="font-family:'Plus Jakarta Sans',sans-serif;">Shop Now</span>
-          <span class="btn-s" style="font-family:'Plus Jakarta Sans',sans-serif;">Free Resources</span>
+          <div class="preview-eyebrow" style="font-family:'Source Sans 3',sans-serif;">For students, parents & educators</div>
+          <div style="font-family:'Source Serif 4',serif; font-size:2.2rem; font-weight:600; color:#1A1A1A; line-height:1.22; margin-bottom:16px;">Study smarter,<br/><span style="font-weight:300;">not harder.</span></div>
+          <div class="preview-body-text" style="font-family:'Source Sans 3',sans-serif;">Practical tools and proven methods to help high school students take control of their learning — by James Buchanan.</div>
+          <span class="btn-p" style="font-family:'Source Sans 3',sans-serif;">Shop Now</span>
+          <span class="btn-s" style="font-family:'Source Sans 3',sans-serif;">Free Resources</span>
         </div>
         <div class="specimen">
           <div class="specimen-row">
-            <span class="specimen-label">Display</span>
-            <span style="font-family:'Source Serif 4',serif; font-size:1.55rem; font-weight:600; color:#1A1A1A;">Study Smarter</span>
+            <span class="specimen-label">Heading</span>
+            <span style="font-family:'Source Serif 4',serif; font-size:1.5rem; font-weight:600; color:#1A1A1A;">Study Smarter</span>
           </div>
           <div class="specimen-row">
-            <span class="specimen-label">Italic</span>
-            <span style="font-family:'Source Serif 4',serif; font-size:1.1rem; font-style:italic; font-weight:300; color:#C8601A;">Stone-Age Roots, Modern Wisdoms</span>
+            <span class="specimen-label">Thin</span>
+            <span style="font-family:'Source Serif 4',serif; font-size:1.5rem; font-weight:300; color:#555;">not harder.</span>
           </div>
           <div class="specimen-row">
             <span class="specimen-label">Body</span>
-            <span style="font-family:'Plus Jakarta Sans',sans-serif; font-size:0.84rem; color:#555; line-height:1.6;">The quick brown fox jumps over the lazy dog. Practical study methods for real students.</span>
+            <span style="font-family:'Source Sans 3',sans-serif; font-size:0.9rem; color:#555; line-height:1.7;">Practical tools and methods to help students take control of their learning and exam preparation.</span>
           </div>
           <div class="specimen-row">
             <span class="specimen-label">Caption</span>
-            <span style="font-family:'Plus Jakarta Sans',sans-serif; font-size:0.67rem; color:#aaa; letter-spacing:0.08em; text-transform:uppercase;">James Buchanan · Study Skills</span>
+            <span style="font-family:'Source Sans 3',sans-serif; font-size:0.67rem; color:#aaa; letter-spacing:0.08em; text-transform:uppercase;">James Buchanan · Study Skills</span>
           </div>
         </div>
       </div>
 
-      <!-- 3: EB Garamond + DM Sans -->
+      <!-- 3: Source Serif 4 + Nunito -->
       <div class="type-card">
         <div class="font-label-bar">
           <span class="font-label-heading">Heading</span>
-          <span class="font-label-name" style="font-family:'EB Garamond',serif;">EB Garamond</span>
+          <span class="font-label-name" style="font-family:'Source Serif 4',serif;">Source Serif 4</span>
           <span class="font-label-sep">/</span>
           <span class="font-label-heading">Body</span>
-          <span class="font-label-body" style="font-family:'DM Sans',sans-serif;">DM Sans</span>
+          <span class="font-label-body" style="font-family:'Nunito',sans-serif;">Nunito</span>
         </div>
         <div class="type-card-meta">
-          <h2>3 — Old-Style Humanist</h2>
-          <p>A faithful Garamond revival — old-style, humanist, visibly different from Baskerville. Rounder, warmer letterforms. Needs a larger size than Baskerville to hold its own.</p>
+          <h2>3 — Nunito body</h2>
+          <p>Rounded terminals, very warm. Increases approachability — good for the student/parent audience. Slightly less formal than Source Sans.</p>
         </div>
-        <div class="preview-nav" style="background:#4A6478; color:#FAFAF8; font-family:'DM Sans',sans-serif;">
-          <span style="color:#F0A070; font-family:'EB Garamond',serif; font-size:1.05rem; text-transform:none; letter-spacing:0.01em; font-weight:600;">Study Smarter Hub</span>
+        <div class="preview-nav" style="background:#4A6478; color:#FAFAF8; font-family:'Nunito',sans-serif;">
+          <span style="color:#F0A070; font-family:'Source Serif 4',serif; font-size:0.95rem; text-transform:none; letter-spacing:0.01em; font-weight:600;">Study Smarter Hub</span>
           <div class="preview-nav-links"><span>Home</span><span>Shop</span><span>Resources</span><span>About</span></div>
         </div>
         <div class="preview-hero">
-          <div class="preview-eyebrow" style="font-family:'DM Sans',sans-serif;">For students, parents & educators</div>
-          <div style="font-family:'EB Garamond',serif; font-size:2.5rem; font-weight:700; color:#1A1A1A; line-height:1.15; margin-bottom:16px;">Study smarter,<br/><em style="font-weight:400;">not harder.</em></div>
-          <div class="preview-body-text" style="font-family:'DM Sans',sans-serif;">Practical tools and proven methods to help high school students take control of their learning — by James Buchanan.</div>
-          <span class="btn-p" style="font-family:'DM Sans',sans-serif;">Shop Now</span>
-          <span class="btn-s" style="font-family:'DM Sans',sans-serif;">Free Resources</span>
+          <div class="preview-eyebrow" style="font-family:'Nunito',sans-serif;">For students, parents & educators</div>
+          <div style="font-family:'Source Serif 4',serif; font-size:2.2rem; font-weight:600; color:#1A1A1A; line-height:1.22; margin-bottom:16px;">Study smarter,<br/><span style="font-weight:300;">not harder.</span></div>
+          <div class="preview-body-text" style="font-family:'Nunito',sans-serif;">Practical tools and proven methods to help high school students take control of their learning — by James Buchanan.</div>
+          <span class="btn-p" style="font-family:'Nunito',sans-serif;">Shop Now</span>
+          <span class="btn-s" style="font-family:'Nunito',sans-serif;">Free Resources</span>
         </div>
         <div class="specimen">
           <div class="specimen-row">
-            <span class="specimen-label">Display</span>
-            <span style="font-family:'EB Garamond',serif; font-size:1.75rem; font-weight:700; color:#1A1A1A;">Study Smarter</span>
+            <span class="specimen-label">Heading</span>
+            <span style="font-family:'Source Serif 4',serif; font-size:1.5rem; font-weight:600; color:#1A1A1A;">Study Smarter</span>
           </div>
           <div class="specimen-row">
-            <span class="specimen-label">Italic</span>
-            <span style="font-family:'EB Garamond',serif; font-size:1.2rem; font-style:italic; font-weight:500; color:#C8601A;">Stone-Age Roots, Modern Wisdoms</span>
+            <span class="specimen-label">Thin</span>
+            <span style="font-family:'Source Serif 4',serif; font-size:1.5rem; font-weight:300; color:#555;">not harder.</span>
           </div>
           <div class="specimen-row">
             <span class="specimen-label">Body</span>
-            <span style="font-family:'DM Sans',sans-serif; font-size:0.84rem; color:#555; line-height:1.6;">The quick brown fox jumps over the lazy dog. Practical study methods for real students.</span>
+            <span style="font-family:'Nunito',sans-serif; font-size:0.9rem; color:#555; line-height:1.7;">Practical tools and methods to help students take control of their learning and exam preparation.</span>
           </div>
           <div class="specimen-row">
             <span class="specimen-label">Caption</span>
-            <span style="font-family:'DM Sans',sans-serif; font-size:0.67rem; color:#aaa; letter-spacing:0.08em; text-transform:uppercase;">James Buchanan · Study Skills</span>
+            <span style="font-family:'Nunito',sans-serif; font-size:0.67rem; color:#aaa; letter-spacing:0.08em; text-transform:uppercase;">James Buchanan · Study Skills</span>
           </div>
         </div>
       </div>
 
-      <!-- 4: Lora + DM Sans -->
+      <!-- 4: Source Serif 4 + Work Sans -->
       <div class="type-card">
         <div class="font-label-bar">
           <span class="font-label-heading">Heading</span>
-          <span class="font-label-name" style="font-family:'Lora',serif;">Lora</span>
+          <span class="font-label-name" style="font-family:'Source Serif 4',serif;">Source Serif 4</span>
           <span class="font-label-sep">/</span>
           <span class="font-label-heading">Body</span>
-          <span class="font-label-body" style="font-family:'DM Sans',sans-serif;">DM Sans</span>
+          <span class="font-label-body" style="font-family:'Work Sans',sans-serif;">Work Sans</span>
         </div>
         <div class="type-card-meta">
-          <h2>4 — Contemporary Warm</h2>
-          <p>Lora was designed specifically for the screen — calligraphic roots, contemporary finish. Distinct character between Baskerville and Garamond. More personality than Source Serif.</p>
+          <h2>4 — Work Sans body</h2>
+          <p>Based on early grotesque typefaces. Slightly more editorial than DM Sans, warmer than Inter. Good balance of personality and professionalism.</p>
         </div>
-        <div class="preview-nav" style="background:#4A6478; color:#FAFAF8; font-family:'DM Sans',sans-serif;">
-          <span style="color:#F0A070; font-family:'Lora',serif; font-size:0.95rem; text-transform:none; letter-spacing:0.01em; font-weight:600;">Study Smarter Hub</span>
+        <div class="preview-nav" style="background:#4A6478; color:#FAFAF8; font-family:'Work Sans',sans-serif;">
+          <span style="color:#F0A070; font-family:'Source Serif 4',serif; font-size:0.95rem; text-transform:none; letter-spacing:0.01em; font-weight:600;">Study Smarter Hub</span>
           <div class="preview-nav-links"><span>Home</span><span>Shop</span><span>Resources</span><span>About</span></div>
         </div>
         <div class="preview-hero">
-          <div class="preview-eyebrow" style="font-family:'DM Sans',sans-serif;">For students, parents & educators</div>
-          <div style="font-family:'Lora',serif; font-size:2.2rem; font-weight:700; color:#1A1A1A; line-height:1.2; margin-bottom:16px;">Study smarter,<br/><em style="font-weight:400;">not harder.</em></div>
-          <div class="preview-body-text" style="font-family:'DM Sans',sans-serif;">Practical tools and proven methods to help high school students take control of their learning — by James Buchanan.</div>
-          <span class="btn-p" style="font-family:'DM Sans',sans-serif;">Shop Now</span>
-          <span class="btn-s" style="font-family:'DM Sans',sans-serif;">Free Resources</span>
+          <div class="preview-eyebrow" style="font-family:'Work Sans',sans-serif;">For students, parents & educators</div>
+          <div style="font-family:'Source Serif 4',serif; font-size:2.2rem; font-weight:600; color:#1A1A1A; line-height:1.22; margin-bottom:16px;">Study smarter,<br/><span style="font-weight:300;">not harder.</span></div>
+          <div class="preview-body-text" style="font-family:'Work Sans',sans-serif;">Practical tools and proven methods to help high school students take control of their learning — by James Buchanan.</div>
+          <span class="btn-p" style="font-family:'Work Sans',sans-serif;">Shop Now</span>
+          <span class="btn-s" style="font-family:'Work Sans',sans-serif;">Free Resources</span>
         </div>
         <div class="specimen">
           <div class="specimen-row">
-            <span class="specimen-label">Display</span>
-            <span style="font-family:'Lora',serif; font-size:1.55rem; font-weight:700; color:#1A1A1A;">Study Smarter</span>
+            <span class="specimen-label">Heading</span>
+            <span style="font-family:'Source Serif 4',serif; font-size:1.5rem; font-weight:600; color:#1A1A1A;">Study Smarter</span>
           </div>
           <div class="specimen-row">
-            <span class="specimen-label">Italic</span>
-            <span style="font-family:'Lora',serif; font-size:1.1rem; font-style:italic; font-weight:400; color:#C8601A;">Stone-Age Roots, Modern Wisdoms</span>
+            <span class="specimen-label">Thin</span>
+            <span style="font-family:'Source Serif 4',serif; font-size:1.5rem; font-weight:300; color:#555;">not harder.</span>
           </div>
           <div class="specimen-row">
             <span class="specimen-label">Body</span>
-            <span style="font-family:'DM Sans',sans-serif; font-size:0.84rem; color:#555; line-height:1.6;">The quick brown fox jumps over the lazy dog. Practical study methods for real students.</span>
+            <span style="font-family:'Work Sans',sans-serif; font-size:0.9rem; color:#555; line-height:1.7;">Practical tools and methods to help students take control of their learning and exam preparation.</span>
           </div>
           <div class="specimen-row">
             <span class="specimen-label">Caption</span>
-            <span style="font-family:'DM Sans',sans-serif; font-size:0.67rem; color:#aaa; letter-spacing:0.08em; text-transform:uppercase;">James Buchanan · Study Skills</span>
+            <span style="font-family:'Work Sans',sans-serif; font-size:0.67rem; color:#aaa; letter-spacing:0.08em; text-transform:uppercase;">James Buchanan · Study Skills</span>
           </div>
         </div>
       </div>
