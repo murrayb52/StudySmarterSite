@@ -1,14 +1,14 @@
 # Study Smarter Hub — Site Design Spec
 
 **Date:** 2026-07-18  
-**Author:** James Buchanan  
+**Author:** Murray Buchanan (on behalf of author, James Buchanan)  
 **Status:** Pending user review
 
 ---
 
 ## Overview
 
-A new website superseding thestudysmarterhub.com. Cleaner feel, direct PayFast payment portal, removal of Headland Media branding. Amazon eBook listing retained. Hosted on GitHub Pages with a custom domain.
+A new website superseding [thestudysmarterhub.com](https://www.thestudysmarterhub.com). Cleaner feel, direct PayFast payment portal, decoupled from Headland Media (that created original website). Amazon eBook listing retained. Hosted on GitHub Pages with a custom domain.
 
 **Target audience:** High school students, their parents, and institutional referrers (headmasters, Ed-Tech companies).
 
@@ -27,6 +27,10 @@ A new website superseding thestudysmarterhub.com. Cleaner feel, direct PayFast p
 ---
 
 ## Design System
+
+> [!info] Interactive Design Reference
+> The colour palettes and typography pairings explored during the design session are in a visual HTML reference file — open it in a browser to compare options and see font names.
+> → [design/palette-and-typography.html](../../design/palette-and-typography.html)
 
 ### Colour Palette
 
@@ -123,7 +127,7 @@ public/
 2. **Download grid** — three `DownloadCard` components:
    - Study Planner Exam Template (Excel)
    - Student Workbook Guide (PDF)
-   - Teacher Reflection Guide (PDF)
+   - Teacher Reflection Guide (PDF) ⚠️ *needs to be redone — see Assets section*
    Each card: title, one-line description, file type badge (XLS / PDF), download button linking to `/downloads/<filename>` (Astro serves `public/` from the root).
 3. **Footer** — as above.
 
@@ -131,7 +135,7 @@ public/
 
 **Sections:**
 1. **Author photo + name** — full-width or half-width hero treatment.
-2. **Bio** — single-column reading layout, generous line-height. James Buchanan's background, credentials, motivation for writing the book.
+2. **Bio** — single-column reading layout, generous line-height. See author bio content below.
 3. **Footer** — as above.
 
 ### Thank You (`/thank-you`)
@@ -154,7 +158,7 @@ Shown inline on `/shop` when the buyer clicks "Buy Now" on a product card. Colle
 - Last name
 - Email address
 - Contact number
-- Fulfilment method: **Delivery** / **Collection** (radio toggle)
+- Fulfilment method: **Delivery** / **Collection in Diep River, Cape Town** (radio toggle — location shown clearly so buyers can self-select out if not accessible)
 - If Delivery: street address, suburb, city, province, postal code
 
 **Behaviour on submit:**
@@ -168,11 +172,14 @@ Shown inline on `/shop` when the buyer clicks "Buy Now" on a product card. Colle
 
 **Delivery cost:** R80 flat rate nationwide. Shown as a line item on the PayFast checkout page via `shipping_amount`.
 
-**Collection:** Available in Diep River, Cape Town — this location is displayed clearly in the order form so buyers can self-select out if Diep River is not accessible to them. The exact street address is emailed by the merchant after payment confirmation and does not appear on the website.
+**Collection:** Available in Diep River, Cape Town — location displayed in the form label so buyers can self-select out. Exact street address emailed by merchant after payment; not on the website.
 
 ---
 
 ## PayFast Integration
+
+> [!warning] Registration Required
+> A PayFast merchant account has not yet been created. Register at [payfast.io](https://www.payfast.io) to obtain `merchant_id` and `merchant_key`. PayFast offers a sandbox environment for testing before going live.
 
 **Flow:** Buy Now → Order Form (buyer details + delivery/collection) → Formspree submission → PayFast redirect → payment → `/thank-you`.
 
@@ -193,6 +200,9 @@ Shown inline on `/shop` when the buyer clicks "Buy Now" on a product card. Colle
 ---
 
 ## Contact Form (Footer)
+
+> [!warning] Registration Required
+> A Formspree account has not yet been created. Register at [formspree.io](https://formspree.io) (free tier is sufficient) to obtain the form endpoint URL.
 
 **Provider:** Formspree  
 **Placement:** Footer of every page  
@@ -221,19 +231,56 @@ Shown inline on `/shop` when the buyer clicks "Buy Now" on a product card. Colle
 
 ---
 
-## Content Needed Before Launch
+## Content & Assets
 
-The following must be supplied before the site can go live:
+### Pricing
 
-- **Product prices** — ZAR amounts for the book and workbook (for PayFast `amount` field)
-- **Amazon eBook URL** — the live Amazon listing link
-- **Author photo** — for the `/about` page
-- **Author bio copy** — James Buchanan's background and credentials
-- **Book descriptions** — short (card) and medium (page section) versions for both products
-- **PayFast merchant credentials** — `merchant_id` and `merchant_key` from the PayFast dashboard
-- **Formspree endpoint** — form action URL from the Formspree dashboard (free account required)
-- **Collection address** — full street address in Diep River, Cape Town (emailed to buyers manually by merchant; not published on site)
-- **Download files** — Study Planner (Excel), Student Workbook Guide (PDF), Teacher Reflection Guide (PDF)
+| Product | Price (ZAR) | + Delivery |
+|---|---|---|
+| Study Smarter Book | R350 | R80 flat rate |
+| Study Smarter Student Workbook | TBD | R80 flat rate |
+| eBook (Amazon Kindle) | Set by Amazon | N/A |
+
+### Amazon Listing
+
+- **Kindle eBook:** https://www.amazon.com/Study-Smarter-Stone-age-Wisdoms-Journey-ebook/dp/B0D2P63PY1
+- Paperback is also selectable from the same Amazon listing.
+
+### Author Bio
+
+James Buchanan is a school principal and past national examiner who has spent over 30 years in education as a teacher in the sciences. He holds a BSc (Hons) in Biology, an MEd in self-regulated learning, and is currently working towards a PhD in study skills. James has an enduring passion for helping students find fulfilment in their schoolwork and success in learning. He lives in Cape Town with his wife, and has two grown children. This is his second book.
+
+### Images
+
+| File | Status | Notes |
+|---|---|---|
+| `public/images/book-cover.png` | ✅ In repo | Clean high-res cover art — usable |
+| `public/images/workbook-cover.png` | ✅ In repo | Clean high-res cover art — usable |
+| Author photo | ⚠️ Needs sourcing | Current version embedded in old-site composite. Need standalone high-res photo of James |
+| Old site banners (hero composites) | ❌ Do not use | "NOW AVAILABLE" ribbon, grey composite background — not suitable for new site |
+
+### Download Files
+
+| File | Status | Source |
+|---|---|---|
+| Study Planner Exam Template | ✅ In repo (`public/downloads/`) | Copied from local Downloads folder |
+| Student Workbook Guide (answers & questions) | ⚠️ Needs downloading | https://thestudysmarterhub.com/_resources/Workbook%20answers%20and%20guide.pdf |
+| Teacher Reflection Guide | ❌ Needs redoing | Current PDF at old site is out of date — new version required before launch |
+
+### Workbook Preview
+
+Interactive preview of the Student Workbook (for use on shop/resources page if desired):
+https://s3.af-south-1.amazonaws.com/mags.digimaghost.com/StudySmarterStudentWorkbook.html#p=1
+
+---
+
+## Third-Party Account Setup Needed
+
+Before implementation can be completed, the following accounts must be created:
+
+1. **PayFast merchant account** — [payfast.io](https://www.payfast.io). Required for `merchant_id` and `merchant_key`. Sandbox available for testing. Claude Code can assist with the setup and integration steps.
+2. **Formspree account** — [formspree.io](https://formspree.io). Free tier. Required for the contact form endpoint. Claude Code can assist.
+3. **GitHub account / repo** — Required for GitHub Pages hosting. Repo should be public for free Pages hosting.
 
 ---
 
