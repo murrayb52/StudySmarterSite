@@ -202,8 +202,25 @@
       overflow: hidden;
       box-shadow: 0 2px 14px rgba(0,0,0,0.08);
       position: relative;
-      cursor: pointer;
-      user-select: none;
+    }
+    .type-card.dimmed {
+      opacity: 0.38;
+    }
+    .type-card.selected {
+      box-shadow: 0 0 0 3px #C8601A, 0 4px 20px rgba(200,96,26,0.18);
+    }
+    .selected-badge {
+      position: absolute;
+      top: 14px; right: 14px;
+      background: #C8601A;
+      color: #fff;
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 20px;
+      z-index: 2;
     }
 
     /* Font overlay */
@@ -482,18 +499,16 @@
 
   <!-- ══════════════ TYPOGRAPHY ══════════════ -->
   <section>
-    <div class="section-heading">Typography — Heading fixed, body options vary</div>
+    <div class="section-heading">Typography — Selected</div>
 
     <div class="prev-note">
-      <strong>Heading:</strong> Source Serif 4 throughout — weight 600 for the main line, weight 300 for the softer second line. No italic — weight contrast instead of angle. &nbsp;<strong>Varying:</strong> body font only. Pick whichever feels most readable and warm.
+      <strong>Heading:</strong> Source Serif 4 — weight 600 / weight 300 contrast, no italic. &nbsp;<strong>Body:</strong> Nunito (warm, rounded, approachable). Body colour to be refined during implementation — may use a lighter shade than pure near-black.
     </div>
 
     <div class="type-grid">
 
-      <!-- SHARED HEADING MACRO — Source Serif 4 throughout, body varies -->
-
       <!-- 1: Source Serif 4 + DM Sans -->
-      <div class="type-card">
+      <div class="type-card dimmed">
         <!-- Shared heading treatment macro -->
 
         <div class="font-label-bar">
@@ -539,7 +554,7 @@
       </div>
 
       <!-- 2: Source Serif 4 + Source Sans 3 (same family) -->
-      <div class="type-card">
+      <div class="type-card dimmed">
         <div class="font-label-bar">
           <span class="font-label-heading">Heading</span>
           <span class="font-label-name" style="font-family:'Source Serif 4',serif;">Source Serif 4</span>
@@ -582,8 +597,9 @@
         </div>
       </div>
 
-      <!-- 3: Source Serif 4 + Nunito -->
-      <div class="type-card">
+      <!-- 3: Source Serif 4 + Nunito — SELECTED -->
+      <div class="type-card selected">
+        <div class="selected-badge">Selected</div>
         <div class="font-label-bar">
           <span class="font-label-heading">Heading</span>
           <span class="font-label-name" style="font-family:'Source Serif 4',serif;">Source Serif 4</span>
@@ -627,7 +643,7 @@
       </div>
 
       <!-- 4: Source Serif 4 + Work Sans -->
-      <div class="type-card">
+      <div class="type-card dimmed">
         <div class="font-label-bar">
           <span class="font-label-heading">Heading</span>
           <span class="font-label-name" style="font-family:'Source Serif 4',serif;">Source Serif 4</span>
