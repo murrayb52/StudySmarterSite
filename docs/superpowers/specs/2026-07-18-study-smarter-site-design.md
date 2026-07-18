@@ -139,7 +139,7 @@ public/
 Post-payment confirmation page. Behaviour is conditional on a `?collection=true` query parameter passed from the order form:
 
 - **Delivery orders:** "Thank you for your order. Your book will be dispatched to your delivery address. PayFast will send you a payment receipt."
-- **Collection orders:** "Thank you for your order. The collection address in Diep River, Cape Town will be emailed to you shortly." The collection address is **not** shown publicly on this page — the merchant emails it upon receiving the Formspree notification.
+- **Collection orders:** "Thank you for your order. The exact collection address in Diep River, Cape Town will be emailed to you shortly." The full street address is **not** shown on the website — the merchant emails it upon receiving the Formspree notification.
 
 Links back to Home and Resources on both variants.
 
@@ -168,7 +168,7 @@ Shown inline on `/shop` when the buyer clicks "Buy Now" on a product card. Colle
 
 **Delivery cost:** R80 flat rate nationwide. Shown as a line item on the PayFast checkout page via `shipping_amount`.
 
-**Collection:** Available in Diep River, Cape Town. Exact address is emailed to the buyer by the merchant after payment confirmation — it does not appear on the website.
+**Collection:** Available in Diep River, Cape Town — this location is displayed clearly in the order form so buyers can self-select out if Diep River is not accessible to them. The exact street address is emailed by the merchant after payment confirmation and does not appear on the website.
 
 ---
 
