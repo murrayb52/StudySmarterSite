@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import BookCard from '../components/BookCard.astro';
+const base = import.meta.env.BASE_URL;
 ---
 
 <Base
@@ -14,7 +15,7 @@ import BookCard from '../components/BookCard.astro';
 
   <!-- Hero -->
   <section class="hero">
-    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-bg" aria-hidden="true" style={`background-image: url('${base}images/fishbowl-leap-wide.png')`}></div>
     <div class="container hero-inner">
       <div class="hero-text">
         <span class="eyebrow">Written by an educator. Built for students.</span>
@@ -48,13 +49,14 @@ import BookCard from '../components/BookCard.astro';
       </ul>
       <p class="audience-close">Then this is the book for you.</p>
     </div>
-    <div class="audience-photo">
+    <div class="audience-photo" style={`background-image: url('${base}images/bg-goldfish-pattern.png')`}>
       <img src="/images/book-cover.png" alt="Study Smarter book cover" loading="lazy" />
     </div>
   </section>
 
   <!-- About the books -->
   <section class="section about-books">
+    <div class="about-books-pattern" aria-hidden="true" style={`background-image: url('${base}images/bg-goldfish-pattern.png')`}></div>
     <div class="container">
       <span class="eyebrow">The books</span>
       <h2><span style="font-weight:600">One method.</span> <span style="font-weight:300">Two formats.</span></h2>
@@ -141,9 +143,8 @@ import BookCard from '../components/BookCard.astro';
   .hero-bg {
     position: absolute;
     inset: 0;
-    background-image: url('/images/fishbowl-leap-wide.png');
-    background-size: auto 85%;
-    background-position: -5% center;
+    background-size: auto 93%;
+    background-position: -18% center;
     background-repeat: no-repeat;
     z-index: 0;
   }
@@ -197,7 +198,10 @@ import BookCard from '../components/BookCard.astro';
   }
   .audience-photo {
     overflow: hidden;
-    background: #e2ddd8 url('/images/bg-goldfish-pattern.png') center/380px auto repeat;
+    background-color: #e2ddd8;
+    background-size: 380px auto;
+    background-position: center;
+    background-repeat: repeat;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -256,11 +260,9 @@ import BookCard from '../components/BookCard.astro';
     position: relative;
     overflow: hidden;
   }
-  .about-books::before {
-    content: '';
+  .about-books-pattern {
     position: absolute;
     inset: 0;
-    background-image: url('/images/bg-goldfish-pattern.png');
     background-size: 480px auto;
     background-repeat: repeat;
     opacity: 0.38;

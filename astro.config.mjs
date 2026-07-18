@@ -3,5 +3,6 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://thestudysmarterhub.com',
+  base: '/StudySmarterSite',
   integrations: [sitemap()],
 });

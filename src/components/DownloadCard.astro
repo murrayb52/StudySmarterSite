@@ -11,10 +11,11 @@ export interface Props {
 }
 
 const { title, description, fileType, downloadHref, comingSoon = false, coverSrc, coverAlt, horizontal = false } = Astro.props;
+const base = import.meta.env.BASE_URL;
 ---
 
 <div class:list={['download-card', { 'coming-soon': comingSoon, horizontal }]}>
-  <div class="card-cover">
+  <div class="card-cover" style={`background-image: url('${base}images/bg-goldfish-pattern.png')`}>
     {coverSrc
       ? <img src={coverSrc} alt={coverAlt ?? title} loading="lazy" />
       : <div class="cover-placeholder" aria-hidden="true">
@@ -81,7 +82,10 @@ const { title, description, fileType, downloadHref, comingSoon = false, coverSrc
 
   /* Cover area — mirrors BookCard's .book-cover */
   .card-cover {
-    background: #e2ddd8 url('/images/bg-goldfish-pattern.png') center/380px auto repeat;
+    background-color: #e2ddd8;
+    background-size: 380px auto;
+    background-position: center;
+    background-repeat: repeat;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -28,10 +28,11 @@ const {
   previewUrl,
   featured = false,
 } = Astro.props;
+const base = import.meta.env.BASE_URL;
 ---
 
 <div class:list={['book-card', { featured }]}>
-  <div class="book-cover">
+  <div class="book-cover" style={`background-image: url('${base}images/bg-goldfish-pattern.png')`}>
     <img src={coverSrc} alt={coverAlt} loading="lazy" />
   </div>
   <div class="book-info">
@@ -87,7 +88,10 @@ const {
     align-items: stretch;
   }
   .book-cover {
-    background: #e2ddd8 url('/images/bg-goldfish-pattern.png') center/380px auto repeat;
+    background-color: #e2ddd8;
+    background-size: 380px auto;
+    background-position: center;
+    background-repeat: repeat;
     display: flex;
     justify-content: center;
     align-items: center;
