@@ -1,0 +1,78 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  fileType: 'PDF' | 'XLS';
+  downloadHref?: string;
+  comingSoon?: boolean;
+}
+
+const { title, description, fileType, downloadHref, comingSoon = false } = Astro.props;
+---
+
+<div class="download-card">
+  <div class="dl-header">
+    <h3>{title}</h3>
+    <span class={`file-badge file-badge--${fileType.toLowerCase()}`}>{fileType}</span>
+  </div>
+  <p class="dl-desc">{description}</p>
+  <div class="dl-action">
+    {comingSoon
+      ? <span class="badge-coming-soon">Coming soon</span>
+      : downloadHref
+        ? <a href={downloadHref} download class="btn btn-outline">Download</a>
+        : null
+    }
+  </div>
+</div>
+
+<style>
+  .download-card {
+    background: var(--c-surface);
+    border-radius: 6px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .dl-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+  .dl-header h3 {
+    font-family: var(--f-serif);
+    font-weight: 600;
+    font-size: 1.125rem;
+    margin: 0;
+  }
+  .file-badge {
+    flex-shrink: 0;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.5rem;
+    border-radius: 2px;
+  }
+  .file-badge--pdf { background: #f0d0c8; color: #8b2e12; }
+  .file-badge--xls { background: #c8e0c8; color: #1a5c1a; }
+  .dl-desc {
+    color: var(--c-text-muted);
+    font-size: 0.9375rem;
+    margin: 0;
+    flex: 1;
+  }
+  .dl-action { margin-top: auto; }
+  .badge-coming-soon {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--c-text-muted);
+    background: #e0dcd7;
+    border-radius: 3px;
+    padding: 0.25rem 0.5rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+</style>

@@ -2,13 +2,48 @@
 import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import BookCard from '../components/BookCard.astro';
+import DownloadCard from '../components/DownloadCard.astro';
 ---
 
 <Base title="Home" description="Test">
   <Nav slot="nav" />
   <Footer slot="footer" />
-  <div class="container section">
-    <h1><span style="font-weight:600">Study smarter,</span><br/><span style="font-weight:300">not harder.</span></h1>
-    <a href="/shop" class="btn btn-primary">Shop Now</a>
+  <div class="container section" style="display:grid;grid-template-columns:1fr 1fr;gap:2rem">
+    <BookCard
+      title="Study Smarter"
+      description="A practical guide to studying effectively."
+      coverSrc="/images/book-cover.png"
+      coverAlt="Study Smarter book cover"
+      price="R350"
+      buyHref="/shop"
+    />
+    <BookCard
+      title="Study Smarter Student Workbook"
+      description="Put the strategies into practice."
+      coverSrc="/images/workbook-cover.png"
+      coverAlt="Workbook cover"
+      comingSoon={true}
+    />
+  </div>
+  <div class="container" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem;margin-top:2rem">
+    <DownloadCard
+      title="Study Planner"
+      description="Plan your exam prep week by week."
+      fileType="XLS"
+      downloadHref="/downloads/Study Planner Exam Template.xlsx"
+    />
+    <DownloadCard
+      title="Workbook Guide"
+      description="Answers and guidance for the student workbook."
+      fileType="PDF"
+      comingSoon={true}
+    />
+    <DownloadCard
+      title="Teacher Guide"
+      description="Support your students' study practices."
+      fileType="PDF"
+      comingSoon={true}
+    />
   </div>
 </Base>

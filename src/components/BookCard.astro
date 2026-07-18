@@ -1,0 +1,116 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  coverSrc: string;
+  coverAlt: string;
+  price?: string;
+  amazonUrl?: string;
+  buyHref?: string;
+  buyLabel?: string;
+  comingSoon?: boolean;
+}
+
+const {
+  title,
+  description,
+  coverSrc,
+  coverAlt,
+  price,
+  amazonUrl,
+  buyHref,
+  buyLabel = 'Buy Now',
+  comingSoon = false,
+} = Astro.props;
+---
+
+<div class="book-card">
+  <div class="book-cover">
+    <img src={coverSrc} alt={coverAlt} width="200" height="280" loading="lazy" />
+  </div>
+  <div class="book-info">
+    <h3>{title}</h3>
+    <p class="book-desc">{description}</p>
+    <div class="book-price">
+      {comingSoon
+        ? <span class="badge-coming-soon">Price coming soon</span>
+        : price
+          ? <span class="price">{price}</span>
+          : null
+      }
+    </div>
+    <div class="book-cta">
+      {comingSoon
+        ? null
+        : amazonUrl
+          ? <a href={amazonUrl} target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+              {buyLabel} ↗
+            </a>
+          : buyHref
+            ? <a href={buyHref} class="btn btn-primary">{buyLabel}</a>
+            : <button type="button" class="btn btn-primary buy-trigger" data-product={title}>
+                {buyLabel}
+              </button>
+      }
+    </div>
+  </div>
+</div>
+
+<style>
+  .book-card {
+    background: var(--c-surface);
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .book-cover {
+    background: #e8e4df;
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+  }
+  .book-cover img {
+    max-height: 260px;
+    width: auto;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  }
+  .book-info {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .book-info h3 {
+    font-family: var(--f-serif);
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+  .book-desc {
+    color: var(--c-text-muted);
+    font-size: 0.9375rem;
+    flex: 1;
+    margin-bottom: 1rem;
+  }
+  .book-price {
+    margin-bottom: 1rem;
+  }
+  .price {
+    font-family: var(--f-serif);
+    font-weight: 600;
+    font-size: 1.375rem;
+    color: var(--c-text);
+  }
+  .badge-coming-soon {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--c-text-muted);
+    background: #e0dcd7;
+    border-radius: 3px;
+    padding: 0.25rem 0.5rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+  .book-cta { margin-top: auto; }
+</style>
