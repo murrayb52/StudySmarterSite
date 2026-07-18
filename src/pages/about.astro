@@ -1,0 +1,128 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base
+  title="About"
+  description="James Buchanan is a school principal, past national examiner, and author of Study Smarter — a research-backed guide for high school students."
+>
+  <Nav slot="nav" />
+  <Footer slot="footer" />
+
+  <section class="section">
+    <div class="container about-inner">
+
+      <div class="author-photo-col">
+        <!-- Replace src with /images/author-photo.jpg when available -->
+        <div class="author-photo-placeholder" aria-hidden="true">
+          <span>Photo<br/>coming<br/>soon</span>
+        </div>
+      </div>
+
+      <div class="author-bio-col">
+        <span class="eyebrow">About the author</span>
+        <h1 style="font-weight:600">James Buchanan</h1>
+
+        <p>
+          James Buchanan is a school principal and past national examiner who has spent over thirty years
+          in education as a teacher in the sciences. He holds a BSc (Hons) in Biology and an MEd in
+          self-regulated learning, and is currently working towards a PhD in study skills.
+        </p>
+        <p>
+          James has an enduring passion for helping students find fulfilment in their schoolwork and
+          success in learning. He lives in Cape Town with his wife, and has two grown children.
+          <em>Study Smarter</em> is his second book.
+        </p>
+
+        <div class="author-credentials">
+          <ul>
+            <li>BSc (Hons) in Biology</li>
+            <li>MEd in self-regulated learning</li>
+            <li>PhD candidate in study skills</li>
+            <li>School principal</li>
+            <li>Past national examiner</li>
+            <li>30+ years in education</li>
+          </ul>
+        </div>
+
+        <a href="/shop" class="btn btn-primary">Get the book</a>
+      </div>
+
+    </div>
+  </section>
+</Base>
+
+<style>
+  .about-inner {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .author-photo-placeholder {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    background: var(--c-surface);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--c-text-muted);
+    font-size: 0.875rem;
+    text-align: center;
+    border: 2px dashed #c8c4bf;
+  }
+
+  .author-bio-col h1 {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    margin-bottom: 1.5rem;
+  }
+
+  .author-bio-col p {
+    color: var(--c-text-muted);
+    font-size: 1.0625rem;
+    max-width: 58ch;
+  }
+
+  .author-bio-col em { font-style: normal; font-weight: 600; }
+
+  .author-credentials {
+    background: var(--c-surface);
+    border-radius: 6px;
+    padding: 1.25rem 1.5rem;
+    margin: 1.5rem 0 2rem;
+  }
+  .author-credentials ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+  }
+  .author-credentials li {
+    font-size: 0.9375rem;
+    color: var(--c-text-muted);
+    padding-left: 1rem;
+    position: relative;
+  }
+  .author-credentials li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--c-blue);
+  }
+
+  @media (max-width: 768px) {
+    .about-inner {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .author-photo-placeholder {
+      max-width: 240px;
+    }
+  }
+</style>
