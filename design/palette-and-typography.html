@@ -6,7 +6,7 @@
   <title>Study Smarter Hub — Design Reference</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300;1,9..144,400&family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Outfit:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,300;1,8..60,400;1,8..60,600&family=Spectral:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -14,38 +14,37 @@
       font-family: 'Inter', sans-serif;
       background: #E8E4DF;
       color: #222;
-      padding: 48px 36px;
+      padding: 56px 40px;
       min-height: 100vh;
     }
 
-    /* ── Page header ── */
     .page-header {
-      margin-bottom: 52px;
+      margin-bottom: 64px;
+      max-width: 640px;
     }
     .page-header h1 {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Source Serif 4', serif;
       font-size: 1.6rem;
       color: #1a1a1a;
-      margin-bottom: 6px;
+      margin-bottom: 10px;
+      font-weight: 600;
     }
     .page-header p {
-      font-size: 0.82rem;
+      font-size: 0.83rem;
       color: #888;
-      line-height: 1.6;
-      max-width: 580px;
+      line-height: 1.7;
     }
 
-    /* ── Section headings ── */
     .section-heading {
-      font-size: 0.68rem;
+      font-size: 0.65rem;
       font-weight: 700;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: #aaa;
-      margin-bottom: 20px;
+      margin-bottom: 28px;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
     }
     .section-heading::after {
       content: '';
@@ -54,54 +53,51 @@
       background: #d5d0cb;
     }
 
-    section { margin-bottom: 56px; }
+    section { margin-bottom: 72px; }
 
-    /* ── Palette grid ── */
+    /* ── Palette cards ── */
     .palette-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
     }
-
     .palette-card {
       background: #fff;
-      border-radius: 14px;
+      border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      box-shadow: 0 2px 14px rgba(0,0,0,0.07);
       position: relative;
     }
+    .palette-card.dimmed { opacity: 0.45; }
 
     .chosen-badge {
       position: absolute;
-      top: 12px;
-      right: 12px;
+      top: 14px; right: 14px;
       background: #C8601A;
       color: #fff;
-      font-size: 0.6rem;
+      font-size: 0.58rem;
       font-weight: 700;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.07em;
       text-transform: uppercase;
-      padding: 3px 9px;
+      padding: 3px 10px;
       border-radius: 20px;
-      z-index: 2;
     }
 
     .palette-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       font-weight: 600;
       color: #1a1a1a;
-      padding: 16px 18px 4px;
+      padding: 18px 20px 4px;
     }
     .palette-desc {
       font-size: 0.73rem;
-      color: #999;
-      padding: 0 18px 12px;
+      color: #aaa;
+      padding: 0 20px 14px;
+      line-height: 1.5;
     }
-
     .swatches {
       display: flex;
-      height: 60px;
+      height: 56px;
     }
     .swatch {
       flex: 1;
@@ -109,24 +105,22 @@
     }
     .swatch span {
       position: absolute;
-      bottom: 4px;
-      left: 0; right: 0;
+      bottom: 4px; left: 0; right: 0;
       text-align: center;
-      font-size: 0.55rem;
+      font-size: 0.54rem;
       font-weight: 700;
       opacity: 0.85;
     }
-
     .swatch-roles {
-      padding: 10px 18px 14px;
+      padding: 12px 20px 16px;
       display: flex;
       flex-direction: column;
-      gap: 5px;
+      gap: 6px;
     }
     .role-row {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 9px;
       font-size: 0.73rem;
       color: #555;
     }
@@ -137,19 +131,19 @@
       flex-shrink: 0;
     }
     .role-label {
-      color: #bbb;
-      width: 90px;
+      color: #ccc;
+      width: 88px;
       font-size: 0.68rem;
     }
 
     .mini-preview {
-      margin: 0 14px 14px;
-      border-radius: 8px;
+      margin: 0 16px 16px;
+      border-radius: 10px;
       overflow: hidden;
-      box-shadow: 0 1px 6px rgba(0,0,0,0.10);
+      box-shadow: 0 1px 8px rgba(0,0,0,0.10);
     }
     .mini-nav {
-      padding: 9px 14px;
+      padding: 10px 14px;
       font-size: 0.62rem;
       font-weight: 600;
       letter-spacing: 0.06em;
@@ -158,107 +152,104 @@
       align-items: center;
     }
     .mini-nav-links { margin-left: auto; display: flex; gap: 12px; opacity: 0.65; }
-    .mini-hero { padding: 16px 14px; }
-    .mini-eyebrow { font-size: 0.58rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 5px; color: #7B9EB5; }
-    .mini-heading { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; line-height: 1.25; margin-bottom: 7px; }
-    .mini-body { font-size: 0.67rem; color: #666; line-height: 1.6; margin-bottom: 12px; }
-    .mini-btn-primary { display: inline-block; padding: 6px 13px; border-radius: 5px; font-size: 0.67rem; font-weight: 600; background: #C8601A; color: #fff; margin-right: 6px; }
-    .mini-btn-secondary { display: inline-block; padding: 6px 13px; border-radius: 5px; font-size: 0.67rem; font-weight: 600; border: 1.5px solid #ddd; color: #444; }
+    .mini-hero { padding: 18px 14px; }
+    .mini-eyebrow { font-size: 0.58rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 7px; color: #7B9EB5; }
+    .mini-heading { font-size: 1.05rem; font-weight: 700; line-height: 1.25; margin-bottom: 8px; }
+    .mini-body { font-size: 0.67rem; color: #666; line-height: 1.65; margin-bottom: 13px; }
+    .mini-btn-p { display: inline-block; padding: 6px 14px; border-radius: 5px; font-size: 0.67rem; font-weight: 600; background: #C8601A; color: #fff; margin-right: 6px; }
+    .mini-btn-s { display: inline-block; padding: 6px 14px; border-radius: 5px; font-size: 0.67rem; font-weight: 600; border: 1.5px solid #ddd; color: #444; }
 
-    /* ── Typography grid ── */
+    /* ── Typography cards ── */
     .type-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 28px;
     }
 
-    /* Card wrapper — needed for hover overlay */
     .type-card {
       background: #fff;
-      border-radius: 14px;
+      border-radius: 16px;
       overflow: hidden;
       box-shadow: 0 2px 14px rgba(0,0,0,0.08);
       position: relative;
+      cursor: pointer;
+      user-select: none;
     }
 
+    /* Font overlay */
+    .font-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(20, 25, 30, 0.91);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      opacity: 0;
+      transition: opacity 0.18s ease;
+      pointer-events: none;
+      z-index: 10;
+      padding: 32px;
+      text-align: center;
+    }
+    .type-card:hover .font-overlay,
+    .type-card.tapped .font-overlay {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .overlay-role {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #7B9EB5;
+      margin-bottom: 5px;
+    }
+    .overlay-font-name {
+      font-size: 1.4rem;
+      color: #fff;
+      line-height: 1.2;
+    }
+    .overlay-divider {
+      width: 36px;
+      height: 1px;
+      background: rgba(255,255,255,0.18);
+    }
+    .overlay-note {
+      font-size: 0.73rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.6;
+      max-width: 280px;
+    }
+    .overlay-hint {
+      font-size: 0.6rem;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 0.05em;
+      margin-top: 4px;
+    }
+
+    /* Card content */
     .type-card-meta {
-      padding: 14px 20px 12px;
-      border-bottom: 1px solid #f0f0f0;
+      padding: 16px 22px 14px;
+      border-bottom: 1px solid #f2f2f2;
       background: #fafafa;
     }
     .type-card-meta h2 {
-      font-size: 0.82rem;
+      font-size: 0.84rem;
       font-weight: 600;
       color: #222;
       margin-bottom: 3px;
     }
     .type-card-meta p {
       font-size: 0.71rem;
-      color: #aaa;
+      color: #bbb;
       line-height: 1.5;
     }
 
-    /* Font-name overlay — hidden by default, shown on hover/tap */
-    .font-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(26, 26, 26, 0.88);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 16px;
-      opacity: 0;
-      transition: opacity 0.2s ease;
-      pointer-events: none;
-      z-index: 10;
-      padding: 24px;
-      text-align: center;
-    }
-    /* Hover — desktop */
-    .type-card:hover .font-overlay { opacity: 1; pointer-events: auto; }
-    /* Tap — mobile (focus-within on a hidden button) */
-    .type-card.tapped .font-overlay { opacity: 1; pointer-events: auto; }
-
-    .font-overlay-pair {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .font-overlay-role {
-      font-size: 0.6rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #7B9EB5;
-    }
-    .font-overlay-name {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: #fff;
-    }
-    .font-overlay-name.heading-font { font-family: var(--heading-font); }
-    .font-overlay-name.body-font { font-family: var(--body-font); }
-    .font-overlay-divider {
-      width: 40px;
-      height: 1px;
-      background: rgba(255,255,255,0.2);
-    }
-    .font-overlay-sample {
-      font-size: 0.73rem;
-      color: rgba(255,255,255,0.55);
-      line-height: 1.6;
-    }
-    .font-overlay-hint {
-      font-size: 0.62rem;
-      color: rgba(255,255,255,0.3);
-      margin-top: 8px;
-      letter-spacing: 0.04em;
-    }
-
-    /* Nav bar */
-    .nav {
-      padding: 12px 20px;
+    .preview-nav {
+      padding: 14px 24px;
       display: flex;
       align-items: center;
       font-size: 0.65rem;
@@ -266,96 +257,113 @@
       letter-spacing: 0.06em;
       text-transform: uppercase;
     }
-    .nav-links { margin-left: auto; display: flex; gap: 16px; opacity: 0.65; }
+    .preview-nav-links { margin-left: auto; display: flex; gap: 18px; opacity: 0.62; }
 
-    /* Hero */
-    .hero { padding: 26px 20px 22px; background: #FAFAF8; }
-    .eyebrow {
+    .preview-hero {
+      padding: 36px 24px 30px;
+      background: #FAFAF8;
+    }
+    .preview-eyebrow {
       font-size: 0.62rem;
       font-weight: 600;
-      letter-spacing: 0.11em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      margin-bottom: 9px;
+      margin-bottom: 12px;
       color: #7B9EB5;
     }
-    .btn-primary {
+    .preview-body-text {
+      font-size: 0.84rem;
+      color: #666;
+      line-height: 1.75;
+      margin-bottom: 22px;
+      max-width: 420px;
+    }
+    .btn-p {
       display: inline-block;
-      padding: 9px 19px;
-      border-radius: 6px;
-      font-size: 0.72rem;
+      padding: 10px 22px;
+      border-radius: 7px;
+      font-size: 0.73rem;
       font-weight: 600;
       background: #C8601A;
       color: #fff;
-      margin-right: 8px;
+      margin-right: 10px;
     }
-    .btn-secondary {
+    .btn-s {
       display: inline-block;
-      padding: 9px 19px;
-      border-radius: 6px;
-      font-size: 0.72rem;
+      padding: 10px 22px;
+      border-radius: 7px;
+      font-size: 0.73rem;
       font-weight: 600;
       border: 1.5px solid #ddd;
       color: #444;
     }
 
-    /* Type specimen strip */
     .specimen {
-      padding: 14px 20px 16px;
+      padding: 18px 24px 20px;
+      border-top: 1px solid #f2f2f2;
       background: #FAFAF8;
-      border-top: 1px solid #f0f0f0;
       display: flex;
       flex-direction: column;
-      gap: 7px;
+      gap: 9px;
     }
     .specimen-row {
       display: flex;
       align-items: baseline;
-      gap: 10px;
+      gap: 12px;
     }
     .specimen-label {
-      font-size: 0.59rem;
+      font-size: 0.58rem;
       color: #ccc;
-      width: 50px;
+      width: 52px;
       flex-shrink: 0;
       font-family: 'Inter', sans-serif;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
     }
 
-    /* Tap hint shown on mobile where hover isn't possible */
     .tap-hint {
       display: none;
       text-align: center;
       font-size: 0.65rem;
       color: #bbb;
-      padding: 6px 0 2px;
+      padding: 0 0 18px;
       letter-spacing: 0.04em;
     }
-    @media (hover: none) {
-      .tap-hint { display: block; }
+    @media (hover: none) { .tap-hint { display: block; } }
+
+    /* Previous options reference */
+    .prev-note {
+      background: #fff;
+      border-radius: 12px;
+      padding: 18px 22px;
+      font-size: 0.78rem;
+      color: #888;
+      line-height: 1.65;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+      margin-bottom: 28px;
     }
+    .prev-note strong { color: #555; }
   </style>
 </head>
 <body>
 
   <div class="page-header">
     <h1>Study Smarter Hub — Design Reference</h1>
-    <p>Colour palettes and typography pairings explored during the design session. <strong>Shortlisted palettes are marked in orange.</strong> Typography pairing is TBD — hover (or tap on mobile) any card to reveal font names.</p>
+    <p>Colour palettes and typography pairings explored during the design session. Shortlisted palettes are badged in orange. Hover or tap any typography card to reveal the font names.</p>
   </div>
 
-  <!-- ═══════════════════════════════ PALETTES ═══════════════════════════════ -->
+  <!-- ══════════════ PALETTES ══════════════ -->
   <section>
-    <div class="section-heading">Colour Palettes — Two Shortlisted</div>
+    <div class="section-heading">Colour Palettes</div>
     <div class="palette-grid">
 
-      <!-- A2 — CHOSEN -->
       <div class="palette-card">
         <div class="chosen-badge">Shortlisted</div>
         <div class="palette-name">A2 — Muted Steel Blue Nav</div>
-        <div class="palette-desc">Pulls from the book cover's sky-blue. Orange pops against it. Feels considered and warm.</div>
+        <div class="palette-desc">Pulls from the book cover's sky-blue. Orange pops against it. Considered and warm.</div>
         <div class="swatches">
           <div class="swatch" style="background:#4A6478;"><span style="color:#fff;">#4A6478</span></div>
-          <div class="swatch" style="background:#FAFAF8; border-top:1px solid #eee;"><span style="color:#333;">#FAFAF8</span></div>
+          <div class="swatch" style="background:#FAFAF8;border-top:1px solid #eee;"><span style="color:#333;">#FAFAF8</span></div>
           <div class="swatch" style="background:#C8601A;"><span style="color:#fff;">#C8601A</span></div>
           <div class="swatch" style="background:#7B9EB5;"><span style="color:#fff;">#7B9EB5</span></div>
           <div class="swatch" style="background:#F0EDE8;"><span style="color:#333;">#F0EDE8</span></div>
@@ -364,7 +372,7 @@
           <div class="role-row"><div class="role-dot" style="background:#4A6478;"></div><span class="role-label">Nav / Header</span>#4A6478 muted steel blue</div>
           <div class="role-row"><div class="role-dot" style="background:#FAFAF8;"></div><span class="role-label">Background</span>#FAFAF8 warm white</div>
           <div class="role-row"><div class="role-dot" style="background:#C8601A;"></div><span class="role-label">Accent / CTA</span>#C8601A burnt orange</div>
-          <div class="role-row"><div class="role-dot" style="background:#7B9EB5;"></div><span class="role-label">Subtle blue</span>#7B9EB5 steel (decorative/eyebrow)</div>
+          <div class="role-row"><div class="role-dot" style="background:#7B9EB5;"></div><span class="role-label">Subtle blue</span>#7B9EB5 (eyebrow / decorative)</div>
           <div class="role-row"><div class="role-dot" style="background:#F0EDE8;"></div><span class="role-label">Surface / Cards</span>#F0EDE8 warm linen</div>
         </div>
         <div class="mini-preview">
@@ -374,31 +382,30 @@
           </div>
           <div class="mini-hero" style="background:#FAFAF8;">
             <div class="mini-eyebrow">For students, parents & educators</div>
-            <div class="mini-heading" style="color:#1A1A1A;">Study smarter,<br/><em>not harder.</em></div>
+            <div class="mini-heading" style="font-family:'Source Serif 4',serif; color:#1A1A1A;">Study smarter, <em>not harder.</em></div>
             <div class="mini-body">Practical tools to help high school students take control of their learning.</div>
-            <span class="mini-btn-primary">Shop Now</span>
-            <span class="mini-btn-secondary">Free Resources</span>
+            <span class="mini-btn-p">Shop Now</span>
+            <span class="mini-btn-s">Free Resources</span>
           </div>
         </div>
       </div>
 
-      <!-- A3 — CHOSEN -->
       <div class="palette-card">
         <div class="chosen-badge">Shortlisted</div>
         <div class="palette-name">A3 — White Navigation</div>
-        <div class="palette-desc">Fully light feel. Orange logo carries the brand weight without a dark bar. Cleanest option.</div>
+        <div class="palette-desc">Fully light. Orange logotype carries all the brand weight. Cleanest option.</div>
         <div class="swatches">
-          <div class="swatch" style="background:#FFFFFF; border-top:1px solid #eee;"><span style="color:#333;">#FFFFFF</span></div>
-          <div class="swatch" style="background:#FAFAF8; border-top:1px solid #eee;"><span style="color:#333;">#FAFAF8</span></div>
+          <div class="swatch" style="background:#FFFFFF;border-top:1px solid #eee;"><span style="color:#333;">#FFFFFF</span></div>
+          <div class="swatch" style="background:#FAFAF8;border-top:1px solid #eee;"><span style="color:#333;">#FAFAF8</span></div>
           <div class="swatch" style="background:#C8601A;"><span style="color:#fff;">#C8601A</span></div>
           <div class="swatch" style="background:#7B9EB5;"><span style="color:#fff;">#7B9EB5</span></div>
           <div class="swatch" style="background:#F0EDE8;"><span style="color:#333;">#F0EDE8</span></div>
         </div>
         <div class="swatch-roles">
-          <div class="role-row"><div class="role-dot" style="background:#FFFFFF; border:1px solid #ddd;"></div><span class="role-label">Nav / Header</span>#FFFFFF white</div>
+          <div class="role-row"><div class="role-dot" style="background:#FFFFFF;border:1px solid #ddd;"></div><span class="role-label">Nav / Header</span>#FFFFFF white</div>
           <div class="role-row"><div class="role-dot" style="background:#FAFAF8;"></div><span class="role-label">Background</span>#FAFAF8 warm white</div>
           <div class="role-row"><div class="role-dot" style="background:#C8601A;"></div><span class="role-label">Accent / CTA</span>#C8601A burnt orange</div>
-          <div class="role-row"><div class="role-dot" style="background:#7B9EB5;"></div><span class="role-label">Subtle blue</span>#7B9EB5 steel (decorative/eyebrow)</div>
+          <div class="role-row"><div class="role-dot" style="background:#7B9EB5;"></div><span class="role-label">Subtle blue</span>#7B9EB5 (eyebrow / decorative)</div>
           <div class="role-row"><div class="role-dot" style="background:#F0EDE8;"></div><span class="role-label">Surface / Cards</span>#F0EDE8 warm linen</div>
         </div>
         <div class="mini-preview" style="border:1px solid #eee;">
@@ -408,34 +415,32 @@
           </div>
           <div class="mini-hero" style="background:#FAFAF8;">
             <div class="mini-eyebrow">For students, parents & educators</div>
-            <div class="mini-heading" style="color:#1A1A1A;">Study smarter,<br/><em>not harder.</em></div>
+            <div class="mini-heading" style="font-family:'Source Serif 4',serif; color:#1A1A1A;">Study smarter, <em>not harder.</em></div>
             <div class="mini-body">Practical tools to help high school students take control of their learning.</div>
-            <span class="mini-btn-primary">Shop Now</span>
-            <span class="mini-btn-secondary">Free Resources</span>
+            <span class="mini-btn-p">Shop Now</span>
+            <span class="mini-btn-s">Free Resources</span>
           </div>
         </div>
       </div>
 
-      <!-- A1 — NOT chosen -->
-      <div class="palette-card">
-        <div class="palette-name" style="color:#aaa;">A1 — Warm Charcoal <span style="font-size:0.7rem;font-weight:400;color:#ccc;">(not chosen)</span></div>
-        <div class="palette-desc">Dark but no blue cast. Too heavy for the warm/light direction.</div>
-        <div class="swatches" style="opacity:0.5;">
+      <div class="palette-card dimmed">
+        <div class="palette-name">A1 — Warm Charcoal <span style="font-size:0.7rem;font-weight:400;color:#ccc;">not chosen</span></div>
+        <div class="palette-desc">Too heavy for the warm/light direction we're after.</div>
+        <div class="swatches">
           <div class="swatch" style="background:#2A2520;"><span style="color:#fff;">#2A2520</span></div>
-          <div class="swatch" style="background:#FAFAF8; border-top:1px solid #eee;"><span style="color:#333;">#FAFAF8</span></div>
+          <div class="swatch" style="background:#FAFAF8;border-top:1px solid #eee;"><span style="color:#333;">#FAFAF8</span></div>
           <div class="swatch" style="background:#C8601A;"><span style="color:#fff;">#C8601A</span></div>
           <div class="swatch" style="background:#7B9EB5;"><span style="color:#fff;">#7B9EB5</span></div>
           <div class="swatch" style="background:#F0EDE8;"><span style="color:#333;">#F0EDE8</span></div>
         </div>
       </div>
 
-      <!-- A4 — NOT chosen -->
-      <div class="palette-card">
-        <div class="palette-name" style="color:#aaa;">A4 — Deep Slate Blue <span style="font-size:0.7rem;font-weight:400;color:#ccc;">(not chosen)</span></div>
-        <div class="palette-desc">Between A2 and original. Darker than A2 but softer than A-original. A2 was preferred.</div>
-        <div class="swatches" style="opacity:0.5;">
+      <div class="palette-card dimmed">
+        <div class="palette-name">A4 — Deep Slate Blue <span style="font-size:0.7rem;font-weight:400;color:#ccc;">not chosen</span></div>
+        <div class="palette-desc">Between A2 and the original. A2 was preferred.</div>
+        <div class="swatches">
           <div class="swatch" style="background:#354A58;"><span style="color:#fff;">#354A58</span></div>
-          <div class="swatch" style="background:#FAFAF8; border-top:1px solid #eee;"><span style="color:#333;">#FAFAF8</span></div>
+          <div class="swatch" style="background:#FAFAF8;border-top:1px solid #eee;"><span style="color:#333;">#FAFAF8</span></div>
           <div class="swatch" style="background:#C8601A;"><span style="color:#fff;">#C8601A</span></div>
           <div class="swatch" style="background:#7B9EB5;"><span style="color:#fff;">#7B9EB5</span></div>
           <div class="swatch" style="background:#F0EDE8;"><span style="color:#333;">#F0EDE8</span></div>
@@ -445,208 +450,214 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════════════ TYPOGRAPHY ═══════════════════════════════ -->
+  <!-- ══════════════ TYPOGRAPHY ══════════════ -->
   <section>
-    <div class="section-heading">Typography Pairings — TBD (hover or tap to reveal font names)</div>
+    <div class="section-heading">Typography Pairings — Revised</div>
+
+    <div class="prev-note">
+      <strong>Previous round feedback:</strong> Playfair Display feels too "magazine grabby" — wants humble confidence, not showing off. Cormorant Garamond is alright but too skimpy. Fraunces not refined enough. Direction: <strong>refined, scholarly, warm</strong> — text serifs used at display sizes, not theatrical display faces.
+    </div>
+
     <p class="tap-hint">Tap a card to reveal font names</p>
+
     <div class="type-grid">
 
-      <!-- PAIRING 1: Playfair Display + DM Sans -->
-      <div class="type-card" style="--heading-font:'Playfair Display',serif; --body-font:'DM Sans',sans-serif;" onclick="this.classList.toggle('tapped')">
+      <!-- 1: Libre Baskerville + DM Sans -->
+      <div class="type-card" onclick="this.classList.toggle('tapped')">
         <div class="font-overlay">
-          <div class="font-overlay-pair">
-            <div class="font-overlay-role">Headings</div>
-            <div class="font-overlay-name heading-font" style="font-family:'Playfair Display',serif; font-size:1.4rem; font-style:italic;">Playfair Display</div>
+          <div>
+            <div class="overlay-role">Headings</div>
+            <div class="overlay-font-name" style="font-family:'Libre Baskerville',serif;">Libre Baskerville</div>
           </div>
-          <div class="font-overlay-divider"></div>
-          <div class="font-overlay-pair">
-            <div class="font-overlay-role">Body text</div>
-            <div class="font-overlay-name body-font" style="font-family:'DM Sans',sans-serif;">DM Sans</div>
+          <div class="overlay-divider"></div>
+          <div>
+            <div class="overlay-role">Body text</div>
+            <div class="overlay-font-name" style="font-family:'DM Sans',sans-serif; font-size:1.2rem;">DM Sans</div>
           </div>
-          <div class="font-overlay-sample">High-contrast editorial serif + clean modern sans.<br/>Both free on Google Fonts.</div>
-          <div class="font-overlay-hint">Click/tap again to close</div>
+          <div class="overlay-note">A sturdy Baskerville revival — substantial stroke weight, no theatrics. Scholarly and confident at any size.</div>
+          <div class="overlay-hint">Click or tap again to close</div>
         </div>
         <div class="type-card-meta">
-          <h2>1 — Editorial</h2>
-          <p>High drama headings, clean modern body. Like a quality literary magazine.</p>
+          <h2>1 — Sturdy Classical</h2>
+          <p>Baskerville has centuries of scholarly credibility. This revival has good weight — not skimpy, not showy.</p>
         </div>
-        <div class="nav" style="background:#4A6478; color:#FAFAF8; font-family:'DM Sans',sans-serif;">
-          <span style="color:#F0A070; font-family:'Playfair Display',serif; font-style:italic; font-size:0.95rem; text-transform:none; letter-spacing:0; font-weight:400;">the<strong>studysmarter</strong>hub</span>
-          <div class="nav-links"><span>Home</span><span>Shop</span><span>Resources</span></div>
+        <div class="preview-nav" style="background:#4A6478; color:#FAFAF8; font-family:'DM Sans',sans-serif;">
+          <span style="color:#F0A070; font-family:'Libre Baskerville',serif; font-size:0.9rem; text-transform:none; letter-spacing:0.01em; font-weight:700;">Study Smarter Hub</span>
+          <div class="preview-nav-links"><span>Home</span><span>Shop</span><span>Resources</span><span>About</span></div>
         </div>
-        <div class="hero">
-          <div class="eyebrow" style="font-family:'DM Sans',sans-serif;">For students, parents & educators</div>
-          <div style="font-family:'Playfair Display',serif; font-size:2rem; font-weight:700; color:#1A1A1A; line-height:1.2; margin-bottom:12px;">Study smarter,<br/><em>not harder.</em></div>
-          <div style="font-family:'DM Sans',sans-serif; font-size:0.83rem; color:#666; line-height:1.7; margin-bottom:18px;">Practical tools and proven methods to help high school students take control of their learning — by James Buchanan.</div>
-          <span class="btn-primary" style="font-family:'DM Sans',sans-serif;">Shop Now</span>
-          <span class="btn-secondary" style="font-family:'DM Sans',sans-serif;">Free Resources</span>
+        <div class="preview-hero">
+          <div class="preview-eyebrow" style="font-family:'DM Sans',sans-serif;">For students, parents & educators</div>
+          <div style="font-family:'Libre Baskerville',serif; font-size:2.2rem; font-weight:700; color:#1A1A1A; line-height:1.2; margin-bottom:16px;">Study smarter,<br/><em style="font-weight:400;">not harder.</em></div>
+          <div class="preview-body-text" style="font-family:'DM Sans',sans-serif;">Practical tools and proven methods to help high school students take control of their learning — by James Buchanan.</div>
+          <span class="btn-p" style="font-family:'DM Sans',sans-serif;">Shop Now</span>
+          <span class="btn-s" style="font-family:'DM Sans',sans-serif;">Free Resources</span>
         </div>
         <div class="specimen">
           <div class="specimen-row">
             <span class="specimen-label">Display</span>
-            <span style="font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:700; color:#1A1A1A;">Study Smarter</span>
+            <span style="font-family:'Libre Baskerville',serif; font-size:1.55rem; font-weight:700; color:#1A1A1A;">Study Smarter</span>
           </div>
           <div class="specimen-row">
             <span class="specimen-label">Italic</span>
-            <span style="font-family:'Playfair Display',serif; font-size:1.05rem; font-style:italic; color:#C8601A;">Stone-Age Roots, Modern Wisdoms</span>
+            <span style="font-family:'Libre Baskerville',serif; font-size:1.05rem; font-style:italic; color:#C8601A;">Stone-Age Roots, Modern Wisdoms</span>
           </div>
           <div class="specimen-row">
             <span class="specimen-label">Body</span>
-            <span style="font-family:'DM Sans',sans-serif; font-size:0.82rem; color:#555;">The quick brown fox jumps over the lazy dog.</span>
+            <span style="font-family:'DM Sans',sans-serif; font-size:0.84rem; color:#555; line-height:1.6;">The quick brown fox jumps over the lazy dog. Practical study methods for real students.</span>
           </div>
           <div class="specimen-row">
             <span class="specimen-label">Caption</span>
-            <span style="font-family:'DM Sans',sans-serif; font-size:0.67rem; color:#999; letter-spacing:0.06em; text-transform:uppercase;">James Buchanan · Study Skills</span>
+            <span style="font-family:'DM Sans',sans-serif; font-size:0.67rem; color:#aaa; letter-spacing:0.08em; text-transform:uppercase;">James Buchanan · Study Skills</span>
           </div>
         </div>
       </div>
 
-      <!-- PAIRING 2: Cormorant Garamond + Plus Jakarta Sans -->
+      <!-- 2: Source Serif 4 + Plus Jakarta Sans -->
       <div class="type-card" onclick="this.classList.toggle('tapped')">
         <div class="font-overlay">
-          <div class="font-overlay-pair">
-            <div class="font-overlay-role">Headings</div>
-            <div class="font-overlay-name" style="font-family:'Cormorant Garamond',serif; font-size:1.5rem; font-weight:600;">Cormorant Garamond</div>
+          <div>
+            <div class="overlay-role">Headings</div>
+            <div class="overlay-font-name" style="font-family:'Source Serif 4',serif;">Source Serif 4</div>
           </div>
-          <div class="font-overlay-divider"></div>
-          <div class="font-overlay-pair">
-            <div class="font-overlay-role">Body text</div>
-            <div class="font-overlay-name" style="font-family:'Plus Jakarta Sans',sans-serif;">Plus Jakarta Sans</div>
+          <div class="overlay-divider"></div>
+          <div>
+            <div class="overlay-role">Body text</div>
+            <div class="overlay-font-name" style="font-family:'Plus Jakarta Sans',sans-serif; font-size:1.2rem;">Plus Jakarta Sans</div>
           </div>
-          <div class="font-overlay-sample">Elegant thin/thick contrast serif + warm friendly sans.<br/>Both free on Google Fonts.</div>
-          <div class="font-overlay-hint">Click/tap again to close</div>
+          <div class="overlay-note">Adobe's screen-optimised serif — variable optical sizes mean it's equally refined at large display sizes and tiny captions. Warm and professional.</div>
+          <div class="overlay-hint">Click or tap again to close</div>
         </div>
         <div class="type-card-meta">
-          <h2>2 — Refined & Scholarly</h2>
-          <p>Elegant thin/thick contrast headings. Most "prestigious publisher" feel.</p>
+          <h2>2 — Screen-Refined</h2>
+          <p>Source Serif 4 is a variable font — letterforms are optically tuned for each size. Warm, professional, excellent on screens.</p>
         </div>
-        <div class="nav" style="background:#4A6478; color:#FAFAF8; font-family:'Plus Jakarta Sans',sans-serif;">
-          <span style="color:#F0A070; font-family:'Cormorant Garamond',serif; font-size:1rem; text-transform:none; letter-spacing:0.04em; font-weight:600;">The Study Smarter Hub</span>
-          <div class="nav-links"><span>Home</span><span>Shop</span><span>Resources</span></div>
+        <div class="preview-nav" style="background:#4A6478; color:#FAFAF8; font-family:'Plus Jakarta Sans',sans-serif;">
+          <span style="color:#F0A070; font-family:'Source Serif 4',serif; font-size:1rem; text-transform:none; letter-spacing:0.01em; font-weight:600;">Study Smarter Hub</span>
+          <div class="preview-nav-links"><span>Home</span><span>Shop</span><span>Resources</span><span>About</span></div>
         </div>
-        <div class="hero">
-          <div class="eyebrow" style="font-family:'Plus Jakarta Sans',sans-serif;">For students, parents & educators</div>
-          <div style="font-family:'Cormorant Garamond',serif; font-size:2.5rem; font-weight:600; color:#1A1A1A; line-height:1.15; margin-bottom:12px;">Study smarter,<br/><em style="font-weight:300;">not harder.</em></div>
-          <div style="font-family:'Plus Jakarta Sans',sans-serif; font-size:0.83rem; color:#666; line-height:1.7; margin-bottom:18px;">Practical tools and proven methods to help high school students take control of their learning — by James Buchanan.</div>
-          <span class="btn-primary" style="font-family:'Plus Jakarta Sans',sans-serif;">Shop Now</span>
-          <span class="btn-secondary" style="font-family:'Plus Jakarta Sans',sans-serif;">Free Resources</span>
+        <div class="preview-hero">
+          <div class="preview-eyebrow" style="font-family:'Plus Jakarta Sans',sans-serif;">For students, parents & educators</div>
+          <div style="font-family:'Source Serif 4',serif; font-size:2.2rem; font-weight:600; color:#1A1A1A; line-height:1.2; margin-bottom:16px;">Study smarter,<br/><em style="font-weight:300;">not harder.</em></div>
+          <div class="preview-body-text" style="font-family:'Plus Jakarta Sans',sans-serif;">Practical tools and proven methods to help high school students take control of their learning — by James Buchanan.</div>
+          <span class="btn-p" style="font-family:'Plus Jakarta Sans',sans-serif;">Shop Now</span>
+          <span class="btn-s" style="font-family:'Plus Jakarta Sans',sans-serif;">Free Resources</span>
         </div>
         <div class="specimen">
           <div class="specimen-row">
             <span class="specimen-label">Display</span>
-            <span style="font-family:'Cormorant Garamond',serif; font-size:1.7rem; font-weight:600; color:#1A1A1A;">Study Smarter</span>
+            <span style="font-family:'Source Serif 4',serif; font-size:1.55rem; font-weight:600; color:#1A1A1A;">Study Smarter</span>
           </div>
           <div class="specimen-row">
             <span class="specimen-label">Italic</span>
-            <span style="font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-style:italic; font-weight:300; color:#C8601A;">Stone-Age Roots, Modern Wisdoms</span>
+            <span style="font-family:'Source Serif 4',serif; font-size:1.05rem; font-style:italic; font-weight:300; color:#C8601A;">Stone-Age Roots, Modern Wisdoms</span>
           </div>
           <div class="specimen-row">
             <span class="specimen-label">Body</span>
-            <span style="font-family:'Plus Jakarta Sans',sans-serif; font-size:0.82rem; color:#555;">The quick brown fox jumps over the lazy dog.</span>
+            <span style="font-family:'Plus Jakarta Sans',sans-serif; font-size:0.84rem; color:#555; line-height:1.6;">The quick brown fox jumps over the lazy dog. Practical study methods for real students.</span>
           </div>
           <div class="specimen-row">
             <span class="specimen-label">Caption</span>
-            <span style="font-family:'Plus Jakarta Sans',sans-serif; font-size:0.67rem; color:#999; letter-spacing:0.06em; text-transform:uppercase;">James Buchanan · Study Skills</span>
+            <span style="font-family:'Plus Jakarta Sans',sans-serif; font-size:0.67rem; color:#aaa; letter-spacing:0.08em; text-transform:uppercase;">James Buchanan · Study Skills</span>
           </div>
         </div>
       </div>
 
-      <!-- PAIRING 3: Fraunces + Outfit -->
+      <!-- 3: Spectral + DM Sans -->
       <div class="type-card" onclick="this.classList.toggle('tapped')">
         <div class="font-overlay">
-          <div class="font-overlay-pair">
-            <div class="font-overlay-role">Headings</div>
-            <div class="font-overlay-name" style="font-family:'Fraunces',serif; font-size:1.4rem; font-weight:700;">Fraunces</div>
+          <div>
+            <div class="overlay-role">Headings</div>
+            <div class="overlay-font-name" style="font-family:'Spectral',serif;">Spectral</div>
           </div>
-          <div class="font-overlay-divider"></div>
-          <div class="font-overlay-pair">
-            <div class="font-overlay-role">Body text</div>
-            <div class="font-overlay-name" style="font-family:'Outfit',sans-serif;">Outfit</div>
+          <div class="overlay-divider"></div>
+          <div>
+            <div class="overlay-role">Body text</div>
+            <div class="overlay-font-name" style="font-family:'DM Sans',sans-serif; font-size:1.2rem;">DM Sans</div>
           </div>
-          <div class="font-overlay-sample">Variable optical-size serif (used by NYT) + geometric rounded sans.<br/>Both free on Google Fonts.</div>
-          <div class="font-overlay-hint">Click/tap again to close</div>
+          <div class="overlay-note">Designed by Production Type specifically for digital reading. Literary without trying. More characterful than Baskerville, more substantial than Cormorant.</div>
+          <div class="overlay-hint">Click or tap again to close</div>
         </div>
         <div class="type-card-meta">
-          <h2>3 — Contemporary & Distinctive</h2>
-          <p>Fraunces letterforms reshape at different sizes — unusual and warm. Used by the NYT.</p>
+          <h2>3 — Literary & Warm</h2>
+          <p>Spectral was designed specifically for digital text — literary character, good weight, doesn't shout. Sits between Baskerville and Garamond in feel.</p>
         </div>
-        <div class="nav" style="background:#4A6478; color:#FAFAF8; font-family:'Outfit',sans-serif;">
-          <span style="color:#F0A070; font-family:'Fraunces',serif; font-size:0.95rem; text-transform:none; letter-spacing:0.02em; font-weight:400;">Study Smarter Hub</span>
-          <div class="nav-links"><span>Home</span><span>Shop</span><span>Resources</span></div>
+        <div class="preview-nav" style="background:#4A6478; color:#FAFAF8; font-family:'DM Sans',sans-serif;">
+          <span style="color:#F0A070; font-family:'Spectral',serif; font-size:1rem; text-transform:none; letter-spacing:0.01em; font-weight:600;">Study Smarter Hub</span>
+          <div class="preview-nav-links"><span>Home</span><span>Shop</span><span>Resources</span><span>About</span></div>
         </div>
-        <div class="hero">
-          <div class="eyebrow" style="font-family:'Outfit',sans-serif;">For students, parents & educators</div>
-          <div style="font-family:'Fraunces',serif; font-size:2rem; font-weight:700; color:#1A1A1A; line-height:1.2; margin-bottom:12px;">Study smarter,<br/><em style="font-weight:300;">not harder.</em></div>
-          <div style="font-family:'Outfit',sans-serif; font-size:0.83rem; color:#666; line-height:1.7; margin-bottom:18px;">Practical tools and proven methods to help high school students take control of their learning — by James Buchanan.</div>
-          <span class="btn-primary" style="font-family:'Outfit',sans-serif;">Shop Now</span>
-          <span class="btn-secondary" style="font-family:'Outfit',sans-serif;">Free Resources</span>
+        <div class="preview-hero">
+          <div class="preview-eyebrow" style="font-family:'DM Sans',sans-serif;">For students, parents & educators</div>
+          <div style="font-family:'Spectral',serif; font-size:2.2rem; font-weight:600; color:#1A1A1A; line-height:1.2; margin-bottom:16px;">Study smarter,<br/><em style="font-weight:300;">not harder.</em></div>
+          <div class="preview-body-text" style="font-family:'DM Sans',sans-serif;">Practical tools and proven methods to help high school students take control of their learning — by James Buchanan.</div>
+          <span class="btn-p" style="font-family:'DM Sans',sans-serif;">Shop Now</span>
+          <span class="btn-s" style="font-family:'DM Sans',sans-serif;">Free Resources</span>
         </div>
         <div class="specimen">
           <div class="specimen-row">
             <span class="specimen-label">Display</span>
-            <span style="font-family:'Fraunces',serif; font-size:1.6rem; font-weight:700; color:#1A1A1A;">Study Smarter</span>
+            <span style="font-family:'Spectral',serif; font-size:1.55rem; font-weight:600; color:#1A1A1A;">Study Smarter</span>
           </div>
           <div class="specimen-row">
             <span class="specimen-label">Italic</span>
-            <span style="font-family:'Fraunces',serif; font-size:1.1rem; font-style:italic; font-weight:300; color:#C8601A;">Stone-Age Roots, Modern Wisdoms</span>
+            <span style="font-family:'Spectral',serif; font-size:1.05rem; font-style:italic; font-weight:300; color:#C8601A;">Stone-Age Roots, Modern Wisdoms</span>
           </div>
           <div class="specimen-row">
             <span class="specimen-label">Body</span>
-            <span style="font-family:'Outfit',sans-serif; font-size:0.82rem; color:#555;">The quick brown fox jumps over the lazy dog.</span>
+            <span style="font-family:'DM Sans',sans-serif; font-size:0.84rem; color:#555; line-height:1.6;">The quick brown fox jumps over the lazy dog. Practical study methods for real students.</span>
           </div>
           <div class="specimen-row">
             <span class="specimen-label">Caption</span>
-            <span style="font-family:'Outfit',sans-serif; font-size:0.67rem; color:#999; letter-spacing:0.06em; text-transform:uppercase;">James Buchanan · Study Skills</span>
+            <span style="font-family:'DM Sans',sans-serif; font-size:0.67rem; color:#aaa; letter-spacing:0.08em; text-transform:uppercase;">James Buchanan · Study Skills</span>
           </div>
         </div>
       </div>
 
-      <!-- PAIRING 4: Playfair + DM Sans on White Nav -->
+      <!-- 4: Source Serif 4 on White Nav (A3) -->
       <div class="type-card" onclick="this.classList.toggle('tapped')">
         <div class="font-overlay">
-          <div class="font-overlay-pair">
-            <div class="font-overlay-role">Headings</div>
-            <div class="font-overlay-name" style="font-family:'Playfair Display',serif; font-size:1.4rem; font-style:italic;">Playfair Display</div>
+          <div>
+            <div class="overlay-role">Headings</div>
+            <div class="overlay-font-name" style="font-family:'Source Serif 4',serif;">Source Serif 4</div>
           </div>
-          <div class="font-overlay-divider"></div>
-          <div class="font-overlay-pair">
-            <div class="font-overlay-role">Body text</div>
-            <div class="font-overlay-name" style="font-family:'DM Sans',sans-serif;">DM Sans</div>
+          <div class="overlay-divider"></div>
+          <div>
+            <div class="overlay-role">Body text</div>
+            <div class="overlay-font-name" style="font-family:'DM Sans',sans-serif; font-size:1.2rem;">DM Sans</div>
           </div>
-          <div class="font-overlay-sample">Same as Pairing 1 — shown here with the A3 white navigation.<br/>Both free on Google Fonts.</div>
-          <div class="font-overlay-hint">Click/tap again to close</div>
+          <div class="overlay-note">Pairing 2's heading font with Pairing 1's body font — shown here on the A3 white nav. A comparison view.</div>
+          <div class="overlay-hint">Click or tap again to close</div>
         </div>
         <div class="type-card-meta">
-          <h2>4 — Editorial on White Nav (A3)</h2>
-          <p>Pairing 1 with A3's white nav — orange logotype does all the brand work.</p>
+          <h2>4 — Screen-Refined on White Nav (A3)</h2>
+          <p>Source Serif 4 + DM Sans on the A3 white nav — for a direct comparison with Pairings 1–3 above.</p>
         </div>
-        <div class="nav" style="background:#FFFFFF; color:#333; font-family:'DM Sans',sans-serif; border-bottom:1px solid #eee;">
-          <span style="color:#C8601A; font-family:'Playfair Display',serif; font-style:italic; font-size:0.95rem; text-transform:none; letter-spacing:0; font-weight:400;">the<strong>studysmarter</strong>hub</span>
-          <div class="nav-links" style="color:#444;"><span>Home</span><span>Shop</span><span>Resources</span></div>
+        <div class="preview-nav" style="background:#FFFFFF; color:#333; font-family:'DM Sans',sans-serif; border-bottom:1px solid #eee;">
+          <span style="color:#C8601A; font-family:'Source Serif 4',serif; font-size:1rem; text-transform:none; letter-spacing:0.01em; font-weight:600;">Study Smarter Hub</span>
+          <div class="preview-nav-links" style="color:#444;"><span>Home</span><span>Shop</span><span>Resources</span><span>About</span></div>
         </div>
-        <div class="hero">
-          <div class="eyebrow" style="font-family:'DM Sans',sans-serif;">For students, parents & educators</div>
-          <div style="font-family:'Playfair Display',serif; font-size:2rem; font-weight:700; color:#1A1A1A; line-height:1.2; margin-bottom:12px;">Study smarter,<br/><em>not harder.</em></div>
-          <div style="font-family:'DM Sans',sans-serif; font-size:0.83rem; color:#666; line-height:1.7; margin-bottom:18px;">Practical tools and proven methods to help high school students take control of their learning — by James Buchanan.</div>
-          <span class="btn-primary" style="font-family:'DM Sans',sans-serif;">Shop Now</span>
-          <span class="btn-secondary" style="font-family:'DM Sans',sans-serif;">Free Resources</span>
+        <div class="preview-hero">
+          <div class="preview-eyebrow" style="font-family:'DM Sans',sans-serif;">For students, parents & educators</div>
+          <div style="font-family:'Source Serif 4',serif; font-size:2.2rem; font-weight:600; color:#1A1A1A; line-height:1.2; margin-bottom:16px;">Study smarter,<br/><em style="font-weight:300;">not harder.</em></div>
+          <div class="preview-body-text" style="font-family:'DM Sans',sans-serif;">Practical tools and proven methods to help high school students take control of their learning — by James Buchanan.</div>
+          <span class="btn-p" style="font-family:'DM Sans',sans-serif;">Shop Now</span>
+          <span class="btn-s" style="font-family:'DM Sans',sans-serif;">Free Resources</span>
         </div>
         <div class="specimen">
           <div class="specimen-row">
             <span class="specimen-label">Display</span>
-            <span style="font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:700; color:#1A1A1A;">Study Smarter</span>
+            <span style="font-family:'Source Serif 4',serif; font-size:1.55rem; font-weight:600; color:#1A1A1A;">Study Smarter</span>
           </div>
           <div class="specimen-row">
             <span class="specimen-label">Italic</span>
-            <span style="font-family:'Playfair Display',serif; font-size:1.05rem; font-style:italic; color:#C8601A;">Stone-Age Roots, Modern Wisdoms</span>
+            <span style="font-family:'Source Serif 4',serif; font-size:1.05rem; font-style:italic; font-weight:300; color:#C8601A;">Stone-Age Roots, Modern Wisdoms</span>
           </div>
           <div class="specimen-row">
             <span class="specimen-label">Body</span>
-            <span style="font-family:'DM Sans',sans-serif; font-size:0.82rem; color:#555;">The quick brown fox jumps over the lazy dog.</span>
+            <span style="font-family:'DM Sans',sans-serif; font-size:0.84rem; color:#555; line-height:1.6;">The quick brown fox jumps over the lazy dog. Practical study methods for real students.</span>
           </div>
           <div class="specimen-row">
             <span class="specimen-label">Caption</span>
-            <span style="font-family:'DM Sans',sans-serif; font-size:0.67rem; color:#999; letter-spacing:0.06em; text-transform:uppercase;">James Buchanan · Study Skills</span>
+            <span style="font-family:'DM Sans',sans-serif; font-size:0.67rem; color:#aaa; letter-spacing:0.08em; text-transform:uppercase;">James Buchanan · Study Skills</span>
           </div>
         </div>
       </div>
