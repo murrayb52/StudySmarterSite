@@ -172,7 +172,7 @@ const b = import.meta.env.BASE_URL.replace(/\/$/, '');
     justify-content: flex-end;
   }
   .hero-text {
-    max-width: 520px;
+    max-width: clamp(460px, 48vw, 720px);
     padding-right: clamp(2rem, 5vw, 6rem);
   }
   .hero-text h1 {
