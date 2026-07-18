@@ -68,7 +68,11 @@
       box-shadow: 0 2px 14px rgba(0,0,0,0.07);
       position: relative;
     }
-    .palette-card.dimmed { opacity: 0.45; }
+    .palette-card.dimmed {
+      opacity: 0.45;
+      transition: opacity 0.2s ease;
+    }
+    .palette-card.dimmed:hover { opacity: 1; }
 
     .chosen-badge {
       position: absolute;
@@ -205,6 +209,10 @@
     }
     .type-card.dimmed {
       opacity: 0.38;
+      transition: opacity 0.2s ease;
+    }
+    .type-card.dimmed:hover {
+      opacity: 1;
     }
     .type-card.selected {
       box-shadow: 0 0 0 3px #C8601A, 0 4px 20px rgba(200,96,26,0.18);
