@@ -51,6 +51,9 @@ import BookCard from '../components/BookCard.astro';
     </div>
   </section>
 
+  <!-- Divider -->
+  <div class="water-divider" aria-hidden="true"></div>
+
   <!-- About the books -->
   <section class="section about-books">
     <div class="container">
@@ -235,7 +238,34 @@ import BookCard from '../components/BookCard.astro';
     margin: 0;
   }
 
+  /* Water divider strip */
+  .water-divider {
+    height: 160px;
+    background-image: url('/images/bg-water-ripple.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+
   /* About the books */
+  .about-books {
+    position: relative;
+    overflow: hidden;
+  }
+  .about-books::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/images/bg-goldfish-pattern.png');
+    background-size: 480px auto;
+    background-repeat: repeat;
+    opacity: 0.38;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .about-books .container {
+    position: relative;
+    z-index: 1;
+  }
   .about-books h2 {
     font-size: clamp(1.75rem, 3vw, 2.25rem);
     margin: 0.5rem 0 1rem;
@@ -267,9 +297,23 @@ import BookCard from '../components/BookCard.astro';
     grid-template-columns: 340px 1fr;
     min-height: 380px;
     background: var(--c-surface);
+    position: relative;
+    overflow: hidden;
+  }
+  .author-teaser::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/images/bg-library-bokeh.jpg');
+    background-size: cover;
+    background-position: center top;
+    opacity: 0.18;
+    z-index: 0;
   }
   .author-teaser-photo {
     overflow: hidden;
+    position: relative;
+    z-index: 1;
   }
   .author-teaser-photo img {
     width: 100%;
@@ -282,6 +326,8 @@ import BookCard from '../components/BookCard.astro';
     display: flex;
     align-items: center;
     padding: 3.5rem;
+    position: relative;
+    z-index: 1;
   }
   .author-teaser-text h2 {
     font-size: 1.875rem;
