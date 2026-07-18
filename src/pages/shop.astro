@@ -1,0 +1,406 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import BookCard from '../components/BookCard.astro';
+---
+
+<Base
+  title="Shop"
+  description="Buy Study Smarter and the Student Workbook. R350 physical copy with delivery across South Africa, or on Kindle via Amazon."
+>
+  <Nav slot="nav" />
+  <Footer slot="footer" />
+
+  <!-- Physical books -->
+  <section class="section">
+    <div class="container">
+      <span class="eyebrow">Physical copies</span>
+      <h1 style="font-weight:600">Get the book</h1>
+      <p class="shop-intro">
+        Delivered anywhere in South Africa (R80 flat rate), or collect in Diep River, Cape Town.
+      </p>
+
+      <div class="shop-grid">
+
+        <!-- Book card -->
+        <div class="shop-item">
+          <BookCard
+            title="Study Smarter"
+            description="Evidence-based strategies for high school students. Covers planning, memory, focus, exam technique, and the mindset shifts that make it all stick."
+            coverSrc="/images/book-cover.png"
+            coverAlt="Study Smarter book cover"
+            price="R350"
+          />
+          <!-- Order form for this product -->
+          <div class="order-form-wrap hidden" id="form-study-smarter" data-product="Study Smarter" data-price="350">
+            <form class="order-form" novalidate>
+              <h3>Your details</h3>
+              <div class="form-row two-col">
+                <div class="field">
+                  <label for="sf-first">First name</label>
+                  <input type="text" id="sf-first" name="first_name" required autocomplete="given-name" />
+                </div>
+                <div class="field">
+                  <label for="sf-last">Last name</label>
+                  <input type="text" id="sf-last" name="last_name" required autocomplete="family-name" />
+                </div>
+              </div>
+              <div class="form-row two-col">
+                <div class="field">
+                  <label for="sf-email">Email</label>
+                  <input type="email" id="sf-email" name="email" required autocomplete="email" />
+                </div>
+                <div class="field">
+                  <label for="sf-phone">Phone</label>
+                  <input type="tel" id="sf-phone" name="phone" required autocomplete="tel" />
+                </div>
+              </div>
+
+              <h3>Delivery or collection?</h3>
+              <div class="fulfilment-options">
+                <label class="radio-option">
+                  <input type="radio" name="fulfilment" value="delivery" checked />
+                  <span>Delivery (R80 nationwide)</span>
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="fulfilment" value="collection" />
+                  <span>Collection in Diep River, Cape Town (exact address emailed after payment)</span>
+                </label>
+              </div>
+
+              <div class="delivery-fields" id="sf-delivery-fields">
+                <div class="field">
+                  <label for="sf-addr">Street address</label>
+                  <input type="text" id="sf-addr" name="address" autocomplete="street-address" />
+                </div>
+                <div class="form-row two-col">
+                  <div class="field">
+                    <label for="sf-suburb">Suburb</label>
+                    <input type="text" id="sf-suburb" name="suburb" />
+                  </div>
+                  <div class="field">
+                    <label for="sf-city">City</label>
+                    <input type="text" id="sf-city" name="city" autocomplete="address-level2" />
+                  </div>
+                </div>
+                <div class="form-row two-col">
+                  <div class="field">
+                    <label for="sf-province">Province</label>
+                    <input type="text" id="sf-province" name="province" />
+                  </div>
+                  <div class="field">
+                    <label for="sf-postal">Postal code</label>
+                    <input type="text" id="sf-postal" name="postal_code" autocomplete="postal-code" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="order-summary" id="sf-summary">
+                <span>Book: R350</span>
+                <span id="sf-shipping-line">+ Delivery: R80</span>
+                <strong id="sf-total">Total: R430</strong>
+              </div>
+
+              <button type="submit" class="btn btn-primary">Proceed to Payment</button>
+              <p class="form-status" id="sf-status" aria-live="polite"></p>
+            </form>
+          </div>
+        </div>
+
+        <!-- Workbook card -->
+        <div class="shop-item">
+          <BookCard
+            title="Study Smarter Student Workbook"
+            description="Exercises and weekly planners to put the book's strategies into daily practice. Designed to be used alongside the main book."
+            coverSrc="/images/workbook-cover.png"
+            coverAlt="Study Smarter Student Workbook cover"
+            comingSoon={true}
+          />
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Amazon eBook -->
+  <section class="section section-alt">
+    <div class="container ebook-section">
+      <div class="ebook-cover">
+        <img
+          src="/images/book-cover.png"
+          alt="Study Smarter book cover"
+          width="160"
+          height="220"
+          loading="lazy"
+        />
+      </div>
+      <div class="ebook-text">
+        <span class="eyebrow">Digital edition</span>
+        <h2 style="font-weight:600">Prefer an eBook?</h2>
+        <p>
+          The Kindle edition is available on Amazon — paperback is also selectable from the same listing.
+          Opens in a new tab.
+        </p>
+        <a
+          href="https://www.amazon.com/Study-Smarter-Stone-age-Wisdoms-Journey-ebook/dp/B0D2P63PY1"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary"
+        >
+          Buy on Amazon ↗
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<script>
+  // Toggle order form visibility when "Buy Now" is clicked
+  document.querySelectorAll<HTMLButtonElement>('.buy-trigger').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const productName = btn.dataset.product ?? '';
+      const slug = productName.toLowerCase().replace(/\s+/g, '-');
+      const formWrap = document.getElementById(`form-${slug}`);
+      if (!formWrap) return;
+      const isHidden = formWrap.classList.contains('hidden');
+      // Close any open forms first
+      document.querySelectorAll('.order-form-wrap').forEach(w => w.classList.add('hidden'));
+      if (isHidden) {
+        formWrap.classList.remove('hidden');
+        formWrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // Toggle delivery address fields
+  document.querySelectorAll<HTMLInputElement>('input[name="fulfilment"]').forEach((radio) => {
+    radio.addEventListener('change', () => {
+      const form = radio.closest('form');
+      if (!form) return;
+      const deliveryFields = form.querySelector<HTMLElement>('[id$="-delivery-fields"]');
+      const shippingLine = form.querySelector<HTMLElement>('[id$="-shipping-line"]');
+      const totalEl = form.querySelector<HTMLElement>('[id$="-total"]');
+      const formWrap = form.closest<HTMLElement>('.order-form-wrap');
+      const price = Number(formWrap?.dataset.price ?? 0);
+      const isDelivery = radio.value === 'delivery';
+
+      if (deliveryFields) deliveryFields.classList.toggle('hidden', !isDelivery);
+      if (shippingLine) shippingLine.classList.toggle('hidden', !isDelivery);
+      if (totalEl) {
+        const total = isDelivery ? price + 80 : price;
+        totalEl.textContent = `Total: R${total}`;
+      }
+    });
+  });
+
+  // Order form submission
+  const MERCHANT_ID = import.meta.env.PUBLIC_PAYFAST_MERCHANT_ID as string | undefined;
+  const MERCHANT_KEY = import.meta.env.PUBLIC_PAYFAST_MERCHANT_KEY as string | undefined;
+  const PAYFAST_ENV = (import.meta.env.PUBLIC_PAYFAST_ENV as string | undefined) ?? 'sandbox';
+  const ORDER_ENDPOINT = import.meta.env.PUBLIC_FORMSPREE_ORDER_ENDPOINT as string | undefined;
+
+  const PAYFAST_URL = PAYFAST_ENV === 'live'
+    ? 'https://www.payfast.co.za/eng/process'
+    : 'https://sandbox.payfast.co.za/eng/process';
+
+  document.querySelectorAll<HTMLFormElement>('.order-form').forEach((form) => {
+    const formWrap = form.closest<HTMLElement>('.order-form-wrap');
+    const status = form.querySelector<HTMLElement>('[id$="-status"]');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (status) status.textContent = 'Processing…';
+
+      const data = new FormData(form);
+      const isCollection = data.get('fulfilment') === 'collection';
+      const price = Number(formWrap?.dataset.price ?? 0);
+      const product = formWrap?.dataset.product ?? '';
+      const shippingAmount = isCollection ? 0 : 80;
+      const totalAmount = price + shippingAmount;
+      const returnUrl = isCollection
+        ? `${window.location.origin}/thank-you?collection=true`
+        : `${window.location.origin}/thank-you`;
+
+      // Step 1: Record order with Formspree
+      if (ORDER_ENDPOINT) {
+        const orderData = new FormData(form);
+        orderData.append('product', product);
+        orderData.append('price', `R${price}`);
+        orderData.append('shipping', isCollection ? 'Collection' : `R${shippingAmount}`);
+        orderData.append('total', `R${totalAmount}`);
+        try {
+          await fetch(ORDER_ENDPOINT, {
+            method: 'POST',
+            body: orderData,
+            headers: { Accept: 'application/json' },
+          });
+        } catch {
+          // Non-fatal — continue to PayFast regardless
+        }
+      }
+
+      // Step 2: Redirect to PayFast
+      if (!MERCHANT_ID || !MERCHANT_KEY) {
+        if (status) status.textContent = 'Payment is not yet configured. Please contact info@thestudysmarterhub.com to order.';
+        return;
+      }
+
+      const payfastForm = document.createElement('form');
+      payfastForm.method = 'POST';
+      payfastForm.action = PAYFAST_URL;
+
+      const fields: Record<string, string> = {
+        merchant_id: MERCHANT_ID,
+        merchant_key: MERCHANT_KEY,
+        return_url: returnUrl,
+        cancel_url: `${window.location.origin}/shop`,
+        amount: totalAmount.toFixed(2),
+        item_name: product,
+        name_first: String(data.get('first_name') ?? ''),
+        name_last: String(data.get('last_name') ?? ''),
+        email_address: String(data.get('email') ?? ''),
+        cell_number: String(data.get('phone') ?? ''),
+        custom_str1: isCollection ? 'collection' : 'delivery',
+      };
+
+      if (!isCollection) {
+        fields.shipping_amount = shippingAmount.toFixed(2);
+      }
+
+      Object.entries(fields).forEach(([name, value]) => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = name;
+        input.value = value;
+        payfastForm.appendChild(input);
+      });
+
+      document.body.appendChild(payfastForm);
+      payfastForm.submit();
+    });
+  });
+</script>
+
+<style>
+  .shop-intro {
+    color: var(--c-text-muted);
+    margin-bottom: 2.5rem;
+    max-width: 52ch;
+  }
+  .shop-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  .shop-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* Order form */
+  .order-form-wrap {
+    background: #fff;
+    border: 1px solid #ddd9d4;
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+    padding: 2rem;
+  }
+  .order-form h3 {
+    font-family: var(--f-sans);
+    font-weight: 600;
+    font-size: 0.9375rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--c-text-muted);
+    margin-bottom: 1rem;
+  }
+  .form-row.two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-bottom: 0.875rem;
+  }
+  .field label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--c-text-muted);
+  }
+  .field input {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #c8c4bf;
+    border-radius: 3px;
+    background: var(--c-bg);
+    font-family: var(--f-sans);
+    font-size: 0.9375rem;
+    color: var(--c-text);
+  }
+  .field input:focus {
+    outline: 2px solid var(--c-accent);
+    outline-offset: 1px;
+    border-color: var(--c-accent);
+  }
+  .fulfilment-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+  .radio-option {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: 0.9375rem;
+    cursor: pointer;
+  }
+  .radio-option input { margin-top: 3px; flex-shrink: 0; }
+  .delivery-fields { margin-bottom: 1.25rem; }
+  .order-summary {
+    background: var(--c-surface);
+    border-radius: 4px;
+    padding: 1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-size: 0.9375rem;
+    color: var(--c-text-muted);
+    margin-bottom: 1.25rem;
+  }
+  .order-summary strong {
+    color: var(--c-text);
+    font-size: 1rem;
+    margin-top: 0.25rem;
+  }
+  .form-status {
+    margin-top: 0.75rem;
+    font-size: 0.875rem;
+    color: var(--c-text-muted);
+    min-height: 1.25rem;
+  }
+
+  /* Amazon eBook section */
+  .ebook-section {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+  }
+  .ebook-cover img {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    border-radius: 2px;
+  }
+  .ebook-text h2 { font-size: 1.875rem; margin: 0.5rem 0 1rem; }
+  .ebook-text p { color: var(--c-text-muted); max-width: 44ch; margin-bottom: 1.5rem; }
+
+  @media (max-width: 768px) {
+    .shop-grid { grid-template-columns: 1fr; }
+    .form-row.two-col { grid-template-columns: 1fr; }
+    .ebook-section { flex-direction: column; }
+    .ebook-cover { display: none; }
+  }
+</style>
