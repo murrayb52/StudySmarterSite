@@ -1,0 +1,133 @@
+---
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/shop', label: 'Shop' },
+  { href: '/resources', label: 'Resources' },
+  { href: '/about', label: 'About' },
+];
+const current = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="/" class="site-logo">The Study Smarter Hub</a>
+
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="main-nav">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav id="main-nav" class="main-nav">
+      <ul>
+        {links.map(l => (
+          <li>
+            <a
+              href={l.href}
+              class:list={['nav-link', { active: current === l.href || (l.href !== '/' && current.startsWith(l.href)) }]}
+            >
+              {l.label}
+            </a>
+          </li>
+        ))}
+        <li><a href="/shop" class="btn btn-primary nav-cta">Buy Now</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('.nav-toggle');
+  const nav = document.getElementById('main-nav');
+  toggle?.addEventListener('click', () => {
+    const open = nav?.classList.toggle('open') ?? false;
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+</script>
+
+<style>
+  .site-header {
+    background: var(--c-nav);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+  .site-logo {
+    font-family: var(--f-serif);
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #fff;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  .site-logo:hover { text-decoration: none; opacity: 0.9; }
+
+  .main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  .nav-link {
+    font-family: var(--f-sans);
+    font-weight: 600;
+    font-size: 0.9375rem;
+    color: rgba(255,255,255,0.82);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .nav-link:hover,
+  .nav-link.active {
+    color: #fff;
+    text-decoration: none;
+  }
+  .nav-cta {
+    font-size: 0.875rem;
+    padding: 0.5rem 1.25rem;
+  }
+
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+  .nav-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+    transition: opacity 0.15s;
+  }
+
+  @media (max-width: 768px) {
+    .nav-toggle { display: flex; }
+    .main-nav {
+      display: none;
+      position: absolute;
+      top: 64px;
+      left: 0;
+      right: 0;
+      background: var(--c-nav);
+      padding: 1rem 1.5rem 1.5rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .main-nav.open { display: block; }
+    .main-nav ul {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+  }
+</style>

@@ -1,12 +1,13 @@
 ---
 import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
 ---
 
 <Base title="Home" description="Test">
+  <Nav slot="nav" />
   <div class="container section">
-    <span class="eyebrow">Test eyebrow</span>
     <h1><span style="font-weight:600">Study smarter,</span><br/><span style="font-weight:300">not harder.</span></h1>
-    <p>Body text in Nunito. <a href="/shop">Link to shop</a>.</p>
+    <p>Body text in Nunito.</p>
     <a href="/shop" class="btn btn-primary">Shop Now</a>
   </div>
 </Base>
