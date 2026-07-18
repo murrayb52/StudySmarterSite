@@ -83,7 +83,11 @@ const current = Astro.url.pathname;
     text-decoration: none;
     transition: color 0.15s;
   }
-  .nav-link:hover,
+  .nav-link:hover {
+    color: var(--c-accent);
+    text-decoration: none;
+    text-shadow: 0 0 18px rgba(200, 96, 26, 0.55), 0 0 6px rgba(200, 96, 26, 0.3);
+  }
   .nav-link.active {
     color: #fff;
     text-decoration: none;
