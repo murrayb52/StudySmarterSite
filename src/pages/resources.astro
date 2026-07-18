@@ -33,6 +33,7 @@ import DownloadCard from '../components/DownloadCard.astro';
           downloadHref="/downloads/StudySmarter - study-planner-exam-template.xlsx"
           coverSrc="/images/resource-study-planner.png"
           coverAlt="Study Planner Exam Template illustration"
+          horizontal={true}
         >
           <p class="resource-lead">Need help creating a study calendar?</p>
           <p class="resource-body">Well-planned studying means you know how much time you have, face challenges head-on, and can enjoy your free time guilt-free.</p>
@@ -44,6 +45,7 @@ import DownloadCard from '../components/DownloadCard.astro';
           downloadHref="/downloads/StudySmarter - workbook-answers-and-guide.pdf"
           coverSrc="/images/resource-workbook-guide.png"
           coverAlt="Student Workbook Guide illustration"
+          horizontal={true}
         >
           <p class="resource-lead">Answers and coaching advice for parents</p>
           <p class="resource-body">Full answers to every workbook question, guidance on how to coach your student through each section, and links to useful resources — so you can support the process confidently.</p>
@@ -55,6 +57,7 @@ import DownloadCard from '../components/DownloadCard.astro';
           downloadHref="/downloads/StudySmarter - What can teachers do to support studying.pdf"
           coverSrc="/images/resource-teacher-guide.png"
           coverAlt="Teacher Reflection Guide illustration"
+          horizontal={true}
         >
           <p class="resource-lead">A self-assessment for teachers</p>
           <p class="resource-body">Rate yourself across eight classroom practices — from how you set homework to how you support notebook use. Takes minutes; the reflection it prompts is lasting.</p>
@@ -101,7 +104,6 @@ import DownloadCard from '../components/DownloadCard.astro';
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
-    max-width: 700px;
   }
 
   :global(.resource-lead) {

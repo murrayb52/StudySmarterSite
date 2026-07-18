@@ -28,7 +28,6 @@ const current = Astro.url.pathname;
             </a>
           </li>
         ))}
-        <li><a href="/shop" class="btn btn-primary nav-cta">Buy Now</a></li>
       </ul>
     </nav>
   </div>
@@ -55,12 +54,12 @@ const current = Astro.url.pathname;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 76px;
+    height: 114px;
   }
   .site-logo {
     font-family: var(--f-serif);
     font-weight: 600;
-    font-size: 1.45rem;
+    font-size: 2.1rem;
     color: #fff;
     text-decoration: none;
     flex-shrink: 0;
@@ -74,12 +73,12 @@ const current = Astro.url.pathname;
     padding: 0;
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 3.5rem;
   }
   .nav-link {
     font-family: var(--f-sans);
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 1.125rem;
     color: rgba(255,255,255,0.82);
     text-decoration: none;
     transition: color 0.15s;
@@ -89,11 +88,6 @@ const current = Astro.url.pathname;
     color: #fff;
     text-decoration: none;
   }
-  .nav-cta {
-    font-size: 0.9375rem;
-    padding: 0.55rem 1.35rem;
-  }
-
   .nav-toggle {
     display: none;
     flex-direction: column;
@@ -117,7 +111,7 @@ const current = Astro.url.pathname;
     .main-nav {
       display: none;
       position: absolute;
-      top: 76px;
+      top: 114px;
       left: 0;
       right: 0;
       background: var(--c-nav);
