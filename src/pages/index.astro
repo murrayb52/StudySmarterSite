@@ -141,9 +141,9 @@ import BookCard from '../components/BookCard.astro';
   .hero-bg {
     position: absolute;
     inset: 0;
-    background-image: url('/images/MainImage2.jpg');
+    background-image: url('/images/hero-sky-goldfish-wide.png');
     background-size: cover;
-    background-position: right top;
+    background-position: right center;
     z-index: 0;
   }
   .hero-bg::after {
@@ -201,11 +201,22 @@ import BookCard from '../components/BookCard.astro';
     display: block;
   }
   .audience-text {
-    background: #1c2a35;
+    background: #1c2a35 url('/images/fishbowl-leap.png') center/cover no-repeat;
     padding: 4rem 3.5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
+  }
+  .audience-text::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(14, 20, 26, 0.80);
+  }
+  .audience-text > * {
+    position: relative;
+    z-index: 1;
   }
   .audience-eyebrow {
     color: rgba(255, 255, 255, 0.5) !important;
