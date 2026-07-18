@@ -111,9 +111,10 @@ public/
 
 **Sections:**
 1. **Heading** — "Get the book"
-2. **Physical products** — two `BookCard` components side-by-side (responsive: stack on mobile). Each card: cover image, title, short description, price, "Buy Now" button (PayFast form submit).
-3. **eBook section** — visually separated (different background or rule). Heading "Prefer an eBook?", cover image, one-line description, "Buy on Amazon" link (opens in new tab). Clear off-site indicator.
-4. **Footer** — as above.
+2. **Physical products** — two `BookCard` components side-by-side (responsive: stack on mobile). Each card: cover image, title, short description, price, "Buy Now" button — opens the order form.
+3. **Order form** (inline, revealed on "Buy Now") — collects buyer details before redirecting to PayFast. See Order Form section below.
+4. **eBook section** — visually separated (different background or rule). Heading "Prefer an eBook?", cover image, one-line description, "Buy on Amazon" link (opens in new tab). Clear off-site indicator.
+5. **Footer** — as above.
 
 ### Resources (`/resources`)
 
@@ -135,25 +136,59 @@ public/
 
 ### Thank You (`/thank-you`)
 
-Simple confirmation page: "Thank you for your order." with a note that PayFast will send a receipt and the book will be dispatched. Links back to Home and Resources.
+Post-payment confirmation page. Behaviour is conditional on a `?collection=true` query parameter passed from the order form:
+
+- **Delivery orders:** "Thank you for your order. Your book will be dispatched to your delivery address. PayFast will send you a payment receipt."
+- **Collection orders:** "Thank you for your order. The collection address in Diep River, Cape Town will be emailed to you shortly." The collection address is **not** shown publicly on this page — the merchant emails it upon receiving the Formspree notification.
+
+Links back to Home and Resources on both variants.
+
+---
+
+## Order Form
+
+Shown inline on `/shop` when the buyer clicks "Buy Now" on a product card. Collects all fulfilment details before handing off to PayFast.
+
+**Fields:**
+- First name
+- Last name
+- Email address
+- Contact number
+- Fulfilment method: **Delivery** / **Collection** (radio toggle)
+- If Delivery: street address, suburb, city, province, postal code
+
+**Behaviour on submit:**
+1. JS POSTs form data to Formspree — merchant receives an email with buyer name, contact details, product, and delivery/collection choice.
+2. JS dynamically builds and submits a PayFast form with:
+   - `amount` = product price + R80 delivery fee (delivery) OR product price only (collection)
+   - `shipping_amount` = `80.00` (delivery) OR omitted (collection)
+   - `name_first`, `name_last`, `email_address`, `cell_number` pre-populated from the form
+   - `custom_str1` = `"delivery"` or `"collection"` (passed through for merchant reference)
+   - `return_url` = `/thank-you` (delivery) or `/thank-you?collection=true` (collection)
+
+**Delivery cost:** R80 flat rate nationwide. Shown as a line item on the PayFast checkout page via `shipping_amount`.
+
+**Collection:** Available in Diep River, Cape Town. Exact address is emailed to the buyer by the merchant after payment confirmation — it does not appear on the website.
 
 ---
 
 ## PayFast Integration
 
-**Flow:** Buy Now button → HTML form POST to PayFast gateway → payment → redirect to `/thank-you`.
+**Flow:** Buy Now → Order Form (buyer details + delivery/collection) → Formspree submission → PayFast redirect → payment → `/thank-you`.
 
-**Form fields per product:**
-- `merchant_id` — from PayFast merchant account
-- `merchant_key` — from PayFast merchant account
-- `return_url` — `https://thestudysmarterhub.com/thank-you`
+**PayFast form fields:**
+- `merchant_id`, `merchant_key` — from PayFast merchant account
+- `return_url` — `/thank-you` or `/thank-you?collection=true`
 - `cancel_url` — `https://thestudysmarterhub.com/shop`
-- `amount` — product price (e.g. `250.00`)
-- `item_name` — e.g. "Study Smarter Book" / "Study Smarter Student Workbook"
+- `amount` — product price + R80 (delivery) or product price only (collection)
+- `shipping_amount` — `80.00` (delivery only)
+- `item_name` — "Study Smarter Book" or "Study Smarter Student Workbook"
+- `name_first`, `name_last`, `email_address`, `cell_number` — from order form
+- `custom_str1` — `"delivery"` or `"collection"`
 
-**No ITN (notify_url):** Static site cannot receive server callbacks. PayFast emails the merchant on each successful transaction — sufficient for physical goods dispatch.
+**No ITN (notify_url):** Static site cannot receive server callbacks. PayFast emails the merchant on each successful transaction; Formspree email covers fulfilment details — together sufficient for physical dispatch.
 
-**Sandbox testing:** PayFast provides a sandbox environment. The `BookCard` component will accept an `env` prop or the Astro build will use an environment variable to toggle sandbox vs live endpoint.
+**Sandbox testing:** Astro build uses an environment variable (`PUBLIC_PAYFAST_ENV=sandbox|live`) to toggle between PayFast sandbox and live endpoints.
 
 ---
 
@@ -197,6 +232,7 @@ The following must be supplied before the site can go live:
 - **Book descriptions** — short (card) and medium (page section) versions for both products
 - **PayFast merchant credentials** — `merchant_id` and `merchant_key` from the PayFast dashboard
 - **Formspree endpoint** — form action URL from the Formspree dashboard (free account required)
+- **Collection address** — full street address in Diep River, Cape Town (emailed to buyers manually by merchant; not published on site)
 - **Download files** — Study Planner (Excel), Student Workbook Guide (PDF), Teacher Reflection Guide (PDF)
 
 ---
