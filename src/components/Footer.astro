@@ -1,0 +1,202 @@
+---
+const footerLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/shop', label: 'Shop' },
+  { href: '/resources', label: 'Resources' },
+  { href: '/about', label: 'About' },
+];
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+
+    <div class="footer-brand">
+      <p class="footer-logo">The Study Smarter Hub</p>
+      <p class="footer-tagline">Study smarter, not harder.</p>
+      <p class="footer-email">
+        <a href="mailto:info@thestudysmarterhub.com">info@thestudysmarterhub.com</a>
+      </p>
+    </div>
+
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <ul>
+        {footerLinks.map(l => (
+          <li><a href={l.href}>{l.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="footer-contact">
+      <h3>Get in touch</h3>
+      <form id="contact-form" novalidate>
+        <div class="field">
+          <label for="c-name">Name</label>
+          <input type="text" id="c-name" name="name" required autocomplete="name" />
+        </div>
+        <div class="field">
+          <label for="c-email">Email</label>
+          <input type="email" id="c-email" name="email" required autocomplete="email" />
+        </div>
+        <div class="field">
+          <label for="c-message">Message</label>
+          <textarea id="c-message" name="message" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+        <p id="contact-status" class="form-status" aria-live="polite"></p>
+      </form>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container">
+      <p>© 2026 The Study Smarter Hub</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const status = document.getElementById('contact-status');
+  const endpoint = import.meta.env.PUBLIC_FORMSPREE_CONTACT_ENDPOINT as string | undefined;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!status) return;
+
+    if (!endpoint) {
+      status.textContent = 'Contact form is not yet configured. Please email info@thestudysmarterhub.com directly.';
+      return;
+    }
+
+    status.textContent = 'Sending…';
+    const data = new FormData(form);
+
+    try {
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' },
+      });
+      if (res.ok) {
+        status.textContent = 'Message sent — we\'ll be in touch shortly.';
+        form.reset();
+      } else {
+        status.textContent = 'Something went wrong. Please try again or email us directly.';
+      }
+    } catch {
+      status.textContent = 'Something went wrong. Please try again or email us directly.';
+    }
+  });
+</script>
+
+<style>
+  .site-footer {
+    background: var(--c-surface);
+    border-top: 1px solid #ddd9d4;
+    margin-top: 4rem;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+    gap: 3rem;
+    padding: 3rem 1.5rem;
+  }
+
+  .footer-logo {
+    font-family: var(--f-serif);
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+  }
+  .footer-tagline {
+    font-family: var(--f-serif);
+    font-weight: 300;
+    font-size: 0.9375rem;
+    color: var(--c-text-muted);
+    margin-bottom: 0.75rem;
+  }
+  .footer-email a {
+    font-size: 0.875rem;
+    color: var(--c-text-muted);
+  }
+
+  .footer-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .footer-nav a {
+    font-size: 0.9375rem;
+    color: var(--c-text-muted);
+    text-decoration: none;
+  }
+  .footer-nav a:hover { color: var(--c-text); text-decoration: underline; }
+
+  .footer-contact h3 {
+    font-family: var(--f-sans);
+    font-weight: 600;
+    font-size: 0.9375rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--c-text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-bottom: 0.875rem;
+  }
+  .field label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--c-text-muted);
+  }
+  .field input,
+  .field textarea {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #c8c4bf;
+    border-radius: 3px;
+    background: var(--c-bg);
+    font-family: var(--f-sans);
+    font-size: 0.9375rem;
+    color: var(--c-text);
+    resize: vertical;
+  }
+  .field input:focus,
+  .field textarea:focus {
+    outline: 2px solid var(--c-accent);
+    outline-offset: 1px;
+    border-color: var(--c-accent);
+  }
+
+  .form-status {
+    margin-top: 0.75rem;
+    font-size: 0.875rem;
+    color: var(--c-text-muted);
+    min-height: 1.25rem;
+  }
+
+  .footer-bottom {
+    border-top: 1px solid #ddd9d4;
+    padding: 1rem 0;
+  }
+  .footer-bottom p {
+    font-size: 0.8125rem;
+    color: var(--c-text-muted);
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+</style>
