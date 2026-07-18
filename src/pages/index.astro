@@ -3,47 +3,165 @@ import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import BookCard from '../components/BookCard.astro';
-import DownloadCard from '../components/DownloadCard.astro';
 ---
 
-<Base title="Home" description="Test">
+<Base
+  title="Study Smarter"
+  description="A practical, research-backed book for high school students — and everyone who supports them. By James Buchanan, Cape Town."
+>
   <Nav slot="nav" />
   <Footer slot="footer" />
-  <div class="container section" style="display:grid;grid-template-columns:1fr 1fr;gap:2rem">
-    <BookCard
-      title="Study Smarter"
-      description="A practical guide to studying effectively."
-      coverSrc="/images/book-cover.png"
-      coverAlt="Study Smarter book cover"
-      price="R350"
-      buyHref="/shop"
-    />
-    <BookCard
-      title="Study Smarter Student Workbook"
-      description="Put the strategies into practice."
-      coverSrc="/images/workbook-cover.png"
-      coverAlt="Workbook cover"
-      comingSoon={true}
-    />
-  </div>
-  <div class="container" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem;margin-top:2rem">
-    <DownloadCard
-      title="Study Planner"
-      description="Plan your exam prep week by week."
-      fileType="XLS"
-      downloadHref="/downloads/Study Planner Exam Template.xlsx"
-    />
-    <DownloadCard
-      title="Workbook Guide"
-      description="Answers and guidance for the student workbook."
-      fileType="PDF"
-      comingSoon={true}
-    />
-    <DownloadCard
-      title="Teacher Guide"
-      description="Support your students' study practices."
-      fileType="PDF"
-      comingSoon={true}
-    />
-  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <span class="eyebrow">Written by an educator. Built for students.</span>
+        <h1>
+          <span class="strong">Study smarter,</span><br />
+          <span class="soft">not harder.</span>
+        </h1>
+        <p class="hero-lead">
+          A practical guide for high school students that replaces guesswork with evidence-backed strategies.
+          Because cramming only works until it doesn't.
+        </p>
+        <div class="hero-ctas">
+          <a href="/shop" class="btn btn-primary">Shop Now</a>
+          <a href="/resources" class="btn btn-outline">Free Resources</a>
+        </div>
+      </div>
+      <div class="hero-cover">
+        <img
+          src="/images/book-cover.png"
+          alt="Study Smarter book cover"
+          width="300"
+          height="420"
+          loading="eager"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- About the books -->
+  <section class="section section-alt about-books">
+    <div class="container">
+      <span class="eyebrow">The books</span>
+      <h2><span style="font-weight:600">One method.</span> <span style="font-weight:300">Two formats.</span></h2>
+      <p class="about-lead">
+        <em>Study Smarter</em> gives students a clear, structured approach to learning — not a list of tips, but a complete
+        method developed over thirty years in the classroom and grounded in the science of self-regulated learning.
+        The companion Student Workbook puts that method into daily practice.
+      </p>
+    </div>
+  </section>
+
+  <!-- Product strip -->
+  <section class="section product-strip">
+    <div class="container">
+      <div class="product-grid">
+        <BookCard
+          title="Study Smarter"
+          description="Evidence-based strategies for high school students. Covers planning, memory, focus, exam technique, and the mindset shifts that make it all stick."
+          coverSrc="/images/book-cover.png"
+          coverAlt="Study Smarter book cover"
+          price="R350"
+          buyHref="/shop"
+          buyLabel="Shop Now"
+        />
+        <BookCard
+          title="Study Smarter Student Workbook"
+          description="Exercises and weekly planners to put the book's strategies into practice. Designed to be used alongside the main book."
+          coverSrc="/images/workbook-cover.png"
+          coverAlt="Study Smarter Student Workbook cover"
+          comingSoon={true}
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Author teaser -->
+  <section class="section section-alt author-teaser">
+    <div class="container author-teaser-inner">
+      <div class="author-text">
+        <span class="eyebrow">The author</span>
+        <h2 style="font-weight:600">James Buchanan</h2>
+        <p>
+          School principal, past national examiner, and MEd graduate in self-regulated learning —
+          James has spent over thirty years helping students find success in learning, not just in exams.
+        </p>
+        <a href="/about" class="btn btn-outline">Read more</a>
+      </div>
+    </div>
+  </section>
 </Base>
+
+<style>
+  /* Hero */
+  .hero {
+    padding: 5rem 0 4rem;
+  }
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 4rem;
+    align-items: center;
+  }
+  .hero-text h1 {
+    font-size: clamp(2.5rem, 5vw, 3.75rem);
+    margin: 0.5rem 0 1.25rem;
+  }
+  .strong { font-weight: 600; display: block; }
+  .soft { font-weight: 300; display: block; }
+  .hero-lead {
+    font-size: 1.125rem;
+    color: var(--c-text-muted);
+    max-width: 42ch;
+    margin-bottom: 2rem;
+  }
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .hero-cover img {
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    border-radius: 2px;
+  }
+
+  /* About the books */
+  .about-books h2 {
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    margin: 0.5rem 0 1rem;
+  }
+  .about-lead {
+    max-width: 62ch;
+    color: var(--c-text-muted);
+    font-size: 1.0625rem;
+  }
+  .about-lead em { font-style: normal; font-weight: 600; }
+
+  /* Product strip */
+  .product-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  /* Author teaser */
+  .author-teaser-inner {
+    max-width: 600px;
+  }
+  .author-teaser h2 {
+    font-size: 1.875rem;
+    margin: 0.5rem 0 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .hero-inner {
+      grid-template-columns: 1fr;
+    }
+    .hero-cover {
+      display: flex;
+      justify-content: center;
+      order: -1;
+    }
+    .hero-cover img { max-height: 300px; width: auto; }
+    .product-grid { grid-template-columns: 1fr; }
+  }
+</style>
