@@ -14,75 +14,106 @@ import BookCard from '../components/BookCard.astro';
 
   <!-- Hero -->
   <section class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
     <div class="container hero-inner">
       <div class="hero-text">
         <span class="eyebrow">Written by an educator. Built for students.</span>
         <h1>
-          <span class="strong">Study smarter,</span><br />
+          <span class="strong">Study smarter,</span>
           <span class="soft">not harder.</span>
         </h1>
         <p class="hero-lead">
-          A practical guide for high school students that replaces guesswork with evidence-backed strategies.
-          Because cramming only works until it doesn't.
+          The vital but too-often neglected skill — how to study properly.
+          Not tips. A complete, teachable method grounded in thirty years in the classroom.
         </p>
         <div class="hero-ctas">
           <a href="/shop" class="btn btn-primary">Shop Now</a>
           <a href="/resources" class="btn btn-outline">Free Resources</a>
         </div>
       </div>
-      <div class="hero-cover">
-        <img
-          src="/images/book-cover.png"
-          alt="Study Smarter book cover"
-          width="300"
-          height="420"
-          loading="eager"
-        />
-      </div>
+    </div>
+  </section>
+
+  <!-- Who is this for -->
+  <section class="audience">
+    <div class="audience-bg" aria-hidden="true"></div>
+    <div class="container audience-inner">
+      <span class="eyebrow audience-eyebrow">Who is this for?</span>
+      <h2 class="audience-heading"><span style="font-weight:600">This book is about to</span><br><span style="font-weight:300">change everything.</span></h2>
+      <p class="audience-intro">Are you&hellip;</p>
+      <ul class="audience-list">
+        <li>a parent shaping your child's first (or later) steps in studying</li>
+        <li>a teacher with a heart for supporting your students' efforts</li>
+        <li>in school management and wanting to make meaningful changes</li>
+        <li>a tertiary student wanting to reshape school habits that no longer cut it?</li>
+      </ul>
+      <p class="audience-close">Then this is the book for you.</p>
     </div>
   </section>
 
   <!-- About the books -->
-  <section class="section section-alt about-books">
+  <section class="section about-books">
     <div class="container">
       <span class="eyebrow">The books</span>
       <h2><span style="font-weight:600">One method.</span> <span style="font-weight:300">Two formats.</span></h2>
       <p class="about-lead">
         <em>Study Smarter</em> gives students a clear, structured approach to learning — not a list of tips, but a complete
         method developed over thirty years in the classroom and grounded in the science of self-regulated learning.
-        The companion Student Workbook puts that method into daily practice.
+        The companion Student Workbook takes students systematically through those principles, putting theory into practice
+        with perforated pages designed to be torn out and pasted into notebooks.
       </p>
     </div>
   </section>
 
-  <!-- Product strip -->
-  <section class="section product-strip">
+  <!-- Featured book -->
+  <section class="section section-alt product-section">
     <div class="container">
-      <div class="product-grid">
+
+      <div class="product-featured">
         <BookCard
+          featured={true}
           title="Study Smarter"
-          description="Evidence-based strategies for high school students. Covers planning, memory, focus, exam technique, and the mindset shifts that make it all stick."
+          description="Evidence-based strategies for high school students. Covers planning, memory, focus, exam technique, and the mindset shifts that make it all stick — not as a list of tips, but as a complete, teachable method grounded in the science of self-regulated learning."
           coverSrc="/images/book-cover.png"
           coverAlt="Study Smarter book cover"
           price="R350"
           buyHref="/shop"
-          buyLabel="Shop Now"
-        />
-        <BookCard
-          title="Study Smarter Student Workbook"
-          description="Exercises and weekly planners to put the book's strategies into practice. Designed to be used alongside the main book."
-          coverSrc="/images/workbook-cover.png"
-          coverAlt="Study Smarter Student Workbook cover"
-          comingSoon={true}
+          buyLabel="Buy Now"
         />
       </div>
+
+      <div class="product-secondary">
+        <h3 class="secondary-heading">
+          <span style="font-weight:600">Also available:</span>
+          <span style="font-weight:300"> The Student Workbook</span>
+        </h3>
+        <BookCard
+          title="Study Smarter Student Workbook"
+          description="This A4, full-colour workbook is a companion to Study Smarter and takes students systematically through the principles shared in the book. Here they get to put theory into practice."
+          coverSrc="/images/workbook-cover.png"
+          coverAlt="Study Smarter Student Workbook cover"
+          note="Can be used as-is, or tear out the perforated pages and paste them into your student notebooks."
+          previewUrl="https://s3.af-south-1.amazonaws.com/mags.digimaghost.com/StudySmarterStudentWorkbook.html"
+          price="R270"
+          buyHref="/shop"
+          buyLabel="Shop Now"
+        />
+      </div>
+
     </div>
   </section>
 
   <!-- Author teaser -->
-  <section class="section section-alt author-teaser">
-    <div class="container author-teaser-inner">
-      <div class="author-text">
+  <section class="author-teaser">
+    <div class="author-teaser-photo">
+      <img
+        src="/images/author-photo.jpg"
+        alt="James Buchanan, author of Study Smarter"
+        loading="lazy"
+      />
+    </div>
+    <div class="author-teaser-content">
+      <div class="author-teaser-text">
         <span class="eyebrow">The author</span>
         <h2 style="font-weight:600">James Buchanan</h2>
         <p>
@@ -98,16 +129,44 @@ import BookCard from '../components/BookCard.astro';
 <style>
   /* Hero */
   .hero {
-    padding: 5rem 0 4rem;
+    position: relative;
+    padding: 5rem 0 5rem;
+    overflow: hidden;
+    min-height: 520px;
+    display: flex;
+    align-items: center;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('/images/MainImage2.jpg');
+    background-size: cover;
+    background-position: right top;
+    z-index: 0;
+  }
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      var(--c-bg) 0%,
+      var(--c-bg) 38%,
+      rgba(250,250,248,0.82) 55%,
+      rgba(250,250,248,0.2) 75%,
+      transparent 100%
+    );
   }
   .hero-inner {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 4rem;
-    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-text {
+    max-width: 540px;
   }
   .hero-text h1 {
     font-size: clamp(2.5rem, 5vw, 3.75rem);
+    line-height: 1.08;
     margin: 0.5rem 0 1.25rem;
   }
   .strong { font-weight: 600; display: block; }
@@ -119,9 +178,61 @@ import BookCard from '../components/BookCard.astro';
     margin-bottom: 2rem;
   }
   .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
-  .hero-cover img {
-    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-    border-radius: 2px;
+
+  /* Audience */
+  .audience {
+    position: relative;
+    overflow: hidden;
+  }
+  .audience-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('/images/MainImage2.jpg');
+    background-size: cover;
+    background-position: center center;
+    z-index: 0;
+  }
+  .audience-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(18, 10, 4, 0.82);
+  }
+  .audience-inner {
+    position: relative;
+    z-index: 1;
+    padding: 4rem 0;
+  }
+  .audience-eyebrow {
+    color: rgba(255, 255, 255, 0.55) !important;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .audience-heading {
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    margin: 0 0 1.25rem;
+    color: var(--c-accent);
+    line-height: 1.15;
+  }
+  .audience-intro {
+    font-size: 1.0625rem;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 0.5rem;
+  }
+  .audience-list {
+    margin: 0 0 1.5rem 1.25rem;
+    padding: 0;
+    color: rgba(255,255,255,0.85);
+    font-size: 1.0625rem;
+    line-height: 2.1;
+  }
+  .audience-list li { padding-left: 0.25rem; }
+  .audience-close {
+    font-family: var(--f-serif);
+    font-weight: 600;
+    font-size: 1.375rem;
+    color: var(--c-accent);
+    margin: 0;
   }
 
   /* About the books */
@@ -136,32 +247,72 @@ import BookCard from '../components/BookCard.astro';
   }
   .about-lead em { font-style: normal; font-weight: 600; }
 
-  /* Product strip */
-  .product-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+  /* Product section */
+  .product-featured {
+    margin-bottom: 3rem;
+  }
+  .secondary-heading {
+    font-family: var(--f-serif);
+    font-size: 1.25rem;
+    margin-bottom: 1.25rem;
+    color: var(--c-text-muted);
+  }
+  .product-secondary {
+    max-width: 480px;
   }
 
   /* Author teaser */
-  .author-teaser-inner {
-    max-width: 600px;
+  .author-teaser {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    min-height: 380px;
+    background: var(--c-surface);
   }
-  .author-teaser h2 {
+  .author-teaser-photo {
+    overflow: hidden;
+  }
+  .author-teaser-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+  .author-teaser-content {
+    display: flex;
+    align-items: center;
+    padding: 3.5rem;
+  }
+  .author-teaser-text h2 {
     font-size: 1.875rem;
     margin: 0.5rem 0 1rem;
   }
+  .author-teaser-text p {
+    color: var(--c-text-muted);
+    max-width: 46ch;
+    margin-bottom: 1.75rem;
+  }
 
   @media (max-width: 768px) {
-    .hero-inner {
+    .hero { min-height: 420px; padding: 3.5rem 0; }
+    .hero-bg { background-position: center top; }
+    .hero-bg::after {
+      background: linear-gradient(
+        to bottom,
+        var(--c-bg) 0%,
+        rgba(250,250,248,0.92) 60%,
+        rgba(250,250,248,0.5) 100%
+      );
+    }
+    .product-secondary { max-width: 100%; }
+    .author-teaser {
       grid-template-columns: 1fr;
     }
-    .hero-cover {
-      display: flex;
-      justify-content: center;
-      order: -1;
+    .author-teaser-photo {
+      height: 320px;
     }
-    .hero-cover img { max-height: 300px; width: auto; }
-    .product-grid { grid-template-columns: 1fr; }
+    .author-teaser-content {
+      padding: 2rem 1.5rem;
+    }
   }
 </style>

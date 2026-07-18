@@ -10,7 +10,7 @@ const current = Astro.url.pathname;
 
 <header class="site-header">
   <div class="container nav-inner">
-    <a href="/" class="site-logo">The Study Smarter Hub</a>
+    <a href="/" class="site-logo"><span class="logo-accent">The</span> Study Smarter <span class="logo-accent">Hub</span></a>
 
     <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="main-nav">
       <span></span><span></span><span></span>
@@ -49,23 +49,24 @@ const current = Astro.url.pathname;
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+    box-shadow: 0 2px 16px rgba(0,0,0,0.22), 0 1px 4px rgba(0,0,0,0.12);
   }
   .nav-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 64px;
+    height: 76px;
   }
   .site-logo {
     font-family: var(--f-serif);
     font-weight: 600;
-    font-size: 1.1rem;
+    font-size: 1.45rem;
     color: #fff;
     text-decoration: none;
     flex-shrink: 0;
   }
   .site-logo:hover { text-decoration: none; opacity: 0.9; }
+  .logo-accent { color: var(--c-accent); }
 
   .main-nav ul {
     list-style: none;
@@ -78,7 +79,7 @@ const current = Astro.url.pathname;
   .nav-link {
     font-family: var(--f-sans);
     font-weight: 600;
-    font-size: 0.9375rem;
+    font-size: 1rem;
     color: rgba(255,255,255,0.82);
     text-decoration: none;
     transition: color 0.15s;
@@ -89,8 +90,8 @@ const current = Astro.url.pathname;
     text-decoration: none;
   }
   .nav-cta {
-    font-size: 0.875rem;
-    padding: 0.5rem 1.25rem;
+    font-size: 0.9375rem;
+    padding: 0.55rem 1.35rem;
   }
 
   .nav-toggle {
@@ -116,7 +117,7 @@ const current = Astro.url.pathname;
     .main-nav {
       display: none;
       position: absolute;
-      top: 64px;
+      top: 76px;
       left: 0;
       right: 0;
       background: var(--c-nav);

@@ -9,6 +9,9 @@ export interface Props {
   buyHref?: string;
   buyLabel?: string;
   comingSoon?: boolean;
+  note?: string;
+  previewUrl?: string;
+  featured?: boolean;
 }
 
 const {
@@ -21,16 +24,25 @@ const {
   buyHref,
   buyLabel = 'Buy Now',
   comingSoon = false,
+  note,
+  previewUrl,
+  featured = false,
 } = Astro.props;
 ---
 
-<div class="book-card">
+<div class:list={['book-card', { featured }]}>
   <div class="book-cover">
-    <img src={coverSrc} alt={coverAlt} width="200" height="280" loading="lazy" />
+    <img src={coverSrc} alt={coverAlt} loading="lazy" />
   </div>
   <div class="book-info">
     <h3>{title}</h3>
     <p class="book-desc">{description}</p>
+    {note && <p class="book-note">{note}</p>}
+    {previewUrl && (
+      <a href={previewUrl} target="_blank" rel="noopener noreferrer" class="preview-link">
+        Preview inside ↗
+      </a>
+    )}
     <div class="book-price">
       {comingSoon
         ? <span class="badge-coming-soon">Price coming soon</span>
@@ -59,24 +71,49 @@ const {
 <style>
   .book-card {
     background: var(--c-surface);
-    border-radius: 6px;
+    border-radius: 12px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    box-shadow: 0 6px 28px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.07);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .book-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 44px rgba(0,0,0,0.16), 0 4px 12px rgba(0,0,0,0.09);
+  }
+  .book-card.featured {
+    flex-direction: row;
+    align-items: stretch;
   }
   .book-cover {
-    background: #e8e4df;
+    background: #e2ddd8;
     display: flex;
     justify-content: center;
-    padding: 2rem 1.5rem;
+    align-items: center;
+    padding: 2.5rem 2rem;
+    flex-shrink: 0;
+  }
+  .book-card.featured .book-cover {
+    min-width: 280px;
+    max-width: 320px;
+    padding: 3rem 2.5rem;
+    align-self: stretch;
+    align-items: center;
   }
   .book-cover img {
-    max-height: 260px;
+    max-height: 340px;
     width: auto;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.28);
+    border-radius: 2px;
+  }
+  .book-card.featured .book-cover img {
+    max-height: 520px;
+    width: 100%;
+    object-fit: contain;
   }
   .book-info {
-    padding: 1.5rem;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -84,15 +121,35 @@ const {
   .book-info h3 {
     font-family: var(--f-serif);
     font-weight: 600;
-    font-size: 1.25rem;
+    font-size: 1.375rem;
     margin-bottom: 0.5rem;
+  }
+  .book-card.featured .book-info h3 {
+    font-size: 1.875rem;
+    margin-bottom: 0.75rem;
   }
   .book-desc {
     color: var(--c-text-muted);
     font-size: 0.9375rem;
     flex: 1;
+    margin-bottom: 0.75rem;
+  }
+  .book-note {
+    font-size: 0.875rem;
+    color: var(--c-text-muted);
+    border-left: 2px solid var(--c-blue);
+    padding-left: 0.75rem;
     margin-bottom: 1rem;
   }
+  .preview-link {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--c-blue);
+    display: inline-block;
+    margin-bottom: 1.25rem;
+    text-decoration: none;
+  }
+  .preview-link:hover { text-decoration: underline; }
   .book-price {
     margin-bottom: 1rem;
   }
@@ -107,10 +164,15 @@ const {
     font-weight: 600;
     color: var(--c-text-muted);
     background: #e0dcd7;
-    border-radius: 3px;
+    border-radius: 4px;
     padding: 0.25rem 0.5rem;
     letter-spacing: 0.03em;
     text-transform: uppercase;
   }
   .book-cta { margin-top: auto; }
+
+  @media (max-width: 640px) {
+    .book-card.featured { flex-direction: column; }
+    .book-card.featured .book-cover { min-width: unset; max-width: unset; }
+  }
 </style>

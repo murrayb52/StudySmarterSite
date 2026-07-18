@@ -112,11 +112,87 @@ import BookCard from '../components/BookCard.astro';
         <div class="shop-item">
           <BookCard
             title="Study Smarter Student Workbook"
-            description="Exercises and weekly planners to put the book's strategies into daily practice. Designed to be used alongside the main book."
+            description="This A4, full-colour workbook is a companion to Study Smarter and takes students systematically through the principles shared in the book. Here they get to put theory into practice."
             coverSrc="/images/workbook-cover.png"
             coverAlt="Study Smarter Student Workbook cover"
-            comingSoon={true}
+            note="Can be used as-is, or tear out the perforated pages and paste them into your student notebooks."
+            previewUrl="https://s3.af-south-1.amazonaws.com/mags.digimaghost.com/StudySmarterStudentWorkbook.html"
+            price="R270"
           />
+          <!-- Order form for this product -->
+          <div class="order-form-wrap hidden" id="form-study-smarter-student-workbook" data-product="Study Smarter Student Workbook" data-price="270">
+            <form class="order-form" novalidate>
+              <h3>Your details</h3>
+              <div class="form-row two-col">
+                <div class="field">
+                  <label for="wf-first">First name</label>
+                  <input type="text" id="wf-first" name="first_name" required autocomplete="given-name" />
+                </div>
+                <div class="field">
+                  <label for="wf-last">Last name</label>
+                  <input type="text" id="wf-last" name="last_name" required autocomplete="family-name" />
+                </div>
+              </div>
+              <div class="form-row two-col">
+                <div class="field">
+                  <label for="wf-email">Email</label>
+                  <input type="email" id="wf-email" name="email" required autocomplete="email" />
+                </div>
+                <div class="field">
+                  <label for="wf-phone">Phone</label>
+                  <input type="tel" id="wf-phone" name="phone" required autocomplete="tel" />
+                </div>
+              </div>
+
+              <h3>Delivery or collection?</h3>
+              <div class="fulfilment-options">
+                <label class="radio-option">
+                  <input type="radio" name="fulfilment" value="delivery" checked />
+                  <span>Delivery (R80 nationwide)</span>
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="fulfilment" value="collection" />
+                  <span>Collection in Diep River, Cape Town (exact address emailed after payment)</span>
+                </label>
+              </div>
+
+              <div class="delivery-fields" id="wf-delivery-fields">
+                <div class="field">
+                  <label for="wf-addr">Street address</label>
+                  <input type="text" id="wf-addr" name="address" autocomplete="street-address" />
+                </div>
+                <div class="form-row two-col">
+                  <div class="field">
+                    <label for="wf-suburb">Suburb</label>
+                    <input type="text" id="wf-suburb" name="suburb" />
+                  </div>
+                  <div class="field">
+                    <label for="wf-city">City</label>
+                    <input type="text" id="wf-city" name="city" autocomplete="address-level2" />
+                  </div>
+                </div>
+                <div class="form-row two-col">
+                  <div class="field">
+                    <label for="wf-province">Province</label>
+                    <input type="text" id="wf-province" name="province" />
+                  </div>
+                  <div class="field">
+                    <label for="wf-postal">Postal code</label>
+                    <input type="text" id="wf-postal" name="postal_code" autocomplete="postal-code" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="order-summary" id="wf-summary">
+                <span>Workbook: R270</span>
+                <span id="wf-shipping-line">+ Delivery: R80</span>
+                <strong id="wf-total">Total: R350</strong>
+              </div>
+
+              <button type="submit" class="btn btn-primary">Proceed to Payment</button>
+              <p class="form-status" id="wf-status" aria-live="polite"></p>
+            </form>
+          </div>
         </div>
 
       </div>
