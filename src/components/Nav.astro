@@ -23,7 +23,7 @@ const current = Astro.url.pathname;
           <li>
             <a
               href={l.href}
-              class:list={['nav-link', { active: current === l.href || (l.href !== '/' && current.startsWith(l.href)) }]}
+              class:list={['nav-link', { active: current === l.href || current === `${l.href}/` || (l.href !== `${b}/` && current.startsWith(l.href)) }]}
             >
               {l.label}
             </a>
