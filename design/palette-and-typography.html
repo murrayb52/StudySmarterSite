@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Study Smarter Hub — Design Reference</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300;1,9..144,400&family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Outfit:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #E8E4DF;
+      color: #222;
+      padding: 48px 36px;
+      min-height: 100vh;
+    }
+
+    /* ── Page header ── */
+    .page-header {
+      margin-bottom: 52px;
+    }
+    .page-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: #1a1a1a;
+      margin-bottom: 6px;
+    }
+    .page-header p {
+      font-size: 0.82rem;
+      color: #888;
+      line-height: 1.6;
+      max-width: 580px;
+    }
+
+    /* ── Section headings ── */
+    .section-heading {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #aaa;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-heading::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #d5d0cb;
+    }
+
+    section { margin-bottom: 56px; }
+
+    /* ── Palette grid ── */
+    .palette-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .palette-card {
+      background: #fff;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      position: relative;
+    }
+
+    .chosen-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: #C8601A;
+      color: #fff;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 20px;
+      z-index: 2;
+    }
+
+    .palette-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      padding: 16px 18px 4px;
+    }
+    .palette-desc {
+      font-size: 0.73rem;
+      color: #999;
+      padding: 0 18px 12px;
+    }
+
+    .swatches {
+      display: flex;
+      height: 60px;
+    }
+    .swatch {
+      flex: 1;
+      position: relative;
+    }
+    .swatch span {
+      position: absolute;
+      bottom: 4px;
+      left: 0; right: 0;
+      text-align: center;
+      font-size: 0.55rem;
+      font-weight: 700;
+      opacity: 0.85;
+    }
+
+    .swatch-roles {
+      padding: 10px 18px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .role-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.73rem;
+      color: #555;
+    }
+    .role-dot {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      border: 1px solid rgba(0,0,0,0.08);
+      flex-shrink: 0;
+    }
+    .role-label {
+      color: #bbb;
+      width: 90px;
+      font-size: 0.68rem;
+    }
+
+    .mini-preview {
+      margin: 0 14px 14px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.10);
+    }
+    .mini-nav {
+      padding: 9px 14px;
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+    }
+    .mini-nav-links { margin-left: auto; display: flex; gap: 12px; opacity: 0.65; }
+    .mini-hero { padding: 16px 14px; }
+    .mini-eyebrow { font-size: 0.58rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 5px; color: #7B9EB5; }
+    .mini-heading { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; line-height: 1.25; margin-bottom: 7px; }
+    .mini-body { font-size: 0.67rem; color: #666; line-height: 1.6; margin-bottom: 12px; }
+    .mini-btn-primary { display: inline-block; padding: 6px 13px; border-radius: 5px; font-size: 0.67rem; font-weight: 600; background: #C8601A; color: #fff; margin-right: 6px; }
+    .mini-btn-secondary { display: inline-block; padding: 6px 13px; border-radius: 5px; font-size: 0.67rem; font-weight: 600; border: 1.5px solid #ddd; color: #444; }
+
+    /* ── Typography grid ── */
+    .type-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 24px;
+    }
+
+    /* Card wrapper — needed for hover overlay */
+    .type-card {
+      background: #fff;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 14px rgba(0,0,0,0.08);
+      position: relative;
+    }
+
+    .type-card-meta {
+      padding: 14px 20px 12px;
+      border-bottom: 1px solid #f0f0f0;
+      background: #fafafa;
+    }
+    .type-card-meta h2 {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #222;
+      margin-bottom: 3px;
+    }
+    .type-card-meta p {
+      font-size: 0.71rem;
+      color: #aaa;
+      line-height: 1.5;
+    }
+
+    /* Font-name overlay — hidden by default, shown on hover/tap */
+    .font-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(26, 26, 26, 0.88);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      pointer-events: none;
+      z-index: 10;
+      padding: 24px;
+      text-align: center;
+    }
+    /* Hover — desktop */
+    .type-card:hover .font-overlay { opacity: 1; pointer-events: auto; }
+    /* Tap — mobile (focus-within on a hidden button) */
+    .type-card.tapped .font-overlay { opacity: 1; pointer-events: auto; }
+
+    .font-overlay-pair {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .font-overlay-role {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #7B9EB5;
+    }
+    .font-overlay-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #fff;
+    }
+    .font-overlay-name.heading-font { font-family: var(--heading-font); }
+    .font-overlay-name.body-font { font-family: var(--body-font); }
+    .font-overlay-divider {
+      width: 40px;
+      height: 1px;
+      background: rgba(255,255,255,0.2);
+    }
+    .font-overlay-sample {
+      font-size: 0.73rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.6;
+    }
+    .font-overlay-hint {
+      font-size: 0.62rem;
+      color: rgba(255,255,255,0.3);
+      margin-top: 8px;
+      letter-spacing: 0.04em;
+    }
+
+    /* Nav bar */
+    .nav {
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .nav-links { margin-left: auto; display: flex; gap: 16px; opacity: 0.65; }
+
+    /* Hero */
+    .hero { padding: 26px 20px 22px; background: #FAFAF8; }
+    .eyebrow {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      margin-bottom: 9px;
+      color: #7B9EB5;
+    }
+    .btn-primary {
+      display: inline-block;
+      padding: 9px 19px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      background: #C8601A;
+      color: #fff;
+      margin-right: 8px;
+    }
+    .btn-secondary {
+      display: inline-block;
+      padding: 9px 19px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      border: 1.5px solid #ddd;
+      color: #444;
+    }
+
+    /* Type specimen strip */
+    .specimen {
+      padding: 14px 20px 16px;
+      background: #FAFAF8;
+      border-top: 1px solid #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    .specimen-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+    .specimen-label {
+      font-size: 0.59rem;
+      color: #ccc;
+      width: 50px;
+      flex-shrink: 0;
+      font-family: 'Inter', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Tap hint shown on mobile where hover isn't possible */
+    .tap-hint {
+      display: none;
+      text-align: center;
+      font-size: 0.65rem;
+      color: #bbb;
+      padding: 6px 0 2px;
+      letter-spacing: 0.04em;
+    }
+    @media (hover: none) {
+      .tap-hint { display: block; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-header">
+    <h1>Study Smarter Hub — Design Reference</h1>
+    <p>Colour palettes and typography pairings explored during the design session. <strong>Shortlisted palettes are marked in orange.</strong> Typography pairing is TBD — hover (or tap on mobile) any card to reveal font names.</p>
+  </div>
+
+  <!-- ═══════════════════════════════ PALETTES ═══════════════════════════════ -->
+  <section>
+    <div class="section-heading">Colour Palettes — Two Shortlisted</div>
+    <div class="palette-grid">
+
+      <!-- A2 — CHOSEN -->
+      <div class="palette-card">
+        <div class="chosen-badge">Shortlisted</div>
+        <div class="palette-name">A2 — Muted Steel Blue Nav</div>
+        <div class="palette-desc">Pulls from the book cover's sky-blue. Orange pops against it. Feels considered and warm.</div>
+        <div class="swatches">
+          <div class="swatch" style="background:#4A6478;"><span style="color:#fff;">#4A6478</span></div>
+          <div class="swatch" style="background:#FAFAF8; border-top:1px solid #eee;"><span style="color:#333;">#FAFAF8</span></div>
+          <div class="swatch" style="background:#C8601A;"><span style="color:#fff;">#C8601A</span></div>
+          <div class="swatch" style="background:#7B9EB5;"><span style="color:#fff;">#7B9EB5</span></div>
+          <div class="swatch" style="background:#F0EDE8;"><span style="color:#333;">#F0EDE8</span></div>
+        </div>
+        <div class="swatch-roles">
+          <div class="role-row"><div class="role-dot" style="background:#4A6478;"></div><span class="role-label">Nav / Header</span>#4A6478 muted steel blue</div>
+          <div class="role-row"><div class="role-dot" style="background:#FAFAF8;"></div><span class="role-label">Background</span>#FAFAF8 warm white</div>
+          <div class="role-row"><div class="role-dot" style="background:#C8601A;"></div><span class="role-label">Accent / CTA</span>#C8601A burnt orange</div>
+          <div class="role-row"><div class="role-dot" style="background:#7B9EB5;"></div><span class="role-label">Subtle blue</span>#7B9EB5 steel (decorative/eyebrow)</div>
+          <div class="role-row"><div class="role-dot" style="background:#F0EDE8;"></div><span class="role-label">Surface / Cards</span>#F0EDE8 warm linen</div>
+        </div>
+        <div class="mini-preview">
+          <div class="mini-nav" style="background:#4A6478; color:#FAFAF8;">
+            <span style="color:#F0A070;">Study Smarter Hub</span>
+            <div class="mini-nav-links"><span>Shop</span><span>Resources</span></div>
+          </div>
+          <div class="mini-hero" style="background:#FAFAF8;">
+            <div class="mini-eyebrow">For students, parents & educators</div>
+            <div class="mini-heading" style="color:#1A1A1A;">Study smarter,<br/><em>not harder.</em></div>
+            <div class="mini-body">Practical tools to help high school students take control of their learning.</div>
+            <span class="mini-btn-primary">Shop Now</span>
+            <span class="mini-btn-secondary">Free Resources</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- A3 — CHOSEN -->
+      <div class="palette-card">
+        <div class="chosen-badge">Shortlisted</div>
+        <div class="palette-name">A3 — White Navigation</div>
+        <div class="palette-desc">Fully light feel. Orange logo carries the brand weight without a dark bar. Cleanest option.</div>
+        <div class="swatches">
+          <div class="swatch" style="background:#FFFFFF; border-top:1px solid #eee;"><span style="color:#333;">#FFFFFF</span></div>
+          <div class="swatch" style="background:#FAFAF8; border-top:1px solid #eee;"><span style="color:#333;">#FAFAF8</span></div>
+          <div class="swatch" style="background:#C8601A;"><span style="color:#fff;">#C8601A</span></div>
+          <div class="swatch" style="background:#7B9EB5;"><span style="color:#fff;">#7B9EB5</span></div>
+          <div class="swatch" style="background:#F0EDE8;"><span style="color:#333;">#F0EDE8</span></div>
+        </div>
+        <div class="swatch-roles">
+          <div class="role-row"><div class="role-dot" style="background:#FFFFFF; border:1px solid #ddd;"></div><span class="role-label">Nav / Header</span>#FFFFFF white</div>
+          <div class="role-row"><div class="role-dot" style="background:#FAFAF8;"></div><span class="role-label">Background</span>#FAFAF8 warm white</div>
+          <div class="role-row"><div class="role-dot" style="background:#C8601A;"></div><span class="role-label">Accent / CTA</span>#C8601A burnt orange</div>
+          <div class="role-row"><div class="role-dot" style="background:#7B9EB5;"></div><span class="role-label">Subtle blue</span>#7B9EB5 steel (decorative/eyebrow)</div>
+          <div class="role-row"><div class="role-dot" style="background:#F0EDE8;"></div><span class="role-label">Surface / Cards</span>#F0EDE8 warm linen</div>
+        </div>
+        <div class="mini-preview" style="border:1px solid #eee;">
+          <div class="mini-nav" style="background:#FFFFFF; color:#333; border-bottom:1px solid #eee;">
+            <span style="color:#C8601A;">Study Smarter Hub</span>
+            <div class="mini-nav-links" style="color:#444;"><span>Shop</span><span>Resources</span></div>
+          </div>
+          <div class="mini-hero" style="background:#FAFAF8;">
+            <div class="mini-eyebrow">For students, parents & educators</div>
+            <div class="mini-heading" style="color:#1A1A1A;">Study smarter,<br/><em>not harder.</em></div>
+            <div class="mini-body">Practical tools to help high school students take control of their learning.</div>
+            <span class="mini-btn-primary">Shop Now</span>
+            <span class="mini-btn-secondary">Free Resources</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- A1 — NOT chosen -->
+      <div class="palette-card">
+        <div class="palette-name" style="color:#aaa;">A1 — Warm Charcoal <span style="font-size:0.7rem;font-weight:400;color:#ccc;">(not chosen)</span></div>
+        <div class="palette-desc">Dark but no blue cast. Too heavy for the warm/light direction.</div>
+        <div class="swatches" style="opacity:0.5;">
+          <div class="swatch" style="background:#2A2520;"><span style="color:#fff;">#2A2520</span></div>
+          <div class="swatch" style="background:#FAFAF8; border-top:1px solid #eee;"><span style="color:#333;">#FAFAF8</span></div>
+          <div class="swatch" style="background:#C8601A;"><span style="color:#fff;">#C8601A</span></div>
+          <div class="swatch" style="background:#7B9EB5;"><span style="color:#fff;">#7B9EB5</span></div>
+          <div class="swatch" style="background:#F0EDE8;"><span style="color:#333;">#F0EDE8</span></div>
+        </div>
+      </div>
+
+      <!-- A4 — NOT chosen -->
+      <div class="palette-card">
+        <div class="palette-name" style="color:#aaa;">A4 — Deep Slate Blue <span style="font-size:0.7rem;font-weight:400;color:#ccc;">(not chosen)</span></div>
+        <div class="palette-desc">Between A2 and original. Darker than A2 but softer than A-original. A2 was preferred.</div>
+        <div class="swatches" style="opacity:0.5;">
+          <div class="swatch" style="background:#354A58;"><span style="color:#fff;">#354A58</span></div>
+          <div class="swatch" style="background:#FAFAF8; border-top:1px solid #eee;"><span style="color:#333;">#FAFAF8</span></div>
+          <div class="swatch" style="background:#C8601A;"><span style="color:#fff;">#C8601A</span></div>
+          <div class="swatch" style="background:#7B9EB5;"><span style="color:#fff;">#7B9EB5</span></div>
+          <div class="swatch" style="background:#F0EDE8;"><span style="color:#333;">#F0EDE8</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ TYPOGRAPHY ═══════════════════════════════ -->
+  <section>
+    <div class="section-heading">Typography Pairings — TBD (hover or tap to reveal font names)</div>
+    <p class="tap-hint">Tap a card to reveal font names</p>
+    <div class="type-grid">
+
+      <!-- PAIRING 1: Playfair Display + DM Sans -->
+      <div class="type-card" style="--heading-font:'Playfair Display',serif; --body-font:'DM Sans',sans-serif;" onclick="this.classList.toggle('tapped')">
+        <div class="font-overlay">
+          <div class="font-overlay-pair">
+            <div class="font-overlay-role">Headings</div>
+            <div class="font-overlay-name heading-font" style="font-family:'Playfair Display',serif; font-size:1.4rem; font-style:italic;">Playfair Display</div>
+          </div>
+          <div class="font-overlay-divider"></div>
+          <div class="font-overlay-pair">
+            <div class="font-overlay-role">Body text</div>
+            <div class="font-overlay-name body-font" style="font-family:'DM Sans',sans-serif;">DM Sans</div>
+          </div>
+          <div class="font-overlay-sample">High-contrast editorial serif + clean modern sans.<br/>Both free on Google Fonts.</div>
+          <div class="font-overlay-hint">Click/tap again to close</div>
+        </div>
+        <div class="type-card-meta">
+          <h2>1 — Editorial</h2>
+          <p>High drama headings, clean modern body. Like a quality literary magazine.</p>
+        </div>
+        <div class="nav" style="background:#4A6478; color:#FAFAF8; font-family:'DM Sans',sans-serif;">
+          <span style="color:#F0A070; font-family:'Playfair Display',serif; font-style:italic; font-size:0.95rem; text-transform:none; letter-spacing:0; font-weight:400;">the<strong>studysmarter</strong>hub</span>
+          <div class="nav-links"><span>Home</span><span>Shop</span><span>Resources</span></div>
+        </div>
+        <div class="hero">
+          <div class="eyebrow" style="font-family:'DM Sans',sans-serif;">For students, parents & educators</div>
+          <div style="font-family:'Playfair Display',serif; font-size:2rem; font-weight:700; color:#1A1A1A; line-height:1.2; margin-bottom:12px;">Study smarter,<br/><em>not harder.</em></div>
+          <div style="font-family:'DM Sans',sans-serif; font-size:0.83rem; color:#666; line-height:1.7; margin-bottom:18px;">Practical tools and proven methods to help high school students take control of their learning — by James Buchanan.</div>
+          <span class="btn-primary" style="font-family:'DM Sans',sans-serif;">Shop Now</span>
+          <span class="btn-secondary" style="font-family:'DM Sans',sans-serif;">Free Resources</span>
+        </div>
+        <div class="specimen">
+          <div class="specimen-row">
+            <span class="specimen-label">Display</span>
+            <span style="font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:700; color:#1A1A1A;">Study Smarter</span>
+          </div>
+          <div class="specimen-row">
+            <span class="specimen-label">Italic</span>
+            <span style="font-family:'Playfair Display',serif; font-size:1.05rem; font-style:italic; color:#C8601A;">Stone-Age Roots, Modern Wisdoms</span>
+          </div>
+          <div class="specimen-row">
+            <span class="specimen-label">Body</span>
+            <span style="font-family:'DM Sans',sans-serif; font-size:0.82rem; color:#555;">The quick brown fox jumps over the lazy dog.</span>
+          </div>
+          <div class="specimen-row">
+            <span class="specimen-label">Caption</span>
+            <span style="font-family:'DM Sans',sans-serif; font-size:0.67rem; color:#999; letter-spacing:0.06em; text-transform:uppercase;">James Buchanan · Study Skills</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PAIRING 2: Cormorant Garamond + Plus Jakarta Sans -->
+      <div class="type-card" onclick="this.classList.toggle('tapped')">
+        <div class="font-overlay">
+          <div class="font-overlay-pair">
+            <div class="font-overlay-role">Headings</div>
+            <div class="font-overlay-name" style="font-family:'Cormorant Garamond',serif; font-size:1.5rem; font-weight:600;">Cormorant Garamond</div>
+          </div>
+          <div class="font-overlay-divider"></div>
+          <div class="font-overlay-pair">
+            <div class="font-overlay-role">Body text</div>
+            <div class="font-overlay-name" style="font-family:'Plus Jakarta Sans',sans-serif;">Plus Jakarta Sans</div>
+          </div>
+          <div class="font-overlay-sample">Elegant thin/thick contrast serif + warm friendly sans.<br/>Both free on Google Fonts.</div>
+          <div class="font-overlay-hint">Click/tap again to close</div>
+        </div>
+        <div class="type-card-meta">
+          <h2>2 — Refined & Scholarly</h2>
+          <p>Elegant thin/thick contrast headings. Most "prestigious publisher" feel.</p>
+        </div>
+        <div class="nav" style="background:#4A6478; color:#FAFAF8; font-family:'Plus Jakarta Sans',sans-serif;">
+          <span style="color:#F0A070; font-family:'Cormorant Garamond',serif; font-size:1rem; text-transform:none; letter-spacing:0.04em; font-weight:600;">The Study Smarter Hub</span>
+          <div class="nav-links"><span>Home</span><span>Shop</span><span>Resources</span></div>
+        </div>
+        <div class="hero">
+          <div class="eyebrow" style="font-family:'Plus Jakarta Sans',sans-serif;">For students, parents & educators</div>
+          <div style="font-family:'Cormorant Garamond',serif; font-size:2.5rem; font-weight:600; color:#1A1A1A; line-height:1.15; margin-bottom:12px;">Study smarter,<br/><em style="font-weight:300;">not harder.</em></div>
+          <div style="font-family:'Plus Jakarta Sans',sans-serif; font-size:0.83rem; color:#666; line-height:1.7; margin-bottom:18px;">Practical tools and proven methods to help high school students take control of their learning — by James Buchanan.</div>
+          <span class="btn-primary" style="font-family:'Plus Jakarta Sans',sans-serif;">Shop Now</span>
+          <span class="btn-secondary" style="font-family:'Plus Jakarta Sans',sans-serif;">Free Resources</span>
+        </div>
+        <div class="specimen">
+          <div class="specimen-row">
+            <span class="specimen-label">Display</span>
+            <span style="font-family:'Cormorant Garamond',serif; font-size:1.7rem; font-weight:600; color:#1A1A1A;">Study Smarter</span>
+          </div>
+          <div class="specimen-row">
+            <span class="specimen-label">Italic</span>
+            <span style="font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-style:italic; font-weight:300; color:#C8601A;">Stone-Age Roots, Modern Wisdoms</span>
+          </div>
+          <div class="specimen-row">
+            <span class="specimen-label">Body</span>
+            <span style="font-family:'Plus Jakarta Sans',sans-serif; font-size:0.82rem; color:#555;">The quick brown fox jumps over the lazy dog.</span>
+          </div>
+          <div class="specimen-row">
+            <span class="specimen-label">Caption</span>
+            <span style="font-family:'Plus Jakarta Sans',sans-serif; font-size:0.67rem; color:#999; letter-spacing:0.06em; text-transform:uppercase;">James Buchanan · Study Skills</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PAIRING 3: Fraunces + Outfit -->
+      <div class="type-card" onclick="this.classList.toggle('tapped')">
+        <div class="font-overlay">
+          <div class="font-overlay-pair">
+            <div class="font-overlay-role">Headings</div>
+            <div class="font-overlay-name" style="font-family:'Fraunces',serif; font-size:1.4rem; font-weight:700;">Fraunces</div>
+          </div>
+          <div class="font-overlay-divider"></div>
+          <div class="font-overlay-pair">
+            <div class="font-overlay-role">Body text</div>
+            <div class="font-overlay-name" style="font-family:'Outfit',sans-serif;">Outfit</div>
+          </div>
+          <div class="font-overlay-sample">Variable optical-size serif (used by NYT) + geometric rounded sans.<br/>Both free on Google Fonts.</div>
+          <div class="font-overlay-hint">Click/tap again to close</div>
+        </div>
+        <div class="type-card-meta">
+          <h2>3 — Contemporary & Distinctive</h2>
+          <p>Fraunces letterforms reshape at different sizes — unusual and warm. Used by the NYT.</p>
+        </div>
+        <div class="nav" style="background:#4A6478; color:#FAFAF8; font-family:'Outfit',sans-serif;">
+          <span style="color:#F0A070; font-family:'Fraunces',serif; font-size:0.95rem; text-transform:none; letter-spacing:0.02em; font-weight:400;">Study Smarter Hub</span>
+          <div class="nav-links"><span>Home</span><span>Shop</span><span>Resources</span></div>
+        </div>
+        <div class="hero">
+          <div class="eyebrow" style="font-family:'Outfit',sans-serif;">For students, parents & educators</div>
+          <div style="font-family:'Fraunces',serif; font-size:2rem; font-weight:700; color:#1A1A1A; line-height:1.2; margin-bottom:12px;">Study smarter,<br/><em style="font-weight:300;">not harder.</em></div>
+          <div style="font-family:'Outfit',sans-serif; font-size:0.83rem; color:#666; line-height:1.7; margin-bottom:18px;">Practical tools and proven methods to help high school students take control of their learning — by James Buchanan.</div>
+          <span class="btn-primary" style="font-family:'Outfit',sans-serif;">Shop Now</span>
+          <span class="btn-secondary" style="font-family:'Outfit',sans-serif;">Free Resources</span>
+        </div>
+        <div class="specimen">
+          <div class="specimen-row">
+            <span class="specimen-label">Display</span>
+            <span style="font-family:'Fraunces',serif; font-size:1.6rem; font-weight:700; color:#1A1A1A;">Study Smarter</span>
+          </div>
+          <div class="specimen-row">
+            <span class="specimen-label">Italic</span>
+            <span style="font-family:'Fraunces',serif; font-size:1.1rem; font-style:italic; font-weight:300; color:#C8601A;">Stone-Age Roots, Modern Wisdoms</span>
+          </div>
+          <div class="specimen-row">
+            <span class="specimen-label">Body</span>
+            <span style="font-family:'Outfit',sans-serif; font-size:0.82rem; color:#555;">The quick brown fox jumps over the lazy dog.</span>
+          </div>
+          <div class="specimen-row">
+            <span class="specimen-label">Caption</span>
+            <span style="font-family:'Outfit',sans-serif; font-size:0.67rem; color:#999; letter-spacing:0.06em; text-transform:uppercase;">James Buchanan · Study Skills</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PAIRING 4: Playfair + DM Sans on White Nav -->
+      <div class="type-card" onclick="this.classList.toggle('tapped')">
+        <div class="font-overlay">
+          <div class="font-overlay-pair">
+            <div class="font-overlay-role">Headings</div>
+            <div class="font-overlay-name" style="font-family:'Playfair Display',serif; font-size:1.4rem; font-style:italic;">Playfair Display</div>
+          </div>
+          <div class="font-overlay-divider"></div>
+          <div class="font-overlay-pair">
+            <div class="font-overlay-role">Body text</div>
+            <div class="font-overlay-name" style="font-family:'DM Sans',sans-serif;">DM Sans</div>
+          </div>
+          <div class="font-overlay-sample">Same as Pairing 1 — shown here with the A3 white navigation.<br/>Both free on Google Fonts.</div>
+          <div class="font-overlay-hint">Click/tap again to close</div>
+        </div>
+        <div class="type-card-meta">
+          <h2>4 — Editorial on White Nav (A3)</h2>
+          <p>Pairing 1 with A3's white nav — orange logotype does all the brand work.</p>
+        </div>
+        <div class="nav" style="background:#FFFFFF; color:#333; font-family:'DM Sans',sans-serif; border-bottom:1px solid #eee;">
+          <span style="color:#C8601A; font-family:'Playfair Display',serif; font-style:italic; font-size:0.95rem; text-transform:none; letter-spacing:0; font-weight:400;">the<strong>studysmarter</strong>hub</span>
+          <div class="nav-links" style="color:#444;"><span>Home</span><span>Shop</span><span>Resources</span></div>
+        </div>
+        <div class="hero">
+          <div class="eyebrow" style="font-family:'DM Sans',sans-serif;">For students, parents & educators</div>
+          <div style="font-family:'Playfair Display',serif; font-size:2rem; font-weight:700; color:#1A1A1A; line-height:1.2; margin-bottom:12px;">Study smarter,<br/><em>not harder.</em></div>
+          <div style="font-family:'DM Sans',sans-serif; font-size:0.83rem; color:#666; line-height:1.7; margin-bottom:18px;">Practical tools and proven methods to help high school students take control of their learning — by James Buchanan.</div>
+          <span class="btn-primary" style="font-family:'DM Sans',sans-serif;">Shop Now</span>
+          <span class="btn-secondary" style="font-family:'DM Sans',sans-serif;">Free Resources</span>
+        </div>
+        <div class="specimen">
+          <div class="specimen-row">
+            <span class="specimen-label">Display</span>
+            <span style="font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:700; color:#1A1A1A;">Study Smarter</span>
+          </div>
+          <div class="specimen-row">
+            <span class="specimen-label">Italic</span>
+            <span style="font-family:'Playfair Display',serif; font-size:1.05rem; font-style:italic; color:#C8601A;">Stone-Age Roots, Modern Wisdoms</span>
+          </div>
+          <div class="specimen-row">
+            <span class="specimen-label">Body</span>
+            <span style="font-family:'DM Sans',sans-serif; font-size:0.82rem; color:#555;">The quick brown fox jumps over the lazy dog.</span>
+          </div>
+          <div class="specimen-row">
+            <span class="specimen-label">Caption</span>
+            <span style="font-family:'DM Sans',sans-serif; font-size:0.67rem; color:#999; letter-spacing:0.06em; text-transform:uppercase;">James Buchanan · Study Skills</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</body>
+</html>
