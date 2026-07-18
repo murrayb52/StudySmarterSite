@@ -36,8 +36,10 @@ import BookCard from '../components/BookCard.astro';
 
   <!-- Who is this for -->
   <section class="audience">
-    <div class="audience-bg" aria-hidden="true"></div>
-    <div class="container audience-inner">
+    <div class="audience-photo">
+      <img src="/images/james-holding-books-smiling.jpg" alt="James Buchanan holding both Study Smarter books" loading="lazy" />
+    </div>
+    <div class="audience-text">
       <span class="eyebrow audience-eyebrow">Who is this for?</span>
       <h2 class="audience-heading"><span style="font-weight:600">This book is about to</span><br><span style="font-weight:300">change everything.</span></h2>
       <p class="audience-intro">Are you&hellip;</p>
@@ -184,35 +186,34 @@ import BookCard from '../components/BookCard.astro';
 
   /* Audience */
   .audience {
-    position: relative;
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    min-height: 480px;
+  }
+  .audience-photo {
     overflow: hidden;
   }
-  .audience-bg {
-    position: absolute;
-    inset: 0;
-    background-image: url('/images/MainImage2.jpg');
-    background-size: cover;
-    background-position: center center;
-    z-index: 0;
+  .audience-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
   }
-  .audience-bg::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(18, 10, 4, 0.82);
-  }
-  .audience-inner {
-    position: relative;
-    z-index: 1;
-    padding: 4rem 0;
+  .audience-text {
+    background: #1c2a35;
+    padding: 4rem 3.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
   .audience-eyebrow {
-    color: rgba(255, 255, 255, 0.55) !important;
+    color: rgba(255, 255, 255, 0.5) !important;
     display: block;
     margin-bottom: 0.5rem;
   }
   .audience-heading {
-    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
     margin: 0 0 1.25rem;
     color: var(--c-accent);
     line-height: 1.15;
@@ -225,7 +226,7 @@ import BookCard from '../components/BookCard.astro';
   .audience-list {
     margin: 0 0 1.5rem 1.25rem;
     padding: 0;
-    color: rgba(255,255,255,0.85);
+    color: rgba(255,255,255,0.82);
     font-size: 1.0625rem;
     line-height: 2.1;
   }
@@ -349,6 +350,15 @@ import BookCard from '../components/BookCard.astro';
         rgba(250,250,248,0.92) 60%,
         rgba(250,250,248,0.5) 100%
       );
+    }
+    .audience {
+      grid-template-columns: 1fr;
+    }
+    .audience-photo {
+      height: 340px;
+    }
+    .audience-text {
+      padding: 2.5rem 1.5rem;
     }
     .product-secondary { max-width: 100%; }
     .author-teaser {
