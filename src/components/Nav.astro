@@ -1,16 +1,17 @@
 ---
+const b = import.meta.env.BASE_URL.replace(/\/$/, '');
 const links = [
-  { href: '/', label: 'Home' },
-  { href: '/shop', label: 'Shop' },
-  { href: '/resources', label: 'Resources' },
-  { href: '/about', label: 'About' },
+  { href: `${b}/`, label: 'Home' },
+  { href: `${b}/shop`, label: 'Shop' },
+  { href: `${b}/resources`, label: 'Resources' },
+  { href: `${b}/about`, label: 'About' },
 ];
 const current = Astro.url.pathname;
 ---
 
 <header class="site-header">
   <div class="container nav-inner">
-    <a href="/" class="site-logo"><span class="logo-accent">The</span> Study Smarter <span class="logo-accent">Hub</span></a>
+    <a href={`${b}/`} class="site-logo"><span class="logo-accent">The</span> Study Smarter <span class="logo-accent">Hub</span></a>
 
     <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="main-nav">
       <span></span><span></span><span></span>

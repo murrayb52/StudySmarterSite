@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import BookCard from '../components/BookCard.astro';
-const base = import.meta.env.BASE_URL;
+const b = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Base
@@ -15,7 +15,7 @@ const base = import.meta.env.BASE_URL;
 
   <!-- Hero -->
   <section class="hero">
-    <div class="hero-bg" aria-hidden="true" style={`background-image: url('${base}images/fishbowl-leap-wide.png')`}></div>
+    <div class="hero-bg" aria-hidden="true" style={`background-image: url('${b}/images/fishbowl-leap-wide.png')`}></div>
     <div class="container hero-inner">
       <div class="hero-text">
         <span class="eyebrow">Written by an educator. Built for students.</span>
@@ -28,8 +28,8 @@ const base = import.meta.env.BASE_URL;
           Not tips. A complete, teachable method grounded in thirty years in the classroom.
         </p>
         <div class="hero-ctas">
-          <a href="/shop" class="btn btn-primary">Shop Now</a>
-          <a href="/resources" class="btn btn-outline">Free Resources</a>
+          <a href={`${b}/shop`} class="btn btn-primary">Shop Now</a>
+          <a href={`${b}/resources`} class="btn btn-outline">Free Resources</a>
         </div>
       </div>
     </div>
@@ -49,14 +49,14 @@ const base = import.meta.env.BASE_URL;
       </ul>
       <p class="audience-close">Then this is the book for you.</p>
     </div>
-    <div class="audience-photo" style={`background-image: url('${base}images/bg-goldfish-pattern.png')`}>
-      <img src="/images/book-cover.png" alt="Study Smarter book cover" loading="lazy" />
+    <div class="audience-photo" style={`background-image: url('${b}/images/bg-goldfish-pattern.png')`}>
+      <img src={`${b}/images/book-cover.png`} alt="Study Smarter book cover" loading="lazy" />
     </div>
   </section>
 
   <!-- About the books -->
   <section class="section about-books">
-    <div class="about-books-pattern" aria-hidden="true" style={`background-image: url('${base}images/bg-goldfish-pattern.png')`}></div>
+    <div class="about-books-pattern" aria-hidden="true" style={`background-image: url('${b}/images/bg-goldfish-pattern.png')`}></div>
     <div class="container">
       <span class="eyebrow">The books</span>
       <h2><span style="font-weight:600">One method.</span> <span style="font-weight:300">Two formats.</span></h2>
@@ -111,7 +111,7 @@ const base = import.meta.env.BASE_URL;
   <section class="author-teaser">
     <div class="author-teaser-photo">
       <img
-        src="/images/james-speaking-gesturing.jpg"
+        src={`${b}/images/james-speaking-gesturing.jpg`}
         alt="James Buchanan speaking at the Study Smarter book launch"
         loading="lazy"
       />
@@ -124,7 +124,7 @@ const base = import.meta.env.BASE_URL;
           School principal, past national examiner, and MEd graduate in self-regulated learning —
           James has spent over thirty years helping students find success in learning, not just in exams.
         </p>
-        <a href="/about" class="btn btn-outline">Read more</a>
+        <a href={`${b}/about`} class="btn btn-outline">Read more</a>
       </div>
     </div>
   </section>

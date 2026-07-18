@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+const b = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Base
@@ -15,7 +16,7 @@ import Footer from '../components/Footer.astro';
 
     <div class="author-photo-col">
       <img
-        src="/images/author-photo.jpg"
+        src={`${b}/images/author-photo.jpg`}
         alt="James Buchanan, author of Study Smarter"
         loading="eager"
       />
@@ -45,7 +46,7 @@ import Footer from '../components/Footer.astro';
         <span class="credential">30+ years in education</span>
       </div>
 
-      <a href="/shop" class="btn btn-primary">Get the book</a>
+      <a href={`${b}/shop`} class="btn btn-primary">Get the book</a>
     </div>
 
   </section>

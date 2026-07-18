@@ -1,9 +1,10 @@
 ---
+const b = import.meta.env.BASE_URL.replace(/\/$/, '');
 const footerLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/shop', label: 'Shop' },
-  { href: '/resources', label: 'Resources' },
-  { href: '/about', label: 'About' },
+  { href: `${b}/`, label: 'Home' },
+  { href: `${b}/shop`, label: 'Shop' },
+  { href: `${b}/resources`, label: 'Resources' },
+  { href: `${b}/about`, label: 'About' },
 ];
 ---
 

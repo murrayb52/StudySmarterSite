@@ -11,13 +11,13 @@ export interface Props {
 }
 
 const { title, description, fileType, downloadHref, comingSoon = false, coverSrc, coverAlt, horizontal = false } = Astro.props;
-const base = import.meta.env.BASE_URL;
+const b = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <div class:list={['download-card', { 'coming-soon': comingSoon, horizontal }]}>
-  <div class="card-cover" style={`background-image: url('${base}images/bg-goldfish-pattern.png')`}>
+  <div class="card-cover" style={`background-image: url('${b}/images/bg-goldfish-pattern.png')`}>
     {coverSrc
-      ? <img src={`${base}${coverSrc.replace(/^\//, '')}`} alt={coverAlt ?? title} loading="lazy" />
+      ? <img src={`${b}${coverSrc}`} alt={coverAlt ?? title} loading="lazy" />
       : <div class="cover-placeholder" aria-hidden="true">
           <span class="placeholder-label">{title.split(' ').slice(0, 2).join(' ')}</span>
         </div>
@@ -35,7 +35,7 @@ const base = import.meta.env.BASE_URL;
         ? <span class="badge-coming-soon">Coming soon</span>
         : downloadHref
           ? (
-            <a href={`${base}${downloadHref!.replace(/^\//, '')}`} download class="btn btn-primary dl-btn">
+            <a href={`${b}${downloadHref}`} download class="btn btn-primary dl-btn">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                 <polyline points="7 10 12 15 17 10"/>

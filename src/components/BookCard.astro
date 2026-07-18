@@ -28,12 +28,12 @@ const {
   previewUrl,
   featured = false,
 } = Astro.props;
-const base = import.meta.env.BASE_URL;
+const b = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <div class:list={['book-card', { featured }]}>
-  <div class="book-cover" style={`background-image: url('${base}images/bg-goldfish-pattern.png')`}>
-    <img src={`${base}${coverSrc.replace(/^\//, '')}`} alt={coverAlt} loading="lazy" />
+  <div class="book-cover" style={`background-image: url('${b}/images/bg-goldfish-pattern.png')`}>
+    <img src={`${b}${coverSrc}`} alt={coverAlt} loading="lazy" />
   </div>
   <div class="book-info">
     <h3>{title}</h3>
@@ -60,7 +60,7 @@ const base = import.meta.env.BASE_URL;
               {buyLabel} ↗
             </a>
           : buyHref
-            ? <a href={`${base}${buyHref!.replace(/^\//, '')}`} class="btn btn-primary">{buyLabel}</a>
+            ? <a href={`${b}${buyHref}`} class="btn btn-primary">{buyLabel}</a>
             : <button type="button" class="btn btn-primary buy-trigger" data-product={title}>
                 {buyLabel}
               </button>

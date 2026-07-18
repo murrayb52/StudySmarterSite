@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import BookCard from '../components/BookCard.astro';
+const b = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Base
@@ -204,7 +205,7 @@ import BookCard from '../components/BookCard.astro';
     <div class="container ebook-section">
       <div class="ebook-cover">
         <img
-          src="/images/book-cover.png"
+          src={`${b}/images/book-cover.png`}
           alt="Study Smarter book cover"
           width="160"
           height="220"
