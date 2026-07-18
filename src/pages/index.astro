@@ -49,7 +49,7 @@ import BookCard from '../components/BookCard.astro';
       <p class="audience-close">Then this is the book for you.</p>
     </div>
     <div class="audience-photo">
-      <img src="/images/james-speaking-gesturing.jpg" alt="James Buchanan speaking at the Study Smarter book launch" loading="lazy" />
+      <img src="/images/book-cover.png" alt="Study Smarter book cover" loading="lazy" />
     </div>
   </section>
 
@@ -109,8 +109,8 @@ import BookCard from '../components/BookCard.astro';
   <section class="author-teaser">
     <div class="author-teaser-photo">
       <img
-        src="/images/author-photo.jpg"
-        alt="James Buchanan, author of Study Smarter"
+        src="/images/james-speaking-gesturing.jpg"
+        alt="James Buchanan speaking at the Study Smarter book launch"
         loading="lazy"
       />
     </div>
@@ -141,7 +141,7 @@ import BookCard from '../components/BookCard.astro';
   .hero-bg {
     position: absolute;
     inset: 0;
-    background-image: url('/images/fishbowl-leap.png');
+    background-image: url('/images/fishbowl-leap-wide.png');
     background-size: auto 85%;
     background-position: -5% center;
     background-repeat: no-repeat;
@@ -197,13 +197,20 @@ import BookCard from '../components/BookCard.astro';
   }
   .audience-photo {
     overflow: hidden;
+    background: #e2ddd8 url('/images/bg-goldfish-pattern.png') center/380px auto repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 2.5rem;
   }
   .audience-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
+    max-width: 100%;
+    max-height: 400px;
+    width: auto;
+    height: auto;
     display: block;
+    box-shadow: 0 16px 52px rgba(0,0,0,0.38);
+    border-radius: 2px;
   }
   .audience-text {
     background: #1c2a35;
