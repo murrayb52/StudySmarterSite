@@ -19,7 +19,7 @@ const b = import.meta.env.BASE_URL.replace(/\/$/, '');
       <span class="eyebrow">Physical copies</span>
       <h1 style="font-weight:600">Get the book</h1>
       <p class="shop-intro">
-        Delivered anywhere in South Africa (R80 flat rate), or collect in Diep River, Cape Town.
+        Delivered anywhere in South Africa (R100 flat rate), or collect in Diep River, Cape Town.
       </p>
 
       <div class="shop-grid">
@@ -62,7 +62,7 @@ const b = import.meta.env.BASE_URL.replace(/\/$/, '');
               <div class="fulfilment-options">
                 <label class="radio-option">
                   <input type="radio" name="fulfilment" value="delivery" checked />
-                  <span>Delivery (R80 nationwide)</span>
+                  <span>Delivery (R100 nationwide)</span>
                 </label>
                 <label class="radio-option">
                   <input type="radio" name="fulfilment" value="collection" />
@@ -99,8 +99,8 @@ const b = import.meta.env.BASE_URL.replace(/\/$/, '');
 
               <div class="order-summary" id="sf-summary">
                 <span>Book: R350</span>
-                <span id="sf-shipping-line">+ Delivery: R80</span>
-                <strong id="sf-total">Total: R430</strong>
+                <span id="sf-shipping-line">+ Delivery: R100</span>
+                <strong id="sf-total">Total: R450</strong>
               </div>
 
               <button type="submit" class="btn btn-primary">Proceed to Payment</button>
@@ -149,7 +149,7 @@ const b = import.meta.env.BASE_URL.replace(/\/$/, '');
               <div class="fulfilment-options">
                 <label class="radio-option">
                   <input type="radio" name="fulfilment" value="delivery" checked />
-                  <span>Delivery (R80 nationwide)</span>
+                  <span>Delivery (R100 nationwide)</span>
                 </label>
                 <label class="radio-option">
                   <input type="radio" name="fulfilment" value="collection" />
@@ -186,8 +186,8 @@ const b = import.meta.env.BASE_URL.replace(/\/$/, '');
 
               <div class="order-summary" id="wf-summary">
                 <span>Workbook: R270</span>
-                <span id="wf-shipping-line">+ Delivery: R80</span>
-                <strong id="wf-total">Total: R350</strong>
+                <span id="wf-shipping-line">+ Delivery: R100</span>
+                <strong id="wf-total">Total: R370</strong>
               </div>
 
               <button type="submit" class="btn btn-primary">Proceed to Payment</button>
@@ -265,7 +265,7 @@ const b = import.meta.env.BASE_URL.replace(/\/$/, '');
       if (deliveryFields) deliveryFields.classList.toggle('hidden', !isDelivery);
       if (shippingLine) shippingLine.classList.toggle('hidden', !isDelivery);
       if (totalEl) {
-        const total = isDelivery ? price + 80 : price;
+        const total = isDelivery ? price + 100 : price;
         totalEl.textContent = `Total: R${total}`;
       }
     });
@@ -314,7 +314,7 @@ const b = import.meta.env.BASE_URL.replace(/\/$/, '');
       if (status) status.textContent = 'Processing…';
       const price = Number(formWrap?.dataset.price ?? 0);
       const product = formWrap?.dataset.product ?? '';
-      const shippingAmount = isCollection ? 0 : 80;
+      const shippingAmount = isCollection ? 0 : 100;
       const totalAmount = price + shippingAmount;
       const returnUrl = isCollection
         ? `${window.location.origin}/thank-you?collection=true`
