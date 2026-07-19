@@ -385,15 +385,14 @@ const b = import.meta.env.BASE_URL.replace(/\/$/, '');
         fields.shipping_amount = shippingAmount.toFixed(2);
       }
 
-      const sig = payfastSignature(fields, PASSPHRASE);
+      // Compute signature excluding merchant_key (PayFast excludes it from hash)
+      const { merchant_key: _mk, ...sigFields } = fields;
+      const sig = payfastSignature(sigFields, PASSPHRASE);
 
       // DIAGNOSTIC — remove before going live
-      console.log('[PayFast] md5 sanity check (should be 098f6bcd4621d373cade4e832627b4f6):', md5('test'));
       console.log('[PayFast] PASSPHRASE defined:', !!PASSPHRASE);
-      console.log('[PayFast] PASSPHRASE length:', PASSPHRASE?.length);
-      const sigStr = Object.entries(fields).map(([k,v])=>`${k}=${encodeURIComponent(v.trim()).replace(/%20/g,'+')}` ).join('&') + (PASSPHRASE ? `&passphrase=${encodeURIComponent(PASSPHRASE.trim()).replace(/%20/g,'+')}` : '');
-      console.log('[PayFast] signature string:', sigStr);
-      console.log('[PayFast] signature string length:', sigStr.length);
+      const sigStr = Object.entries(sigFields).map(([k,v])=>`${k}=${encodeURIComponent(v.trim()).replace(/%20/g,'+')}` ).join('&') + (PASSPHRASE ? `&passphrase=${encodeURIComponent(PASSPHRASE.trim()).replace(/%20/g,'+')}` : '');
+      console.log('[PayFast] signature string (no merchant_key):', sigStr);
       console.log('[PayFast] signature (MD5):', sig);
 
       Object.entries(fields).forEach(([name, value]) => {
