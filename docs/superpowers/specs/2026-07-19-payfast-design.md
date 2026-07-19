@@ -171,12 +171,24 @@ The `signature` field is appended to the hidden form after all other fields.
 
 ---
 
+## Delivery charge update
+
+Raise the flat delivery charge from R80 to **R100**. The Courier Guy Economy (road, 2–4 days) costs R89–R95 door-to-door nationally as of June 2026; R80 would subsidise each delivery by ~R10–R15. R100 covers the rate with a small buffer for fuel levies.
+
+Changes required in `shop.astro`:
+- Delivery option label: `Delivery (R100 nationwide)`
+- Shipping amount constant: `80` → `100`
+- Order summary label: `+ Delivery: R100`
+- Default totals: Study Smarter R350 + R100 = **R450**; Workbook R270 + R100 = **R370**
+
+---
+
 ## Files changed
 
 | File | Change |
 |---|---|
 | `.github/workflows/deploy.yml` | Add `PUBLIC_PAYFAST_PASSPHRASE` env var |
 | `package.json` / `package-lock.json` | Add `blueimp-md5` dependency |
-| `src/pages/shop.astro` | Fix return/cancel URLs; add passphrase read; add signature generation |
+| `src/pages/shop.astro` | Fix return/cancel URLs; add passphrase read; add signature generation; raise delivery to R100 |
 
 No other files need changes.
