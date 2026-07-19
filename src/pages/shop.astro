@@ -406,8 +406,9 @@ const b = import.meta.env.BASE_URL.replace(/\/$/, '');
 
       const sig = payfastSignature(fields, PASSPHRASE);
 
-      // DIAGNOSTIC — remove before going live
-      console.log('[PayFast] sig string:', Object.entries(fields).map(([k, v]) => `${k}=${pfEncode(v)}`).join('&') + `&passphrase=${pfEncode(PASSPHRASE ?? '')}`);
+      // DIAGNOSTIC — remove before going live. Passphrase intentionally omitted
+      // so the secret is never printed to the browser console.
+      console.log('[PayFast] sig string (passphrase omitted):', Object.entries(fields).map(([k, v]) => `${k}=${pfEncode(v)}`).join('&'));
       console.log('[PayFast] signature (MD5):', sig);
 
       Object.entries(fields).forEach(([name, value]) => {
