@@ -233,6 +233,8 @@ const b = import.meta.env.BASE_URL.replace(/\/$/, '');
 </Base>
 
 <script>
+  import md5 from 'blueimp-md5';
+
   // Toggle order form visibility when "Buy Now" is clicked
   document.querySelectorAll<HTMLButtonElement>('.buy-trigger').forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -277,9 +279,21 @@ const b = import.meta.env.BASE_URL.replace(/\/$/, '');
   const PAYFAST_ENV = (import.meta.env.PUBLIC_PAYFAST_ENV as string | undefined) ?? 'sandbox';
   const ORDER_ENDPOINT = import.meta.env.PUBLIC_FORMSPREE_ORDER_ENDPOINT as string | undefined;
 
+  const PASSPHRASE = import.meta.env.PUBLIC_PAYFAST_PASSPHRASE as string | undefined;
+
   const PAYFAST_URL = PAYFAST_ENV === 'live'
     ? 'https://www.payfast.co.za/eng/process'
     : 'https://sandbox.payfast.co.za/eng/process';
+
+  function payfastSignature(fields: Record<string, string>, passphrase?: string): string {
+    const parts = Object.entries(fields)
+      .map(([k, v]) => `${k}=${encodeURIComponent(v.trim()).replace(/%20/g, '+')}`)
+      .join('&');
+    const str = passphrase
+      ? `${parts}&passphrase=${encodeURIComponent(passphrase.trim()).replace(/%20/g, '+')}`
+      : parts;
+    return md5(str);
+  }
 
   document.querySelectorAll<HTMLFormElement>('.order-form').forEach((form) => {
     const formWrap = form.closest<HTMLElement>('.order-form-wrap');
@@ -316,9 +330,10 @@ const b = import.meta.env.BASE_URL.replace(/\/$/, '');
       const product = formWrap?.dataset.product ?? '';
       const shippingAmount = isCollection ? 0 : 100;
       const totalAmount = price + shippingAmount;
+      const base = (import.meta.env.BASE_URL ?? '/').replace(/\/$/, '');
       const returnUrl = isCollection
-        ? `${window.location.origin}/thank-you?collection=true`
-        : `${window.location.origin}/thank-you`;
+        ? `${window.location.origin}${base}/thank-you?collection=true`
+        : `${window.location.origin}${base}/thank-you`;
 
       // Step 1: Record order with Formspree
       if (ORDER_ENDPOINT) {
@@ -356,7 +371,7 @@ const b = import.meta.env.BASE_URL.replace(/\/$/, '');
         merchant_id: MERCHANT_ID,
         merchant_key: MERCHANT_KEY,
         return_url: returnUrl,
-        cancel_url: `${window.location.origin}/shop`,
+        cancel_url: `${window.location.origin}${base}/shop`,
         amount: price.toFixed(2),
         item_name: product,
         name_first: String(data.get('first_name') ?? ''),
@@ -370,6 +385,8 @@ const b = import.meta.env.BASE_URL.replace(/\/$/, '');
         fields.shipping_amount = shippingAmount.toFixed(2);
       }
 
+      const sig = payfastSignature(fields, PASSPHRASE);
+
       Object.entries(fields).forEach(([name, value]) => {
         const input = document.createElement('input');
         input.type = 'hidden';
@@ -377,6 +394,12 @@ const b = import.meta.env.BASE_URL.replace(/\/$/, '');
         input.value = value;
         payfastForm.appendChild(input);
       });
+
+      const sigInput = document.createElement('input');
+      sigInput.type = 'hidden';
+      sigInput.name = 'signature';
+      sigInput.value = sig;
+      payfastForm.appendChild(sigInput);
 
       document.body.appendChild(payfastForm);
       payfastForm.submit();
