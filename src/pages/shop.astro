@@ -399,6 +399,11 @@ const b = import.meta.env.BASE_URL.replace(/\/$/, '');
         custom_str1: isCollection ? 'collection' : 'delivery',
       };
 
+      // Trim every value up front so stray whitespace/newlines in env secrets
+      // (a common cause of "merchant id must be 8 digits") can't reach PayFast,
+      // and so the signed string matches the POSTed values exactly.
+      for (const k of Object.keys(fields)) fields[k] = fields[k].trim();
+
       const sig = payfastSignature(fields, PASSPHRASE);
 
       // DIAGNOSTIC — remove before going live
