@@ -10,7 +10,7 @@ Author: James Buchanan (Cape Town). Domain: `thestudysmarterhub.com` (DNS not ye
 ```bash
 # Must use Node 20+ — use nvm
 export NVM_DIR="$HOME/.nvm" && source "$NVM_DIR/nvm.sh" && nvm use 20
-cd ~/projects/StudySmarterSite
+cd ~/projects/StudySmarter/StudySmarterSite
 npm run dev          # dev server with hot reload at http://localhost:4321/StudySmarterSite/
 npm run build        # production build to dist/
 npm run preview      # serve the production build locally
